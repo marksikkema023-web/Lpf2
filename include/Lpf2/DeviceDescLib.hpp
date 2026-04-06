@@ -55,7 +55,7 @@ namespace Lpf2
         {
             if (count_ >= MAX_DESCRIPTORS)
             {
-                assert(false && "Exceeded maximum number of Lpf2 device factories");
+                assert(false && "Exceeded maximum number of Lpf2 device descriptors");
                 return;
             }
 

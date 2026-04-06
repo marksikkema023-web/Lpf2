@@ -402,7 +402,7 @@ namespace Lpf2
         {
         case 0x01:
         {
-            payload.push_back(port->getCapatibilities());
+            payload.push_back(port->getCapabilities());
             payload.push_back(port->getModeCount());
             payload.push_back(port->getInputModes() >> 8);
             payload.push_back(port->getInputModes() & 0xF);

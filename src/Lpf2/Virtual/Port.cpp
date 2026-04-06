@@ -116,7 +116,7 @@ namespace Lpf2::Virtual
         m_deviceType = m_device->getDeviceType();
         modeData = m_device->getModes();
         modeCombos = m_device->getModeCombos();
-        caps = m_device->getCapatibilities();
+        caps = m_device->getCapabilities();
         inModes = m_device->getInputModes();
         outModes = m_device->getOutputModes();
     }

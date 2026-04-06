@@ -483,7 +483,7 @@ namespace Lpf2
         uint8_t motor_bias;
         struct Flags
         {
-            uint8_t bytes[6] = {0, 0, 0, 0, 0, 0};
+            uint8_t bytes[8] = {0}; // allocate 8 byte so it's safe to use it as an uint64_t
 
             bool speed() const { return bytes[0] & (1 << 0); }
             bool apos() const { return bytes[0] & (1 << 1); }

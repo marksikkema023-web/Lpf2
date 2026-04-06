@@ -17,6 +17,7 @@
 
 #include "Lpf2/Port.hpp"
 #include "Lpf2/LWPConst.hpp"
+#include "Lpf2/DeviceDescLib.hpp"
 #include <string>
 #include <cstring>
 #include <sstream>
@@ -33,7 +34,7 @@ namespace Lpf2
         oss << "Device: 0x" << std::setw(2) << std::setfill('0') << static_cast<unsigned int>(getDeviceType()) << "\n";
         oss << std::dec << "InModes: 0x" << std::hex << std::setw(4) << std::setfill('0') << getInputModes() << "\n";
         oss << "OutModes: 0x" << std::hex << std::setw(4) << std::setfill('0') << getOutputModes() << "\n";
-        oss << "Caps: 0x" << std::hex << std::setw(2) << std::setfill('0') << static_cast<unsigned int>(getCapatibilities()) << "\n";
+        oss << "Caps: 0x" << std::hex << std::setw(2) << std::setfill('0') << static_cast<unsigned int>(getCapabilities()) << "\n";
         oss << std::dec << "Combos:\n";
         for (uint8_t i = 0; i < getModeComboCount(); i++)
         {
@@ -293,3 +294,12 @@ namespace Lpf2
         }
     }
 };
+
+void Lpf2::Port::setFromDesc()
+{
+    auto desc = DeviceDescRegistry::instance().getDescriptor(m_deviceType);
+    if (desc)
+    {
+        setFromDesc(desc);
+    }
+}

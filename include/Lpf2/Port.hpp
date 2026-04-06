@@ -173,7 +173,7 @@ namespace Lpf2
          * @returns mode bitmask
          */
         uint16_t getOutputModes() const { return outModes; }
-        uint8_t getCapatibilities() const { return caps; }
+        uint8_t getCapabilities() const { return caps; }
 
         std::string getInfoStr();
 
@@ -262,6 +262,12 @@ namespace Lpf2
 
         bool m_rawDataSizeEnsured = false;
         void ensureRawDataSize();
+
+
+        /**
+         * @brief Set the port data from a device descriptor if available
+         */
+        void setFromDesc();
 
     protected:
         DeviceType m_deviceType = DeviceType::UNKNOWNDEVICE;

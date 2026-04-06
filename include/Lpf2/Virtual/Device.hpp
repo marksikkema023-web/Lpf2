@@ -41,7 +41,7 @@ namespace Lpf2::Virtual
          * @returns mode bitmask
          */
         virtual uint16_t getOutputModes() const = 0;
-        virtual uint8_t getCapatibilities() const = 0;
+        virtual uint8_t getCapabilities() const = 0;
         virtual int writeData(uint8_t modeNum, const std::vector<uint8_t> &data) = 0;
         virtual void setPower(uint8_t pin1, uint8_t pin2) = 0;
         virtual int setMode(uint8_t mode) = 0;
@@ -153,7 +153,7 @@ namespace Lpf2::Virtual
             return m_desc.outModes;
         }
 
-        uint8_t getCapatibilities() const override
+        uint8_t getCapabilities() const override
         {
             return m_desc.caps;
         }

@@ -16,6 +16,7 @@
  *  */
 
 #include "Lpf2/Local/Port.hpp"
+#include "Lpf2/DeviceDescLib.hpp"
 
 namespace Lpf2::Local
 {
@@ -96,6 +97,7 @@ namespace Lpf2::Local
                     if (m_detectionCounter >= m_detectionThreshold)
                     {
                         m_deviceType = DeviceType::TRAIN_MOTOR;
+                        setFromDesc();
                         m_dumb = true;
                         LPF2_LOG_V("Analog: Train Motor");
                     }
@@ -118,6 +120,7 @@ namespace Lpf2::Local
                     if (m_detectionCounter >= m_detectionThreshold)
                     {
                         m_deviceType = DeviceType::SIMPLE_MEDIUM_LINEAR_MOTOR;
+                        setFromDesc();
                         m_dumb = true;
                         LPF2_LOG_V("Analog: Simple Motor");
                     }
@@ -137,6 +140,7 @@ namespace Lpf2::Local
                     if (m_detectionCounter >= m_detectionThreshold)
                     {
                         m_deviceType = DeviceType::LIGHT;
+                        setFromDesc();
                         m_dumb = true;
                         LPF2_LOG_V("Analog: Light");
                     }
