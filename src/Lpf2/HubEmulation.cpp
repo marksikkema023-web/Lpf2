@@ -1151,7 +1151,7 @@ namespace Lpf2
         xTaskCreate(msgTask, "msgTask", 4096, (void*)this, HUB_EMULATION_MSG_RECEIVE_TASK_PRIORITY, &m_msgTaskHandle);
     }
 
-    void HubEmulation::end()
+    void HubEmulation::stop()
     {
         m_msgTaskShouldQuit = true;
         if (m_connected)

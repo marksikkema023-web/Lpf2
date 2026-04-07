@@ -147,7 +147,7 @@ namespace Lpf2
          * Disconnects / stops BLE advertising,
          * Deletes message handling task
          */
-        void end();
+        void stop();
 
         /**
          * @brief sets if the library should initialize the default
