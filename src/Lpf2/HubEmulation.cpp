@@ -54,39 +54,28 @@ namespace Lpf2
         }
     };
 
-    class Lpf2HubCharacteristicCallbacks : public NimBLECharacteristicCallbacks
+    void HubEmulation::Lpf2HubCharacteristicCallbacks::onSubscribe(NimBLECharacteristic *pCharacteristic, NimBLEConnInfo &connInfo, uint16_t subValue)
     {
-        HubEmulation *_lpf2HubEmulation;
+        LPF2_LOG_D("Client subscription status: %s (%d)",
+                subValue == 0 ? "Un-Subscribed" : subValue == 1 ? "Notifications"
+                                                : subValue == 2   ? "Indications"
+                                                : subValue == 3   ? "Notifications and Indications"
+                                                                : "unknown subscription status",
+                subValue);
 
-    public:
-        Lpf2HubCharacteristicCallbacks(HubEmulation *lpf2HubEmulation) : NimBLECharacteristicCallbacks()
-        {
-            _lpf2HubEmulation = lpf2HubEmulation;
-        }
+        _lpf2HubEmulation->m_subscribed = subValue != 0;
+    }
 
-        void onSubscribe(NimBLECharacteristic *pCharacteristic, NimBLEConnInfo &connInfo, uint16_t subValue) override
-        {
-            LPF2_LOG_D("Client subscription status: %s (%d)",
-                       subValue == 0 ? "Un-Subscribed" : subValue == 1 ? "Notifications"
-                                                     : subValue == 2   ? "Indications"
-                                                     : subValue == 3   ? "Notifications and Indications"
-                                                                       : "unknown subscription status",
-                       subValue);
+    void HubEmulation::Lpf2HubCharacteristicCallbacks::onWrite(NimBLECharacteristic *pCharacteristic, NimBLEConnInfo &connInfo)
+    {
+        auto* value = new NimBLEAttValue(std::move(pCharacteristic->getValue()));
+        xQueueSend(_lpf2HubEmulation->m_msgQueue, &value, 1);
+    }
 
-            _lpf2HubEmulation->m_subscribed = subValue != 0;
-        }
-
-        void onWrite(NimBLECharacteristic *pCharacteristic, NimBLEConnInfo &connInfo) override
-        {
-            auto* value = new NimBLEAttValue(std::move(pCharacteristic->getValue()));
-            xQueueSend(_lpf2HubEmulation->m_msgQueue, &value, 1);
-        }
-
-        void onRead(NimBLECharacteristic *pCharacteristic, NimBLEConnInfo &connInfo) override
-        {
-            LPF2_LOG_D("read request");
-        }
-    };
+    void HubEmulation::Lpf2HubCharacteristicCallbacks::onRead(NimBLECharacteristic *pCharacteristic, NimBLEConnInfo &connInfo)
+    {
+        LPF2_LOG_D("read request");
+    }
 
     void HubEmulation::processMessages(const std::vector<uint8_t>& message)
     {
@@ -860,6 +849,11 @@ namespace Lpf2
     {
         stop();
         destroyBuiltIn();
+        if (m_bleCharCallbacks)
+        {
+            delete m_bleCharCallbacks;
+            m_bleCharCallbacks = nullptr;
+        }
     }
 
     void HubEmulation::reset()
@@ -1060,51 +1054,9 @@ namespace Lpf2
         m_hubProperty[(unsigned)HubPropertyType::HW_VERSION] = v;
     }
 
-    void HubEmulation::start()
+
+    NimBLEAdvertisementData HubEmulation::getAdvertisementData()
     {
-        if (m_msgQueue == nullptr)
-        {
-            m_msgQueue = xQueueCreate(16, sizeof(NimBLEAttValue*)); // 16 items should be enough
-        }
-        destroyBuiltIn();
-        if (m_useBuiltInDevices)
-        {
-            initBuiltInPorts();
-        }
-        LPF2_LOG_D("Starting BLE");
-
-        NimBLEDevice::init(getHubName());
-        NimBLEDevice::setOwnAddrType(BLE_OWN_ADDR_PUBLIC);
-        NimBLEDevice::setPower(ESP_PWR_LVL_N0, NimBLETxPowerType::Advertise); // 0dB, Advertisment
-        reset();
-
-        LPF2_LOG_D("Create server");
-        m_bleServer = NimBLEDevice::createServer();
-        m_bleServer->setCallbacks(new Lpf2HubServerCallbacks(this));
-
-        LPF2_LOG_D("Create service");
-        m_bleService = m_bleServer->createService(LPF2_UUID);
-
-        // Create a BLE Characteristic
-        m_bleChar = m_bleService->createCharacteristic(
-            NimBLEUUID(LPF2_CHARACHTERISTIC),
-            NIMBLE_PROPERTY::READ |
-                NIMBLE_PROPERTY::WRITE |
-                NIMBLE_PROPERTY::NOTIFY |
-                NIMBLE_PROPERTY::WRITE_NR);
-        // Create a BLE Descriptor and set the callback
-        m_bleChar->setCallbacks(new Lpf2HubCharacteristicCallbacks(this));
-
-        LPF2_LOG_D("Service start");
-
-        m_bleService->start();
-        m_bleAdvertising = NimBLEDevice::getAdvertising();
-
-        m_bleAdvertising->addServiceUUID(LPF2_UUID);
-        m_bleAdvertising->enableScanResponse(true);
-        m_bleAdvertising->setMinInterval(32); // 0.625ms units -> 20ms
-        m_bleAdvertising->setMaxInterval(64); // 0.625ms units -> 40ms
-
         std::vector<uint8_t> manufacturerData;
 
         if (m_hubType == HubType::POWERED_UP_HUB)
@@ -1123,9 +1075,11 @@ namespace Lpf2
         advertisementData.setFlags(BLE_HS_ADV_F_DISC_GEN);
         advertisementData.setCompleteServices(NimBLEUUID(LPF2_UUID));
         advertisementData.setManufacturerData(manufacturerData);
+        return advertisementData;
+    }
 
-        // scan response data is needed because the uuid128 and manufacturer data takes almost all space in the advertisement data
-        // the name is therefore stored in the scan response data
+    NimBLEAdvertisementData HubEmulation::getScanResponseData()
+    {
         NimBLEAdvertisementData scanResponseData = NimBLEAdvertisementData();
 
         // set the slave connection interval range to 20-40ms
@@ -1137,6 +1091,68 @@ namespace Lpf2
         scanResponseData.addData(powerLevelData, sizeof(powerLevelData));
 
         scanResponseData.setName(getHubName());
+        return scanResponseData;
+    }
+
+    void HubEmulation::start()
+    {
+        if (m_msgQueue == nullptr)
+        {
+            m_msgQueue = xQueueCreate(16, sizeof(NimBLEAttValue*)); // 16 items should be enough
+        }
+        destroyBuiltIn();
+        if (m_useBuiltInDevices)
+        {
+            initBuiltInPorts();
+        }
+        LPF2_LOG_D("Starting BLE");
+
+        NimBLEDevice::init(getHubName());
+        NimBLEDevice::setOwnAddrType(BLE_OWN_ADDR_PUBLIC);
+        NimBLEDevice::setPower(ESP_PWR_LVL_N0, NimBLETxPowerType::Advertise); // 0dB, Advertisment
+        reset();
+
+        if (!m_bleServer)
+        {
+            LPF2_LOG_D("Creating server");
+            m_bleServer = NimBLEDevice::createServer();
+            m_bleServer->setCallbacks(new Lpf2HubServerCallbacks(this), true);
+        }
+
+        if (!m_bleService)
+        {
+            LPF2_LOG_D("Create service");
+            m_bleService = m_bleServer->createService(LPF2_UUID);
+        }
+
+        // Create a BLE Characteristic
+
+        if (!m_bleChar)
+        {
+            m_bleChar = m_bleService->createCharacteristic(
+                NimBLEUUID(LPF2_CHARACHTERISTIC),
+                NIMBLE_PROPERTY::READ |
+                    NIMBLE_PROPERTY::WRITE |
+                    NIMBLE_PROPERTY::NOTIFY |
+                    NIMBLE_PROPERTY::WRITE_NR);
+            // Create a BLE Descriptor and set the callback
+            if (!m_bleCharCallbacks)
+            {
+                m_bleCharCallbacks = new Lpf2HubCharacteristicCallbacks(this);
+            }
+            m_bleChar->setCallbacks(m_bleCharCallbacks);
+        }
+
+        LPF2_LOG_D("Service start");
+
+        m_bleAdvertising = NimBLEDevice::getAdvertising();
+
+        m_bleAdvertising->enableScanResponse(true);
+        m_bleAdvertising->setMinInterval(32); // 0.625ms units -> 20ms
+        m_bleAdvertising->setMaxInterval(64); // 0.625ms units -> 40ms
+
+        auto advertisementData = getAdvertisementData();
+        auto scanResponseData = getScanResponseData();
 
         LPF2_LOG_D("advertisment data payload(%d): %s", advertisementData.getPayload().size(), Utils::bytes_to_hexString(advertisementData.getPayload()).c_str());
         LPF2_LOG_D("scan response data payload(%d): %s", scanResponseData.getPayload().size(), Utils::bytes_to_hexString(scanResponseData.getPayload()).c_str());
@@ -1166,10 +1182,20 @@ namespace Lpf2
         if (m_connected)
         {
             m_bleServer->disconnect(m_bleConnHandle);
+            m_connected = false;
         }
         if (m_advertising)
         {
             NimBLEDevice::stopAdvertising();
+            m_advertising = false;
         }
+
+        NimBLEDevice::deinit(true);
+
+        // Reset pointers so start() rebuilds everything
+        m_bleServer = nullptr;
+        m_bleService = nullptr;
+        m_bleChar = nullptr;
+        m_bleAdvertising = nullptr;
     }
 };

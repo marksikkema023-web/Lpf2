@@ -34,22 +34,36 @@ namespace Lpf2
 
     class HubEmulation
     {
+        class Lpf2HubCharacteristicCallbacks : public NimBLECharacteristicCallbacks
+        {
+            HubEmulation *_lpf2HubEmulation = nullptr;
+        public:
+            Lpf2HubCharacteristicCallbacks(HubEmulation *lpf2HubEmulation) : NimBLECharacteristicCallbacks(), _lpf2HubEmulation(lpf2HubEmulation) {}
+            void onSubscribe(NimBLECharacteristic *pCharacteristic, NimBLEConnInfo &connInfo, uint16_t subValue) override;
+            void onWrite(NimBLECharacteristic *pCharacteristic, NimBLEConnInfo &connInfo) override;
+            void onRead(NimBLECharacteristic *pCharacteristic, NimBLEConnInfo &connInfo) override;
+        };
+
         friend class Lpf2HubServerCallbacks;
         friend class Lpf2HubCharacteristicCallbacks;
     private:
         QueueHandle_t m_msgQueue = nullptr;
 
-        BLEServer *m_bleServer;
-        BLEService *m_bleService;
-        BLEAdvertising *m_bleAdvertising;
-        BLECharacteristic *m_bleChar;
+        BLEServer *m_bleServer = nullptr;
+        BLEService *m_bleService = nullptr;
+        BLEAdvertising *m_bleAdvertising = nullptr;
+        BLECharacteristic *m_bleChar = nullptr;
         bool m_connected = false;
         bool m_subscribed = false;
         bool m_advertising = false;
-        uint16_t m_bleConnHandle;
+        uint16_t m_bleConnHandle = 0;
+        Lpf2HubCharacteristicCallbacks *m_bleCharCallbacks = nullptr;
 
         TaskHandle_t m_msgTaskHandle = nullptr;
         bool m_msgTaskShouldQuit = false;
+
+        NimBLEAdvertisementData getAdvertisementData();
+        NimBLEAdvertisementData getScanResponseData();
 
         void writeResponse(MessageType messageType, std::vector<uint8_t> payload);
         void writeValue(std::vector<uint8_t> message);
