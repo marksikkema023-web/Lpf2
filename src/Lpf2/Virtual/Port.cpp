@@ -116,7 +116,7 @@ namespace Lpf2::Virtual
         m_deviceType = m_device->getDeviceType();
         m_modeData = m_device->getModes();
         m_modeCombos = m_device->getModeCombos();
-        m_caps = m_device->getCapabilities();
+        m_capabilities = m_device->getCapabilities();
         m_inModesMask = m_device->getInputModes();
         m_outModesMask = m_device->getOutputModes();
     }
@@ -127,7 +127,7 @@ namespace Lpf2::Virtual
         m_device.release();
         m_modeData.clear();
         m_modeCombos.clear();
-        m_caps = 0;
+        m_capabilities = 0;
         m_inModesMask = 0;
         m_outModesMask = 0;
     }

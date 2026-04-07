@@ -310,7 +310,7 @@ namespace Lpf2::Local
         baud = 115200;
         m_deviceType = DeviceType::UNKNOWNDEVICE;
         m_deviceDataReceived = false;
-        m_modes = m_viewCount = 0;
+        m_modeCount = m_viewCount = 0;
         m_comboNum = 0;
         m_modeData.resize(0);
         m_modeCombos.clear();
@@ -336,7 +336,7 @@ namespace Lpf2::Local
         baud = 115200;
         changeBaud(baud);
         m_deviceType = DeviceType::UNKNOWNDEVICE;
-        m_modes = m_viewCount = 0;
+        m_modeCount = m_viewCount = 0;
         m_comboNum = 0;
         m_modeData.resize(0);
         for (size_t i = 0; i < 16; i++)

@@ -21,9 +21,9 @@ namespace Lpf2::Local
 {
     int Port::setMode(uint8_t mode)
     {
-        if (mode >= m_modes)
+        if (mode >= m_modeCount)
         {
-            LPF2_LOG_W("Tried to set invalid mode %i (max %i)", mode, m_modes - 1);
+            LPF2_LOG_W("Tried to set invalid mode %i (max %i)", mode, m_modeCount - 1);
             return 1;
         }
 

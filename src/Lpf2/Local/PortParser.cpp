@@ -89,7 +89,7 @@ namespace Lpf2::Local
                 nextModeExt = false;
             }
 
-            if (mode >= m_modes)
+            if (mode >= m_modeCount)
             {
                 break;
             }
@@ -141,19 +141,19 @@ namespace Lpf2::Local
         {
             if (msg.length == 1)
             {
-                m_modes = m_viewCount = msg.data[1] + 1;
+                m_modeCount = m_viewCount = msg.data[1] + 1;
             }
             else if (msg.length == 2)
             {
-                m_modes = msg.data[0] + 1;
+                m_modeCount = msg.data[0] + 1;
                 m_viewCount = msg.data[1] + 1;
             }
             else if (msg.length == 4)
             {
-                m_modes = msg.data[2] + 1;
+                m_modeCount = msg.data[2] + 1;
                 m_viewCount = msg.data[3] + 1;
             }
-            m_modeData.resize(m_modes);
+            m_modeData.resize(m_modeCount);
             break;
         }
         case CMD_SPEED:
@@ -188,19 +188,19 @@ namespace Lpf2::Local
     void Port::parseMessageInfo(const Message &msg)
     {
         uint8_t mode = GET_MODE(msg.cmd) + ((msg.data[0] & INFO_MODE_PLUS_8) ? 8 : 0);
-        if (mode >= m_modes)
+        if (mode >= m_modeCount)
         {
             return;
         }
-        if (m_modeData.size() < static_cast<size_t>(m_modes))
+        if (m_modeData.size() < static_cast<size_t>(m_modeCount))
         {
-            m_modeData.resize(m_modes);
+            m_modeData.resize(m_modeCount);
         }
         switch (msg.data[0] & 0xDF)
         {
         case INFO_NAME:
         {
-            if (mode >= m_modes)
+            if (mode >= m_modeCount)
             {
                 break;
             }
@@ -224,7 +224,7 @@ namespace Lpf2::Local
         }
         case INFO_RAW:
         {
-            if (mode >= m_modes || msg.length < 9)
+            if (mode >= m_modeCount || msg.length < 9)
             {
                 break;
             }
@@ -237,7 +237,7 @@ namespace Lpf2::Local
         }
         case INFO_PCT:
         {
-            if (mode >= m_modes || msg.length < 9)
+            if (mode >= m_modeCount || msg.length < 9)
             {
                 break;
             }
@@ -247,7 +247,7 @@ namespace Lpf2::Local
         }
         case INFO_SI:
         {
-            if (mode >= m_modes || msg.length < 9)
+            if (mode >= m_modeCount || msg.length < 9)
             {
                 break;
             }
@@ -257,7 +257,7 @@ namespace Lpf2::Local
         }
         case INFO_UNITS:
         {
-            if (mode >= m_modes)
+            if (mode >= m_modeCount)
             {
                 break;
             }
@@ -276,7 +276,7 @@ namespace Lpf2::Local
         }
         case INFO_MAPPING:
         {
-            if (mode >= m_modes || msg.length < 3)
+            if (mode >= m_modeCount || msg.length < 3)
             {
                 break;
             }
@@ -303,7 +303,7 @@ namespace Lpf2::Local
         }
         case INFO_FORMAT:
         {
-            if (mode >= m_modes || msg.length < 5)
+            if (mode >= m_modeCount || msg.length < 5)
             {
                 break;
             }
@@ -312,7 +312,7 @@ namespace Lpf2::Local
             m_modeData[mode].figures = msg.data[3];
             m_modeData[mode].decimals = msg.data[4];
 
-            if (mode == m_modes - 1)
+            if (mode == m_modeCount - 1)
             {
                 m_deviceDataReceived = true;
             }
