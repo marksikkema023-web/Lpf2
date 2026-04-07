@@ -932,12 +932,13 @@ namespace Lpf2
         NimBLEAttValue* value;
         while(true)
         {
-            if (xQueueReceive(m_msgQueue, &value, portMAX_DELAY))
+            if (xQueueReceive(m_msgQueue, &value, 5))
             {
                 std::vector<uint8_t> message(value->data(), value->data() + value->length());
                 processMessages(message);
                 delete value;
             }
+            update();
         }
     }
 

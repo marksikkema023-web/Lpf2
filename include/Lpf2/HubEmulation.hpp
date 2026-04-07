@@ -68,7 +68,7 @@ namespace Lpf2
          */
         std::unordered_map<PortNum, bool> connectedDevices;
 
-        bool m_useBuiltInDevices = true;
+        bool m_useBuiltInDevices = false;
 
         bool updateHubPropertyEnabled[(unsigned int)HubPropertyType::END] = {false};
         std::vector<uint8_t> hubProperty[(unsigned int)HubPropertyType::END];
@@ -129,6 +129,8 @@ namespace Lpf2
         }
 
         void msgTaskLoop();
+        
+        void update();
 
     public:
         HubEmulation();
@@ -144,12 +146,6 @@ namespace Lpf2
          * @brief Starts BLE advertising, resets hub props
          */
         void start();
-
-        /**
-         * @brief call this periodically to check if
-         * attached ports have devices attached or not
-         */
-        void update();
 
         /**
          * @brief sets if the library should initialize the default
