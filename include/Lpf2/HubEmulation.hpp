@@ -122,7 +122,12 @@ namespace Lpf2
         static inline void msgTask(void *pvParams)
         {
             HubEmulation *hubEmulation = static_cast<HubEmulation*>(pvParams);
+            if (hubEmulation == nullptr) {
+                abort();
+            }
             hubEmulation->msgTaskLoop();
+            vTaskDelete(NULL);
+            return;
         }
 
         void msgTaskLoop();

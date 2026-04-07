@@ -858,6 +858,7 @@ namespace Lpf2
 
     HubEmulation::~HubEmulation()
     {
+        stop();
         destroyBuiltIn();
     }
 
@@ -939,6 +940,7 @@ namespace Lpf2
             }
             update();
         }
+        writeResponse(MessageType::HUB_ACTIONS, {(uint8_t)HubActionType::HUB_WILL_SWITCH_OFF});
     }
 
     void HubEmulation::update()
@@ -1148,12 +1150,19 @@ namespace Lpf2
         LPF2_LOG_D("Characteristic defined! Now you can connect with your PoweredUp App!");
         m_firstUpdate = true;
 
-        xTaskCreate(msgTask, "msgTask", 4096, (void*)this, HUB_EMULATION_MSG_RECEIVE_TASK_PRIORITY, &m_msgTaskHandle);
+        xTaskCreate(msgTask, "msgTask", 8192, (void*)this, HUB_EMULATION_MSG_RECEIVE_TASK_PRIORITY, &m_msgTaskHandle);
     }
 
     void HubEmulation::stop()
     {
-        m_msgTaskShouldQuit = true;
+        if (m_msgTaskHandle)
+        {
+            m_msgTaskShouldQuit = true;
+            while (eTaskGetState(m_msgTaskHandle) != eDeleted) {
+                vTaskDelay(1);
+            }
+            m_msgTaskHandle = nullptr;
+        }
         if (m_connected)
         {
             m_bleServer->disconnect(m_bleConnHandle);
