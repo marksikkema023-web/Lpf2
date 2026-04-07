@@ -89,7 +89,7 @@ namespace Lpf2
             handleHubPropertyMessage(message);
             break;
         case MessageType::HUB_ACTIONS:
-            LPF2_LOG_W("HUB_ACTIONS not implemented yet");
+            handleHubActionsMessage(message);
             break;
         case MessageType::HUB_ALERTS:
             handleHubAlertsMessage(message);
@@ -365,6 +365,32 @@ namespace Lpf2
         return;
     unimplemented:
         LPF2_LOG_E("Unimplemented: %i", alertOperation);
+        return;
+    }
+
+    void HubEmulation::handleHubActionsMessage(std::vector<uint8_t> message)
+    {
+        if (message.size() < 4)
+        {
+            LPF2_LOG_E("Unexpected message length: %i", message.size());
+            return;
+        }
+        HubActionType action = (HubActionType)message[(uint8_t)MessageByte::PROPERTY];
+        switch (action)
+        {
+        case HubActionType::SWITCH_OFF_HUB:
+        case HubActionType::DISCONNECT:
+        case HubActionType::FAST_POWER_DOWN:
+        {
+            m_bleServer->disconnect(m_bleConnHandle);
+            break;
+        }
+        default:
+            goto unimplemented;
+        }
+        return;
+    unimplemented:
+        LPF2_LOG_E("Unimplemented action: %i", action);
         return;
     }
 
@@ -1019,7 +1045,8 @@ namespace Lpf2
         }
 
         auto &property = m_hubProperty[(unsigned)HubPropertyType::ADVERTISING_NAME];
-        property.resize(hubName.size());
+        property.clear();
+        property.reserve(hubName.size());
         property.insert(property.end(), hubName.begin(), hubName.end());
         updateHubProperty(HubPropertyType::ADVERTISING_NAME);
     }

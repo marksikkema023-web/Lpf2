@@ -115,7 +115,7 @@ namespace Lpf2
         void sendHubAlertUpdate(HubAlertType alert);
         void resetHubAlerts();
         void handleHubAlertsMessage(std::vector<uint8_t> message);
-
+        void handleHubActionsMessage(std::vector<uint8_t> message);
         void handlePortInformationRequestMessage(std::vector<uint8_t> message);
         void handlePortModeInformationRequestMessage(std::vector<uint8_t> message);
         void handlePortInputFormatSetupSingleMessage(std::vector<uint8_t> message);
