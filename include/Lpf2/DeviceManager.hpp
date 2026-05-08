@@ -18,7 +18,7 @@
 #pragma once
 
 #include "Lpf2/config.hpp"
-#include "Lpf2/Device.hpp"
+#include "Lpf2/DeviceFactory.hpp"
 #include "Lpf2/Port.hpp"
 #include <memory>
 

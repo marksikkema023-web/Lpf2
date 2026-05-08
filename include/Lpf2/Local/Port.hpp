@@ -160,5 +160,27 @@ namespace Lpf2::Local
 
         int64_t m_currentRelPos = 0;
         uint16_t m_lastAbsPos = 0;
+
+        enum class PidMode : uint8_t { NONE, SPEED, POSITION, HOLD };
+
+        PidMode m_pidMode = PidMode::NONE;
+        int64_t m_pidTarget = 0;
+        float m_pidTargetFrac = 0.0f;
+        int8_t m_pidSpeed = 0;
+        uint8_t m_pidMaxPower = 100;
+        BrakingStyle m_pidEndState = BrakingStyle::FLOAT;
+        uint64_t m_pidEndTime = 0;
+
+        // PID gains
+        float m_kp = 0.13f;
+        float m_ki = 0.0f;
+        float m_kd = 0.006f;
+
+        float m_pidIntegral = 0.0f;
+        float m_pidPrevError = 0.0f;
+        uint64_t m_pidLastMs = 0;
+
+        void applyPower(int8_t pw);
+        void applyEndState(BrakingStyle style);
     };
 }; // namespace Lpf2::Local

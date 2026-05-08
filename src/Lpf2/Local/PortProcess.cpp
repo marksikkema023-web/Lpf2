@@ -307,6 +307,7 @@ namespace Lpf2::Local
     void Port::resetDevice()
     {
         LPF2_LOG_D("Resetting device.");
+        m_pidMode = PidMode::NONE;
         m_pwm->off();
         {
             Utils::MutexLock lock(m_serialMutex);

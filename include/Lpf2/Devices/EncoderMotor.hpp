@@ -116,7 +116,7 @@ namespace Lpf2::Devices
             return true;
         }
 
-        void poll() override;
+        void poll() override {};
 
         const char *name() const override
         {
@@ -224,6 +224,6 @@ namespace Lpf2::Devices
 
     namespace EncoderFactory
     {
-        EncoderMotorFactory factory;
+        inline EncoderMotorFactory factory;
     }
 }; // namespace Lpf2::Devices

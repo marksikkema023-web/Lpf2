@@ -285,5 +285,4 @@ namespace Lpf2::Virtual
         void *m_userData = nullptr;
         WriteDataCallback m_writeDataCallback = nullptr;
     };
-    GenericDevice dev;
 }; // namespace Lpf2

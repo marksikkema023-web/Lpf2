@@ -18,7 +18,7 @@
 #pragma once
 
 #include "Lpf2/config.hpp"
-#include "Lpf2/Port.hpp"
+#include "Lpf2/LWPConst.hpp"
 
 using DeviceCapabilityId = uint32_t;
 

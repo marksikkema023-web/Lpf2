@@ -19,11 +19,6 @@
 #include "Lpf2/Devices/BasicMotor.hpp"
 namespace Lpf2::Devices
 {
-    namespace EncoderFactory
-    {
-        EncoderMotorFactory factory = {};
-    }
-
     void EncoderMotor::registerFactory(DeviceRegistry &reg)
     {
         reg.registerFactory(&EncoderFactory::factory);

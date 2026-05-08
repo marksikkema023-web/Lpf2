@@ -1,6 +1,6 @@
 /**
  *  Copyright (C) 2026 - Rbel12b
- * 
+ *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
  *  published by the Free Software Foundation, either version 3 of the
@@ -18,9 +18,16 @@
 #include "Lpf2/Local/Port.hpp"
 #include "Lpf2/DeviceDescLib.hpp"
 #include "Lpf2/Devices/EncoderMotor.hpp"
+#include <algorithm>
+#include <cmath>
 
 namespace Lpf2::Local
 {
+    // 100% speed = 10 tenths-of-degree per ms ≈ 1000 deg/s ≈ 167 RPM
+    static constexpr float MAX_MOTOR_SPEED = 10.0f;
+    // stop position control when within 1° (10 tenths)
+    static constexpr float POSITION_TOLERANCE = 10.0f;
+
     void Port::updateMotorPID()
     {
         if (!Lpf2::Devices::EncoderFactory::factory.matches(*this))
@@ -43,10 +50,97 @@ namespace Lpf2::Local
 
         LPF2_LOG_V("AbsPos: %u, RelPos: %lld, Delta: %d",
                    absPos, m_currentRelPos, delta);
+
+        if (m_pidMode == PidMode::NONE)
+            return;
+
+        uint64_t now = LPF2_GET_TIME();
+        float dt = (float)(now - m_pidLastMs);
+        m_pidLastMs = now;
+        if (dt <= 0.0f)
+            return;
+
+        // SPEED mode: advance moving position setpoint
+        if (m_pidMode == PidMode::SPEED)
+        {
+            if (m_pidEndTime != 0 && now >= m_pidEndTime)
+            {
+                applyEndState(m_pidEndState);
+                return;
+            }
+            // Accumulate fractional steps to avoid truncation at low speeds
+            m_pidTargetFrac += m_pidSpeed * MAX_MOTOR_SPEED / 100.0f * dt;
+            int64_t steps = (int64_t)m_pidTargetFrac;
+            m_pidTarget += steps;
+            m_pidTargetFrac -= (float)steps;
+        }
+
+        // POSITION mode: check arrival
+        if (m_pidMode == PidMode::POSITION)
+        {
+            float remaining = (float)(m_pidTarget - m_currentRelPos);
+            if (std::abs(remaining) < POSITION_TOLERANCE)
+            {
+                applyEndState(m_pidEndState);
+                return;
+            }
+        }
+
+        // PID computation (shared by SPEED, POSITION, HOLD)
+        float error = (float)(m_pidTarget - m_currentRelPos);
+        m_pidIntegral += error * dt;
+        m_pidIntegral = std::max(-10000.0f, std::min(10000.0f, m_pidIntegral));
+
+        float derivative = (error - m_pidPrevError) / dt;
+        m_pidPrevError = error;
+
+        float output = m_kp * error + m_ki * m_pidIntegral + m_kd * derivative;
+
+        float maxPwr = (float)m_pidMaxPower;
+        output = std::max(-maxPwr, std::min(maxPwr, output));
+
+        applyPower((int8_t)std::roundf(output));
+    }
+
+    void Port::applyPower(int8_t pw)
+    {
+        bool forward = pw >= 0;
+        pw = std::abs(pw);
+        if (pw > 100)
+            pw = 100;
+        uint8_t pwr2 = pw * 0xFF / 100;
+        uint8_t pwr1 = 0;
+        if (!forward)
+            std::swap(pwr1, pwr2);
+        setPower(pwr1, pwr2);
+    }
+
+    void Port::applyEndState(BrakingStyle style)
+    {
+        m_pidIntegral = 0.0f;
+        m_pidPrevError = 0.0f;
+        m_pidTargetFrac = 0.0f;
+        if (style == BrakingStyle::HOLD)
+        {
+            m_pidMode = PidMode::HOLD;
+            m_pidTarget = m_currentRelPos;
+            m_pidMaxPower = 100;
+            m_pidEndTime = 0;
+            m_pidLastMs = LPF2_GET_TIME();
+        }
+        else
+        {
+            m_pidMode = PidMode::NONE;
+            if (style == BrakingStyle::BRAKE)
+                setPower(0xFF, 0xFF);
+            else
+                setPower(0, 0); // FLOAT
+        }
     }
 
     void Port::startPower(int8_t pw)
     {
+        m_pidMode = PidMode::NONE;
         bool forward = pw >= 0;
         pw = std::abs(pw);
         if (pw > 100)
@@ -73,26 +167,62 @@ namespace Lpf2::Local
 
     void Port::startSpeed(int8_t speed, uint8_t maxPower, uint8_t useProfile)
     {
-        // TODO: implement this
+        m_pidSpeed = speed;
+        m_pidMaxPower = maxPower;
+        m_pidTarget = m_currentRelPos;
+        m_pidTargetFrac = 0.0f;
+        m_pidEndTime = 0;
+        m_pidIntegral = 0.0f;
+        m_pidPrevError = 0.0f;
+        m_pidLastMs = LPF2_GET_TIME();
+        m_pidMode = PidMode::SPEED;
     }
 
     void Port::startSpeedForTime(uint16_t time, int8_t speed, uint8_t maxPower, BrakingStyle endState, uint8_t useProfile)
     {
-        // TODO: implement this
+        m_pidSpeed = speed;
+        m_pidMaxPower = maxPower;
+        m_pidTarget = m_currentRelPos;
+        m_pidTargetFrac = 0.0f;
+        m_pidEndTime = LPF2_GET_TIME() + time;
+        m_pidEndState = endState;
+        m_pidIntegral = 0.0f;
+        m_pidPrevError = 0.0f;
+        m_pidLastMs = LPF2_GET_TIME();
+        m_pidMode = PidMode::SPEED;
     }
 
     void Port::startSpeedForDegrees(uint32_t degrees, int8_t speed, uint8_t maxPower, BrakingStyle endState, uint8_t useProfile)
     {
-        // TODO: implement this
+        int64_t signedDeg = (int64_t)degrees * (speed >= 0 ? 1 : -1);
+        m_pidTarget = m_currentRelPos + signedDeg * 10;
+        m_pidMaxPower = maxPower;
+        m_pidEndState = endState;
+        m_pidEndTime = 0;
+        m_pidTargetFrac = 0.0f;
+        m_pidIntegral = 0.0f;
+        m_pidPrevError = 0.0f;
+        m_pidLastMs = LPF2_GET_TIME();
+        m_pidMode = PidMode::POSITION;
     }
 
     void Port::gotoAbsPosition(int32_t absPos, uint8_t speed, uint8_t maxPower, BrakingStyle endState, uint8_t useProfile)
     {
-        // TODO: implement this
+        m_pidTarget = (int64_t)absPos * 10;
+        m_pidMaxPower = std::min(speed, maxPower);
+        m_pidEndState = endState;
+        m_pidEndTime = 0;
+        m_pidTargetFrac = 0.0f;
+        m_pidIntegral = 0.0f;
+        m_pidPrevError = 0.0f;
+        m_pidLastMs = LPF2_GET_TIME();
+        m_pidMode = PidMode::POSITION;
     }
 
     void Port::presetEncoder(int32_t pos)
     {
-        m_currentRelPos = pos;
+        m_currentRelPos = (int64_t)pos * 10;
+        m_pidMode = PidMode::NONE;
+        setPower(0, 0);
     }
 }; // namespace Lpf2::Local
