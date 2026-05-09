@@ -1,6 +1,6 @@
 /**
  *  Copyright (C) 2026 - Rbel12b
- * 
+ *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
  *  published by the Free Software Foundation, either version 3 of the
@@ -42,7 +42,7 @@ namespace Lpf2::Local
 
         void update() override;
 
-        enum class LPF2_STATUS
+        enum class STATUS
         {
             /* Something bad happened. */
             STATUS_ERR,
@@ -86,6 +86,8 @@ namespace Lpf2::Local
         void gotoAbsPosition(int32_t absPos, uint8_t speed, uint8_t maxPower, BrakingStyle endState, uint8_t useProfile = 0) override;
         void presetEncoder(int32_t pos) override;
 
+        void updateMotorPID();
+
     private:
 #if defined(LPF2_USE_FREERTOS)
         static void taskEntryPoint(void *pvParameters);
@@ -106,13 +108,13 @@ namespace Lpf2::Local
 
         void doAnalogID();
 
-        size_t getSpeed() const { return baud; }
+        size_t getSpeed() const { return m_baud; }
 
     private:
-        LPF2_STATUS m_status = LPF2_STATUS::STATUS_ERR;
-        LPF2_STATUS m_new_status = LPF2_STATUS::STATUS_ERR;
-        LPF2_STATUS m_lastStatus = LPF2_STATUS::STATUS_ERR;
-        uint32_t baud = 2400;
+        STATUS m_status = STATUS::STATUS_ERR;
+        STATUS m_new_status = STATUS::STATUS_ERR;
+        STATUS m_lastStatus = STATUS::STATUS_ERR;
+        uint32_t m_baud = 2400;
         bool m_deviceConnected = false; // do not rely on this, use isDeviceConnected() instead
         bool nextModeExt = false;
         bool m_dumb = false;
@@ -149,5 +151,36 @@ namespace Lpf2::Local
         int m_lastDetectedType = -1;
 
         bool m_deviceDataReceived = false;
+
+    private:
+        uint16_t getAbsPos() const
+        {
+            return (uint16_t)(getValue((uint8_t)ModeNum::MOTOR__CALIB, 0) / 1024.0f * 3600.0f);
+        }
+
+        int64_t m_currentRelPos = 0;
+        uint16_t m_lastAbsPos = 0;
+
+        enum class PidMode : uint8_t { NONE, SPEED, POSITION, HOLD };
+
+        PidMode m_pidMode = PidMode::NONE;
+        int64_t m_pidTarget = 0;
+        float m_pidTargetFrac = 0.0f;
+        int8_t m_pidSpeed = 0;
+        uint8_t m_pidMaxPower = 100;
+        BrakingStyle m_pidEndState = BrakingStyle::FLOAT;
+        uint64_t m_pidEndTime = 0;
+
+        // PID gains
+        float m_kp = 0.04f;
+        float m_ki = 0.0001f;
+        float m_kd = 0.063f;
+
+        float m_pidIntegral = 0.0f;
+        float m_pidPrevError = 0.0f;
+        uint64_t m_pidLastMs = 0;
+
+        void applyPower(int8_t pw);
+        void applyEndState(BrakingStyle style);
     };
 }; // namespace Lpf2::Local

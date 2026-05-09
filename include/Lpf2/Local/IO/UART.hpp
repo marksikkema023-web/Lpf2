@@ -83,6 +83,11 @@ namespace Lpf2::Local
         virtual void flush() = 0;
 
         /**
+         * @brief Clear the Rx FiFo ringbuffer (or equivalent)
+         */
+        virtual void discardRxFiFo() = 0;
+
+        /**
          * @brief Write a single byte to the UART port (convenience overload).
          * @param byte The byte to transmit.
          * @return The number of bytes written (1 on success, 0 on failure).
@@ -121,5 +126,11 @@ namespace Lpf2::Local
          * @return The voltage value read from the channel.
          */
         virtual float readCh(uint8_t ch) = 0;
+
+        /**
+         * @brief Write a digital value to the specified chanel (pin)
+         * @param ch The channel number to write to. (e.g. 0 for ID1, 1 for ID2, if >1 ID2 is used)
+         */
+        virtual void writeCh(uint8_t ch, bool state) = 0;
     };
 }; // namespace Lpf2::Local

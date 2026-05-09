@@ -17,26 +17,27 @@
 
 #include "Lpf2/Local/Serial.hpp"
 #include "Lpf2/Local/SerialDef.hpp"
+#include "Lpf2/Util/Values.hpp"
 
 #include <string>
 #include <cstdio>
 
 namespace Lpf2::Local
 {
-    std::vector<Message> Parser::update()
+    std::vector<Message> Parser::update(uint64_t timeout)
     {
         std::vector<Message> messages;
         int available = m_serial->available();
-        if (available <= 0)
-        {
-            return messages;
-        }
-        else
+        if (available > 0)
         {
             buffer.resize(buffer.size() + available);
             m_serial->read(buffer.data() + buffer.size() - available, available);
-            m_lastReceivedTime = LPF2_GET_TIME();
+            // LPF2_LOG_D("Received %i bytes, buffer: %s", available, Utils::bytes_to_hexString(buffer).c_str());
         }
+        // else
+        // {
+        //     LPF2_LOG_D("No bytes received (%i).", available);
+        // }
 
         while (buffer.size())
         {
@@ -52,6 +53,7 @@ namespace Lpf2::Local
 
             if (message.msg == MESSAGE_SYS)
             {
+                m_lastReceivedTime = LPF2_GET_TIME();
                 message.system = true;
                 messages.push_back(message);
                 buffer.erase(buffer.begin());
@@ -71,14 +73,16 @@ namespace Lpf2::Local
 
             if (buffer.size() < message.length + 2)
             {
-                // if (m_lastReceivedTime - LPF2_GET_TIME() >= 500)
-                // {
-                //     // Probably corrupted message
-                //     buffer.erase(buffer.begin());
-                //     log_w("Discarding 1 byte, because message may be corrupted");
-                // }
+                if (LPF2_GET_TIME() - m_lastReceivedTime >= timeout)
+                {
+                    // Probably corrupted message
+                    buffer.erase(buffer.begin());
+                    // LPF2_LOG_W("Discarding 1 byte, because message may be corrupted");
+                    continue;
+                }
                 break;
             }
+            m_lastReceivedTime = LPF2_GET_TIME();
 
             message.data.clear();
             message.data.reserve(message.length);
@@ -98,7 +102,7 @@ namespace Lpf2::Local
 
             if (b != getChecksum())
             {
-                LPF2_LOG_W("Checksum mismatch: 0x%02X != 0x%02X", b, getChecksum());
+                // LPF2_LOG_W("Checksum mismatch: 0x%02X != 0x%02X", b, getChecksum());
                 // printMessage(message);
                 buffer.erase(buffer.begin());
                 continue;
@@ -160,5 +164,60 @@ namespace Lpf2::Local
         sprintf(buf, ", C: 0x%02X", msg.checksum);
         str += buf;
         LPF2_LOG_I("%s", str.c_str());
+    }
+
+    void Parser::clearBuf()
+    {
+        buffer.clear();
+    }
+
+    void Writer::computeChecksum(uint8_t b)
+    {
+        checksum ^= b;
+    }
+
+    void Writer::write(Message &msg)
+    {
+        checksum = 0xFF;
+        uint8_t size = 0;
+        uint8_t dataLen = msg.data.size();
+        if (msg.msg == MESSAGE_INFO)
+        {
+            dataLen--;
+        }
+        while ((1 << size) < dataLen)
+        {
+            size++;
+        }
+        if (size > 7)
+        {
+            size = 7;
+        }
+        msg.header = (msg.msg & 0xC0) | ((size & 0x07) << 3) | (msg.cmd & 0x07);
+
+        std::vector<uint8_t> data;
+        data.reserve((1 << size) + (msg.msg == MESSAGE_INFO ? 3 : 2));
+        data.push_back(msg.header);
+        computeChecksum(msg.header);
+        uint8_t extraByte = msg.msg == MESSAGE_INFO ? 1 : 0;
+        for (size_t i = 0; i < ((1 << size) + extraByte); i++)
+        {
+            uint8_t b = 0;
+            if (i < msg.data.size())
+            {
+                b = msg.data[i];
+            }
+            else 
+            {
+                msg.data.push_back(0);
+            }
+            computeChecksum(b);
+            data.push_back(b);
+        }
+        data.push_back(checksum);
+        msg.checksum = checksum;
+        msg.length = (1 << size) + extraByte;
+        m_serial->write(data.data(), data.size());
+        m_serial->flush();
     }
 }; // namespace Lpf2::Local
