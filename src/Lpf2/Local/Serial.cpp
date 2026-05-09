@@ -32,7 +32,7 @@ namespace Lpf2::Local
         {
             buffer.resize(buffer.size() + available);
             m_serial->read(buffer.data() + buffer.size() - available, available);
-            LPF2_LOG_D("Received %i bytes, buffer: %s", available, Utils::bytes_to_hexString(buffer).c_str());
+            // LPF2_LOG_D("Received %i bytes, buffer: %s", available, Utils::bytes_to_hexString(buffer).c_str());
         }
         // else
         // {
