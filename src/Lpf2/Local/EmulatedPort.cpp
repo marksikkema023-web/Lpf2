@@ -11,6 +11,7 @@ namespace Lpf2::Local
             detachDevice();
         }
         m_device = &device;
+        m_device->setValueChangeCallback(std::bind(EmulatedPort::deviceValueChangeCallback, this, std::placeholders::_1));
     }
 
     void EmulatedPort::detachDevice()
@@ -30,6 +31,11 @@ namespace Lpf2::Local
         m_writer.init(m_serial);
         m_parser.init(m_serial);
         reset();
+    }
+
+    void EmulatedPort::deviceValueChangeCallback(uint8_t modeNum)
+    {
+        sendUpdate(modeNum);
     }
 
     void EmulatedPort::update()
@@ -83,11 +89,11 @@ namespace Lpf2::Local
             break;
 
         case STATUS::SENDING_DATA:
-            if (m_device->getModes().size() > m_mode && m_lastModeData == m_device->getModes()[m_mode].rawData)
-            {
-                sendUpdate();
-            }
-            [[fallthrough]];
+            // if (m_device->getModes().size() > m_mode && m_lastModeData == m_device->getModes()[m_mode].rawData)
+            // {
+            //     sendUpdate();
+            // }
+            // [[fallthrough]];
         case STATUS::WAITING_FOR_ACK:
             if ((LPF2_GET_TIME() - m_start) > 1000)
             {
@@ -163,9 +169,14 @@ namespace Lpf2::Local
         }
     }
 
-    void EmulatedPort::sendUpdate()
+    void EmulatedPort::sendUpdate(uint8_t modeNum)
     {
-        if (m_mode >= 8)
+        if (modeNum == 0xFF)
+        {
+            modeNum = m_mode;
+        }
+
+        if (modeNum >= 8)
         {
             Message msg;
             msg.msg = MESSAGE_CMD;
@@ -174,13 +185,13 @@ namespace Lpf2::Local
             m_writer.write(msg);
         }
         Mode mode;
-        if (m_device->getModes().size() > m_mode)
+        if (m_device->getModes().size() > modeNum)
         {
-            mode = m_device->getModes()[m_mode];
+            mode = m_device->getModes()[modeNum];
         }
         Message msg;
         msg.msg = MESSAGE_DATA;
-        msg.cmd = m_mode & 0x07;
+        msg.cmd = modeNum & 0x07;
         msg.data.insert(msg.data.end(), mode.rawData.begin(), mode.rawData.end());
         m_writer.write(msg);
     }

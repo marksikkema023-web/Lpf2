@@ -55,11 +55,13 @@ namespace Lpf2::Local
         };
 
     private:
+        void deviceValueChangeCallback(uint8_t modeNum);
+
         void changeBaud(uint32_t baud);
         void sendACK(bool NACK = false);
 
         void parseMessage(const Message &msg);
-        void sendUpdate();
+        void sendUpdate(uint8_t modeNum = 0xFF);
         void handleSendingInfo();
 
         void reset();
@@ -82,7 +84,7 @@ namespace Lpf2::Local
         uint8_t m_infoSubNum = 0;
         size_t m_start = 0;
         uint8_t m_mode = 0;
-        std::vector<uint8_t> m_lastModeData;
+        // std::vector<uint8_t> m_lastModeData;
         uint8_t m_nextModeExt = 0;
         enum class HostType
         {

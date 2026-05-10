@@ -111,6 +111,11 @@ namespace Lpf2::Local
             {
                 m_modeData[mode].rawData[i] = msg.data[i];
             }
+
+            if (m_valueChangeCallback)
+            {
+                m_valueChangeCallback(mode);
+            }
             break;
         }
         default:
