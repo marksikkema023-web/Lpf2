@@ -22,13 +22,20 @@
 #include "Lpf2/Util/Values.hpp"
 #include "Lpf2/Device.hpp"
 #include "Lpf2/DeviceFactory.hpp"
-#include <functional>
 
 namespace Lpf2::Virtual
 {
     class Device : public Lpf2::Device
     {
     public:
+        /**
+         * @brief set the calbback that will be called on mode data change
+         */
+        void setValueChangeCallback(ValueChangeCallback callback)
+        {
+            m_valueChangeCallback = callback;
+        }
+
         virtual void setPower(uint8_t pin1, uint8_t pin2) = 0;
 
         /**
@@ -104,13 +111,16 @@ namespace Lpf2::Virtual
          * @param pos position to set the encoder to
          */
         virtual void presetEncoder(int32_t pos) = 0;
+
+    protected:
+        ValueChangeCallback m_valueChangeCallback = nullptr;
     };
     
     class GenericDevice : public Virtual::Device
     {
     public:
         explicit GenericDevice(const DeviceDescriptor &desc)
-            : m_desc(desc) {}
+            : m_desc(desc), m_modes(m_desc.modes) {}
 
         bool init() override { return true;}
         void poll() override {}
@@ -136,12 +146,12 @@ namespace Lpf2::Virtual
 
         const std::vector<Mode> &getModes() const override
         {
-            return m_desc.modes;
+            return m_modes;
         }
 
         uint8_t getModeCount() const override
         {
-            return m_desc.modes.size();
+            return m_modes.size();
         }
 
         uint16_t getInputModes() const override
@@ -177,6 +187,18 @@ namespace Lpf2::Virtual
         void setUserData(void* data)
         {
             m_userData = data;
+        }
+
+        void setModeData(uint8_t modeNum, std::vector<uint8_t> data)
+        {
+            if (modeNum < m_modes.size())
+            {
+                m_modes[modeNum].rawData = data;
+                if (m_valueChangeCallback)
+                {
+                    m_valueChangeCallback(modeNum);
+                }
+            }
         }
 
         using WriteDataCallback = std::function<int(uint8_t mode, const std::vector<uint8_t> &data, void* userData)>;
@@ -281,6 +303,7 @@ namespace Lpf2::Virtual
 
     private:
         const DeviceDescriptor &m_desc;
+        std::vector<Mode> m_modes;
 
         void *m_userData = nullptr;
         WriteDataCallback m_writeDataCallback = nullptr;

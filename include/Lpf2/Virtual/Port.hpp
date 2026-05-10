@@ -46,6 +46,8 @@ namespace Lpf2::Virtual
 
         void attachDevice(Device *device);
         void detachDevice();
+
+        void deviceValueChangeCallback(uint8_t modeNum);
     private:
         std::unique_ptr<Device> m_device;
     };

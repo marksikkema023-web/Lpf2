@@ -656,6 +656,11 @@ namespace Lpf2
             return;
         }
         modeData[mode].rawData.assign(message.begin() + 4, message.end());
+
+        if (port.m_valueChangeCallback)
+        {
+            port.m_valueChangeCallback(mode);
+        }
         return;
     }
 

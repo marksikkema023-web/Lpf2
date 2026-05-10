@@ -121,6 +121,8 @@ namespace Lpf2::Virtual
         m_outModesMask = m_device->getOutputModes();
         m_fwVersion = m_device->getFwVersion();
         m_hwVersion = m_device->getHwVersion();
+
+        m_device->setValueChangeCallback(std::bind(Port::deviceValueChangeCallback, this, std::placeholders::_1));
     }
 
     void Port::detachDevice()
@@ -132,5 +134,14 @@ namespace Lpf2::Virtual
         m_capabilities = 0;
         m_inModesMask = 0;
         m_outModesMask = 0;
+    }
+
+    void Port::deviceValueChangeCallback(uint8_t modeNum)
+    {
+        m_modeData = m_device->getModes();
+        if (m_valueChangeCallback)
+        {
+            m_valueChangeCallback(modeNum);
+        }
     }
 }; // namespace Lpf2::Virtual

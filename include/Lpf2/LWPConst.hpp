@@ -21,6 +21,7 @@
 #pragma once
 
 #include "Lpf2/config.hpp"
+#include <functional>
 
 #define LPF2_UUID "00001623-1212-efde-1623-785feabcd123"
 #define LPF2_CHARACHTERISTIC "00001624-1212-efde-1623-785feabcd123"
@@ -510,4 +511,6 @@ namespace Lpf2
      * @brief ???
      */
     using AccelerationProfile = uint8_t;
+
+    using ValueChangeCallback = std::function<void(uint8_t modeNum)>;
 }; // namespace Lpf2

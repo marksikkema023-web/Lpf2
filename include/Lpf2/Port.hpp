@@ -243,6 +243,14 @@ namespace Lpf2
          */
         void ensureRawDataSize();
 
+        /**
+         * @brief set the calbback that will be called on incoming mode data from the port
+         */
+        void setValueChangeCallback(ValueChangeCallback callback)
+        {
+            m_valueChangeCallback = callback;
+        }
+
     protected:
         static uint8_t getDataSize(uint8_t format);
         static ModeNum getDefaultMode(DeviceType id);
@@ -277,6 +285,8 @@ namespace Lpf2
         Version m_fwVersion = {}, m_hwVersion = {};
 
         std::vector<Mode> m_modeData;
+
+        ValueChangeCallback m_valueChangeCallback = nullptr;
     };
 
     class PortDevice : public Lpf2::Device
