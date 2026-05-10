@@ -131,6 +131,7 @@ namespace Lpf2::Local
         {
             return 1;
         }
+
         {
             Utils::MutexLock lock(m_serialMutex);
             if (modeNum >= 8)
@@ -141,9 +142,11 @@ namespace Lpf2::Local
                 msg.data.push_back(8);
                 m_writer.write(msg);
             }
+
             Message msg;
             msg.msg = MESSAGE_DATA;
             msg.cmd = modeNum & 0x07;
+            msg.data = data;
             m_writer.write(msg);
         }
 
