@@ -54,7 +54,7 @@ void lpf2_set_runtime_log_level(uint16_t level)
 
 QueueHandle_t logMutex = xSemaphoreCreateMutex();
 
-#ifndef LPF2_USE_ARDUINO_SERIAL
+#if LPF2_USE_ARDUINO_SERIAL == 0
 
 static usb_serial_jtag_driver_config_t usb_jtag_cfg;
 
