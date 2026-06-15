@@ -74,25 +74,30 @@ namespace Lpf2::Local
             return 1;
         }
 
-        uint16_t combo = m_modeCombos[idx];
-        // CMD_WRITE with 16-bit mode bitmask selects combined mode.
-        // Confirmed: CMD_WRITE is used for combo selection (pybricks lego_uart.h).
-        // Unconfirmed: exact payload format — no public hub-side impl found; this
-        //   mirrors INFO_MODE_COMBOS little-endian bitmask format.
-        uint8_t header = MESSAGE_CMD | LENGTH_2 | CMD_WRITE;
-        uint8_t checksum = header ^ 0xFF ^ (uint8_t)(combo & 0xFF) ^ (uint8_t)(combo >> 8);
+        uint16_t bitmask = m_modeCombos[idx];
+        // CMD_WRITE activates combined mode. Format confirmed from LEGO Technic hub captures.
+        // Byte 0: 0x23 (observed for 3-pair combos; semantics unconfirmed beyond this case).
+        // Byte 1: combo index.
+        // Bytes 2+: (mode<<4)|dataset nibble pairs in ascending mode order.
+        // Writer pads to next power-of-2 automatically.
+        Message msg;
+        msg.msg = MESSAGE_CMD;
+        msg.cmd = CMD_WRITE;
+        msg.data.push_back(0x23);
+        msg.data.push_back(idx);
+        for (int m = 0; m < 16; m++)
+        {
+            if (bitmask & (1u << m))
+                msg.data.push_back((uint8_t)((m << 4) | 0x00));
+        }
 
         {
             Utils::MutexLock lock(m_serialMutex);
-            m_serial->write(header);
-            m_serial->write((uint8_t)(combo & 0xFF));
-            m_serial->write((uint8_t)(combo >> 8));
-            m_serial->write(checksum);
-            m_serial->flush();
+            m_writer.write(msg);
         }
 
         m_activeCombo = (int8_t)idx;
-        LPF2_LOG_D("Set combo %i (bitmask 0x%04X)", idx, combo);
+        LPF2_LOG_D("Set combo %i (bitmask 0x%04X)", idx, bitmask);
         return 0;
     }
 

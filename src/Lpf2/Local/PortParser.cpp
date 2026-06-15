@@ -81,6 +81,32 @@ namespace Lpf2::Local
                 m_status = STATUS::STATUS_DATA_RECEIVED;
             }
             m_startRec = LPF2_GET_TIME();
+
+            if (m_activeCombo >= 0 && (size_t)m_activeCombo < m_modeCombos.size())
+            {
+                nextModeExt = false;
+                uint16_t bitmask = m_modeCombos[m_activeCombo];
+                size_t offset = 0;
+                for (int m = 0; m < 16 && offset < msg.data.size(); m++)
+                {
+                    if (!(bitmask & (1u << m)))
+                        continue;
+                    if ((size_t)m >= m_modeData.size())
+                        break;
+                    uint8_t size = m_modeData[m].data_sets * getDataSize(m_modeData[m].format);
+                    size_t available = msg.data.size() - offset;
+                    uint8_t readLen = (size <= available) ? size : (uint8_t)available;
+                    if (m_modeData[m].rawData.size() < readLen)
+                        m_modeData[m].rawData.resize(readLen);
+                    for (int i = 0; i < readLen; i++)
+                        m_modeData[m].rawData[i] = msg.data[offset + i];
+                    if (m_valueChangeCallback)
+                        m_valueChangeCallback(m);
+                    offset += size;
+                }
+                break;
+            }
+
             uint8_t mode = GET_MODE(msg.header);
 
             if (nextModeExt)

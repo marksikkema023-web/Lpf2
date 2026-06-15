@@ -150,6 +150,7 @@ namespace Lpf2::Local
             {
                 return;
             }
+            m_comboPairs.clear();
             m_mode = msg.data[0];
             LPF2_LOG_D("Selected mode: %i, msg: %s", m_mode, Utils::bytes_to_hexString(msg.data).c_str());
         }
@@ -157,6 +158,28 @@ namespace Lpf2::Local
         {
             if (msg.data.size() >= 1)
                 m_nextModeExt = msg.data[0];
+        }
+        else if (msg.msg == MESSAGE_CMD && msg.cmd == CMD_WRITE)
+        {
+            // byte 0: 0x23, byte 1: combo index, bytes 2+: (mode<<4)|dataset pairs
+            if (msg.data.size() < 3)
+                return;
+            uint8_t comboIdx = msg.data[1];
+            auto combos = m_device->getModeCombos();
+            if (comboIdx >= combos.size() || combos[comboIdx] == 0)
+            {
+                LPF2_LOG_W("CMD_WRITE: invalid combo index %i", (int)comboIdx);
+                return;
+            }
+            Message echo = msg;
+            m_writer.write(echo);
+            m_comboPairs.clear();
+            for (size_t i = 2; i < msg.data.size(); i++)
+            {
+                if (msg.data[i] == 0x00) break;
+                m_comboPairs.push_back(msg.data[i]);
+            }
+            LPF2_LOG_D("CMD_WRITE: combo %i, %d pairs", (int)comboIdx, (int)m_comboPairs.size());
         }
         else if (msg.msg == MESSAGE_DATA)
         {
@@ -173,6 +196,26 @@ namespace Lpf2::Local
 
     void EmulatedPort::sendUpdate(uint8_t modeNum)
     {
+        if (!m_comboPairs.empty())
+        {
+            // Combined mode: concatenate rawData for each (mode<<4)|dataset pair.
+            // Header uses cmd=0 (mode bank 0), confirmed from captures.
+            Message msg;
+            msg.msg = MESSAGE_DATA;
+            msg.cmd = 0;
+            for (uint8_t pair : m_comboPairs)
+            {
+                uint8_t pairMode = (pair >> 4) & 0x0F;
+                if (m_device->getModes().size() > pairMode)
+                {
+                    const auto &raw = m_device->getModes()[pairMode].rawData;
+                    msg.data.insert(msg.data.end(), raw.begin(), raw.end());
+                }
+            }
+            m_writer.write(msg);
+            return;
+        }
+
         if (modeNum == 0xFF)
         {
             modeNum = m_mode;
@@ -376,6 +419,7 @@ namespace Lpf2::Local
         m_infoState = InfoState::CMD;
         m_hostType = HostType::NONE;
         m_baud = 115200;
+        m_comboPairs.clear();
         changeBaud(m_baud);
         m_serial->discardRxFiFo();
         m_parser.clearBuf();
