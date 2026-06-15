@@ -318,6 +318,7 @@ namespace Lpf2::Local
         m_deviceType = DeviceType::UNKNOWNDEVICE;
         m_deviceDataReceived = false;
         m_modeCount = m_viewCount = 0;
+        m_activeCombo = -1;
         m_comboNum = 0;
         m_modeData.resize(0);
         m_modeCombos.clear();

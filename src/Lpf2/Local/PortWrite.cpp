@@ -27,37 +27,72 @@ namespace Lpf2::Local
             return 1;
         }
 
+        m_activeCombo = -1;
         m_mode = mode;
-        uint8_t header = MESSAGE_CMD | CMD_SELECT;
-        uint8_t checksum = header ^ 0xFF;
-        checksum ^= (uint8_t)mode;
+
+        uint8_t modeInBank = mode & 0x07;
+        uint8_t selectHeader = MESSAGE_CMD | LENGTH_1 | CMD_SELECT;
 
         {
             Utils::MutexLock lock(m_serialMutex);
-            m_serial->write(header);
-            m_serial->write((uint8_t)mode);
-            m_serial->write(checksum);
+            if (mode >= 8)
+            {
+                uint8_t extHeader = MESSAGE_CMD | LENGTH_1 | CMD_EXT_MODE;
+                m_serial->write(extHeader);
+                m_serial->write((uint8_t)0x08);
+                m_serial->write((uint8_t)(extHeader ^ 0xFF ^ 0x08));
+            }
+            m_serial->write(selectHeader);
+            m_serial->write(modeInBank);
+            m_serial->write((uint8_t)(selectHeader ^ 0xFF ^ modeInBank));
             m_serial->flush();
         }
 
-        if (m_modeData[mode].flags.pin1())
+        if (mode < m_modeData.size())
         {
-            LPF2_LOG_D("Setting pin1 high, pin2 low");
-            m_pwm->out(255, 0);
-        }
-        else if (m_modeData[mode].flags.pin2())
-        {
-            LPF2_LOG_D("Setting pin2 high, pin1 low");
-            m_pwm->out(0, 255);
+            if (m_modeData[mode].flags.pin1())
+            {
+                LPF2_LOG_D("Setting pin1 high, pin2 low");
+                m_pwm->out(255, 0);
+            }
+            else if (m_modeData[mode].flags.pin2())
+            {
+                LPF2_LOG_D("Setting pin2 high, pin1 low");
+                m_pwm->out(0, 255);
+            }
         }
 
-        LPF2_LOG_D("Set mode to %i (%s)", mode, m_modeData[mode].name.c_str());
+        LPF2_LOG_D("Set mode to %i", mode);
         return 0;
     }
 
     int Port::setModeCombo(uint8_t idx)
     {
-        LPF2_LOG_W("Set mode Combo: %i, unimplemented!", idx);
+        if (idx >= m_comboNum || m_modeCombos[idx] == 0)
+        {
+            LPF2_LOG_W("Invalid combo index: %i (max %i)", idx, (int)m_comboNum - 1);
+            return 1;
+        }
+
+        uint16_t combo = m_modeCombos[idx];
+        // CMD_WRITE with 16-bit mode bitmask selects combined mode.
+        // Confirmed: CMD_WRITE is used for combo selection (pybricks lego_uart.h).
+        // Unconfirmed: exact payload format — no public hub-side impl found; this
+        //   mirrors INFO_MODE_COMBOS little-endian bitmask format.
+        uint8_t header = MESSAGE_CMD | LENGTH_2 | CMD_WRITE;
+        uint8_t checksum = header ^ 0xFF ^ (uint8_t)(combo & 0xFF) ^ (uint8_t)(combo >> 8);
+
+        {
+            Utils::MutexLock lock(m_serialMutex);
+            m_serial->write(header);
+            m_serial->write((uint8_t)(combo & 0xFF));
+            m_serial->write((uint8_t)(combo >> 8));
+            m_serial->write(checksum);
+            m_serial->flush();
+        }
+
+        m_activeCombo = (int8_t)idx;
+        LPF2_LOG_D("Set combo %i (bitmask 0x%04X)", idx, combo);
         return 0;
     }
 
