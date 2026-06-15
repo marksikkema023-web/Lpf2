@@ -141,6 +141,7 @@ namespace Lpf2::Local
         uint64_t m_start = 0;
 
         uint8_t m_mode = 0;
+        int8_t m_activeCombo = -1; // -1 = single mode, >=0 = active combo index
 
         float ch0Measurements[MEASUREMENTS];
         float ch1Measurements[MEASUREMENTS];
