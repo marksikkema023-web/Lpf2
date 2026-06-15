@@ -111,6 +111,8 @@ extern "C" int lpf2_log_printf(const char *fmt, ...)
     static char *buffer = nullptr;
     static size_t bufSize = 0;
 
+    xSemaphoreTake(logMutex, portMAX_DELAY);
+
     va_list args, args_copy;
     va_start(args, fmt);
     va_copy(args_copy, args);
@@ -119,6 +121,7 @@ extern "C" int lpf2_log_printf(const char *fmt, ...)
 
     if (len < 0) {
         va_end(args_copy);
+        xSemaphoreGive(logMutex);
         return -1;
     }
 
@@ -126,6 +129,7 @@ extern "C" int lpf2_log_printf(const char *fmt, ...)
         char *newBuf = (char *)realloc(buffer, len + 1);
         if (!newBuf) {
             va_end(args_copy);
+            xSemaphoreGive(logMutex);
             return -1;
         }
         buffer = newBuf;
@@ -135,7 +139,6 @@ extern "C" int lpf2_log_printf(const char *fmt, ...)
     vsnprintf(buffer, bufSize, fmt, args_copy);
     va_end(args_copy);
 
-    xSemaphoreTake(logMutex, portMAX_DELAY);
     Serial.write(buffer, len);
     Serial.flush();
     xSemaphoreGive(logMutex);
