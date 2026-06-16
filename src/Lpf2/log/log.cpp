@@ -107,8 +107,16 @@ esp_err_t lpf2_log_init(void)
         char buf[256];
         int len = vsnprintf(buf, sizeof(buf), fmt, args);
         if (len > 0) {
+            int to_write = len < (int)sizeof(buf) ? len : (int)sizeof(buf) - 1;
             xSemaphoreTake(logMutex, portMAX_DELAY);
-            Serial.write((uint8_t *)buf, len < (int)sizeof(buf) ? len : (int)sizeof(buf) - 1);
+            const uint8_t *p = (const uint8_t *)buf;
+            int remaining = to_write;
+            while (remaining > 0) {
+                int w = Serial.write(p, remaining);
+                p += w;
+                remaining -= w;
+                if (w == 0) taskYIELD();
+            }
             Serial.flush();
             xSemaphoreGive(logMutex);
         }
@@ -150,7 +158,14 @@ extern "C" int lpf2_log_printf(const char *fmt, ...)
     vsnprintf(buffer, bufSize, fmt, args_copy);
     va_end(args_copy);
 
-    Serial.write(buffer, len);
+    const uint8_t *p = (const uint8_t *)buffer;
+    int remaining = len;
+    while (remaining > 0) {
+        int w = Serial.write(p, remaining);
+        p += w;
+        remaining -= w;
+        if (w == 0) taskYIELD();
+    }
     Serial.flush();
     xSemaphoreGive(logMutex);
 
