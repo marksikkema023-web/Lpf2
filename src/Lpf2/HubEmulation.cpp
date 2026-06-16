@@ -695,6 +695,11 @@ namespace Lpf2
     {
         std::vector<uint8_t> message;
         message.push_back((uint8_t)setup.portNum);
+        // LWP3 spec: 2-byte Mode/Dataset bit pointer (LE). Bit N = (N+1)th configured pair is included.
+        // All configured pairs are always sent, so all N bits are set.
+        uint16_t bitPointer = (uint16_t)((1u << setup.modeDatasetPairs.size()) - 1);
+        message.push_back(bitPointer & 0xFF);
+        message.push_back(bitPointer >> 8);
         for (uint8_t nibblePair : setup.modeDatasetPairs)
         {
             uint8_t modeNum = (nibblePair >> 4) & 0x0F;
