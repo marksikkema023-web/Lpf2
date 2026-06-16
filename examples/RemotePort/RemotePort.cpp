@@ -79,6 +79,8 @@ void loop()
         static Lpf2::DeviceManager portADeviceManager(portA);
         portADeviceManager.update();
 
+        static bool firstTime = true;
+
         if (portADeviceManager.device())
         {
             if (auto device = static_cast<Lpf2::Devices::TechnicColorSensorControl *>
@@ -90,7 +92,11 @@ void loop()
             else if (auto device = static_cast<Lpf2::Devices::EncoderMotorControl *>
                 (portADeviceManager.device()->getCapability(Lpf2::Devices::EncoderMotor::CAP)))
             {
-                device->startSpeed(50);
+                if (firstTime)
+                {
+                    device->startSpeed(50);
+                    firstTime = false;
+                }
             }
             else if (auto device = static_cast<Lpf2::Devices::BasicMotorControl *>
                 (portADeviceManager.device()->getCapability(Lpf2::Devices::BasicMotor::CAP)))
@@ -102,6 +108,10 @@ void loop()
                 // Device isn't a color sensor or a motor
             }
             vTaskDelay(100);
+        }
+        else
+        {
+            firstTime = true;
         }
     }
 }

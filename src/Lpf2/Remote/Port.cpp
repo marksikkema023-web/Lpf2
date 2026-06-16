@@ -73,7 +73,6 @@ namespace Lpf2::Remote
 
         uint16_t bitmask = m_modeCombos[idx];
 
-        // Nibble pairs in ascending mode order: high nibble = mode, low nibble = dataset (0)
         std::vector<uint8_t> nibblePairs;
         for (int m = 0; m < 16; m++)
         {
@@ -81,39 +80,11 @@ namespace Lpf2::Remote
                 nibblePairs.push_back((uint8_t)((m << 4) | 0x00));
         }
 
-        // 1. Lock
-        m_remote->writeValue(MessageType::PORT_INPUT_FORMAT_SETUP_COMBINEDMODE,
-            {m_portNum, 0x02});
+        std::vector<uint32_t> bleDeltasPerMode;
+        for (size_t i = 0; i < nibblePairs.size(); i++)
+            bleDeltasPerMode.push_back((i < deltas.size()) ? (uint32_t)deltas[i] : 1u);
 
-        // 2. Per-mode single setup — tells the hub the delta for each mode
-        size_t pos = 0;
-        for (int m = 0; m < 16; m++)
-        {
-            if (!(bitmask & (1u << m)))
-                continue;
-            uint32_t bleDelta = (pos < deltas.size()) ? (uint32_t)deltas[pos] : 1u;
-            m_remote->writeValue(MessageType::PORT_INPUT_FORMAT_SETUP_SINGLE,
-                {m_portNum, (uint8_t)m,
-                 (uint8_t)(bleDelta & 0xFF),
-                 (uint8_t)((bleDelta >> 8) & 0xFF),
-                 (uint8_t)((bleDelta >> 16) & 0xFF),
-                 (uint8_t)((bleDelta >> 24) & 0xFF),
-                 0x01}); // notify = true
-            pos++;
-        }
-
-        // 3. Set Mode & Dataset Combination
-        {
-            std::vector<uint8_t> payload = {m_portNum, 0x01, idx};
-            payload.insert(payload.end(), nibblePairs.begin(), nibblePairs.end());
-            m_remote->writeValue(MessageType::PORT_INPUT_FORMAT_SETUP_COMBINEDMODE, payload);
-        }
-
-        // 4. Unlock + MultiUpdate Enabled
-        m_remote->writeValue(MessageType::PORT_INPUT_FORMAT_SETUP_COMBINEDMODE,
-            {m_portNum, 0x03});
-
-        return 0;
+        return m_remote->setPortModeCombo(m_portNum, idx, nibblePairs, bleDeltasPerMode);
     }
 
     void Port::startPower(int8_t pw)
