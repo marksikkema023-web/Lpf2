@@ -18,9 +18,13 @@
 #include "Lpf2/Battery.hpp"
 #include "Lpf2/log/log.h"
 
+#if defined(ARDUINO)
+#include <Arduino.h>
+#else
 #include <esp_adc/adc_oneshot.h>
 #include <esp_adc/adc_cali.h>
 #include <esp_adc/adc_cali_scheme.h>
+#endif
 #include <esp_err.h>
 
 namespace Lpf2::Battery
@@ -47,12 +51,20 @@ namespace Lpf2::Battery
 
         PercentFunc g_percentFunc = defaultPercent;
 
-        // ADC state.
+        // Shared ADC state.
+        float   g_divider_ratio = 1.0f; // (Rt+Rb)/Rb
+        uint8_t g_adc_samples = 8;
+
+#ifndef ARDUINO
+        // ESP-IDF ADC state.
         adc_oneshot_unit_handle_t g_adc_handle = nullptr;
         adc_cali_handle_t         g_cali_handle = nullptr;
         adc_channel_t             g_adc_channel = (adc_channel_t)0;
-        float                     g_divider_ratio = 1.0f; // (Rt+Rb)/Rb
-        uint8_t                   g_adc_samples = 8;
+#else
+        // Arduino analogRead() state.
+        int  g_adc_pin = -1;
+        bool g_adc_configured = false;
+#endif
     } // namespace
 
     void setMaxVoltage(uint16_t mV)     { g_maxVoltage = mV; }
@@ -78,6 +90,11 @@ namespace Lpf2::Battery
         if (cfg.r_bottom_ohms <= 0.0f)
             return false;
 
+        g_adc_samples = cfg.samples ? cfg.samples : 1;
+        g_divider_ratio =
+            (cfg.r_top_ohms + cfg.r_bottom_ohms) / cfg.r_bottom_ohms;
+
+#ifndef ARDUINO
         // Tear down any prior init (idempotent reconfigure).
         if (g_cali_handle)
         {
@@ -96,9 +113,6 @@ namespace Lpf2::Battery
 
         adc_unit_t unit = (cfg.adc_unit == 2) ? ADC_UNIT_2 : ADC_UNIT_1;
         g_adc_channel = (adc_channel_t)cfg.adc_channel;
-        g_adc_samples = cfg.samples ? cfg.samples : 1;
-        g_divider_ratio =
-            (cfg.r_top_ohms + cfg.r_bottom_ohms) / cfg.r_bottom_ohms;
 
         adc_oneshot_unit_init_cfg_t init_cfg = {};
         init_cfg.unit_id = unit;
@@ -145,10 +159,21 @@ namespace Lpf2::Battery
 
         (void)cfg.vref_mv;
         return true;
+#else
+        if (cfg.pin < 0)
+            return false;
+        g_adc_pin = cfg.pin;
+        analogReadResolution(12);
+        analogSetPinAttenuation(g_adc_pin, ADC_11db); // ~0-3.3V range
+        g_adc_configured = true;
+        (void)cfg.vref_mv;
+        return true;
+#endif
     }
 
     uint16_t readBatteryVoltage()
     {
+#ifndef ARDUINO
         if (!g_adc_handle)
             return 0;
 
@@ -181,6 +206,22 @@ namespace Lpf2::Battery
             // Uncalibrated fallback: assume 12-bit, 3300 mV full-scale.
             v_tap_mv = avg_raw * 3300 / 4095;
         }
+#else
+        if (!g_adc_configured)
+            return 0;
+
+        uint32_t acc_mv = 0;
+        int valid = 0;
+        for (uint8_t i = 0; i < g_adc_samples; ++i)
+        {
+            uint32_t mv = analogReadMilliVolts(g_adc_pin);
+            acc_mv += mv;
+            ++valid;
+        }
+        if (valid == 0)
+            return 0;
+        int v_tap_mv = (int)(acc_mv / valid);
+#endif
 
         float v_batt_f = (float)v_tap_mv * g_divider_ratio;
         if (v_batt_f < 0.0f) v_batt_f = 0.0f;

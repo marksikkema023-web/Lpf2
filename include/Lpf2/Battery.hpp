@@ -42,8 +42,9 @@ namespace Lpf2::Battery
     // freshly-measured mV is stored via setCurrentVoltage().
     struct AdcConfig
     {
-        int      adc_channel;     // adc_channel_t value (e.g. ADC_CHANNEL_0)
-        int      adc_unit;        // 1 or 2 (ADC_UNIT_1 / ADC_UNIT_2)
+        int      adc_channel;     // ESP-IDF: adc_channel_t value (e.g. ADC_CHANNEL_0)
+        int      adc_unit;        // ESP-IDF: 1 or 2 (ADC_UNIT_1 / ADC_UNIT_2)
+        int      pin;             // Arduino: GPIO pin number for analogRead
         float    r_top_ohms;      // divider top (battery -> tap)
         float    r_bottom_ohms;   // divider bottom (tap -> GND)
         uint16_t vref_mv = 3300;  // informational; cali handles actual ref
