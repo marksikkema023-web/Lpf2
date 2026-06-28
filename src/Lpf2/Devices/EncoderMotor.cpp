@@ -56,6 +56,13 @@ namespace Lpf2::Devices
         return false;
     }
 
+    bool EncoderMotor::init()
+    {
+        startPower(0);
+        m_port.setModeCombo(0);
+        return true;
+    }
+
     void EncoderMotor::startPower(int8_t pw)
     {
         m_port.startPower(pw);
@@ -94,5 +101,17 @@ namespace Lpf2::Devices
     void EncoderMotor::presetEncoder(int32_t pos)
     {
         m_port.presetEncoder(pos);
+    }
+
+    float EncoderMotor::getAbsPosition()
+    {
+        // 2 -> POS mode
+        return m_port.getValue(2, 0);
+    }
+
+    float EncoderMotor::getSpeed()
+    {
+        // 1 -> SPEED mode
+        return m_port.getValue(1, 0);
     }
 }; // namespace Lpf2::Devices

@@ -101,6 +101,18 @@ namespace Lpf2::Devices
          * @param pos position to set the encoder to
          */
         virtual void presetEncoder(int32_t pos) = 0;
+
+        /**
+         * @brief get absolute position of the encoder
+         * @returns absolute position of the encoder
+         */
+        virtual float getAbsPosition() = 0;
+
+        /**
+         * @brief get speed measured by the encoder
+         * @returns speed measured by the encoder
+         */
+        virtual float getSpeed() = 0;
     };
 
     class EncoderMotor : public PortDevice, public EncoderMotorControl, public BasicMotorControl
@@ -108,12 +120,7 @@ namespace Lpf2::Devices
     public:
         EncoderMotor(Port &port) : PortDevice(port) {}
 
-        bool init() override
-        {
-            startPower(0);
-            m_port.setModeCombo(0);
-            return true;
-        }
+        bool init() override;
 
         void update() override {};
 
@@ -203,6 +210,18 @@ namespace Lpf2::Devices
          * @param pos position to set the encoder to
          */
         void presetEncoder(int32_t pos) override;
+
+        /**
+         * @brief get absolute position of the encoder
+         * @returns absolute position of the encoder
+         */
+        float getAbsPosition() override;
+
+        /**
+         * @brief get speed measured by the encoder
+         * @returns speed measured by the encoder
+         */
+        float getSpeed() override;
     };
 
     class EncoderMotorFactory : public DeviceFactory
