@@ -39,6 +39,7 @@ namespace Lpf2
         extern const DeviceDescriptor TECHNIC_MEDIUM_ANGULAR_MOTOR;
         extern const DeviceDescriptor TECHNIC_COLOR_SENSOR;
         extern const DeviceDescriptor TECHNIC_LARGE_LINEAR_MOTOR;
+        extern const DeviceDescriptor COLOR_DISTANCE_SENSOR;
     };
 
     class DeviceDescRegistry

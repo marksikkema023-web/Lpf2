@@ -50,6 +50,7 @@ namespace Lpf2
             LPF2_LOG_D("Device disconnected, reason: %i", reason);
             _lpf2HubEmulation->m_connected = false;
             _lpf2HubEmulation->m_subscribed = false;
+            esp_restart();
             _lpf2HubEmulation->m_bleConnHandle = 0xFFFF;
         }
     };
@@ -590,6 +591,20 @@ namespace Lpf2
         auto &setup = m_portSetupCombined[portNum];
         setup.portNum = portNum;
 
+        auto fallbackToSingleMode = [this, portNum, port, &setup]()
+        {
+            setup.active = false;
+            setup.multiUpdateEnabled = false;
+            if (setup.modeDatasetPairs.empty())
+                return;
+
+            uint8_t modeNum = (setup.modeDatasetPairs.front() >> 4) & 0x0F;
+            float delta = 1.0f;
+            if (m_portSetupSingle[portNum].count(modeNum))
+                delta = (float)m_portSetupSingle[portNum][modeNum].delta;
+            port->setMode(modeNum, delta);
+        };
+
         switch (subCmd)
         {
         case 0x01: // Set Mode & Dataset Combination
@@ -614,7 +629,7 @@ namespace Lpf2
         case 0x03: // Unlock + MultiUpdate Enabled
             LPF2_LOG_D("Combined unlock + multiupdate: port 0x%02X", (uint8_t)portNum);
             setup.locked = false;
-            setup.active = true;
+            setup.active = false;
             setup.multiUpdateEnabled = true;
             setup.deltas.clear();
             for (uint8_t nibblePair : setup.modeDatasetPairs)
@@ -625,14 +640,22 @@ namespace Lpf2
                     d = (float)m_portSetupSingle[portNum][mn].delta;
                 setup.deltas.push_back(d);
             }
-            port->setModeCombo(setup.comboIndex, setup.deltas);
-            sendCombinedModeFormat(setup);
+            if (port->setModeCombo(setup.comboIndex, setup.deltas) == 0)
+            {
+                setup.active = true;
+                sendCombinedModeFormat(setup);
+            }
+            else
+            {
+                LPF2_LOG_W("Combined mode setup failed on port 0x%02X, falling back to single mode", (uint8_t)portNum);
+                fallbackToSingleMode();
+            }
             break;
 
         case 0x04: // Unlock + MultiUpdate Disabled
             LPF2_LOG_D("Combined unlock (no multiupdate): port 0x%02X", (uint8_t)portNum);
             setup.locked = false;
-            setup.active = true;
+            setup.active = false;
             setup.multiUpdateEnabled = false;
             setup.deltas.clear();
             for (uint8_t nibblePair : setup.modeDatasetPairs)
@@ -643,8 +666,16 @@ namespace Lpf2
                     d = (float)m_portSetupSingle[portNum][mn].delta;
                 setup.deltas.push_back(d);
             }
-            port->setModeCombo(setup.comboIndex, setup.deltas);
-            sendCombinedModeFormat(setup);
+            if (port->setModeCombo(setup.comboIndex, setup.deltas) == 0)
+            {
+                setup.active = true;
+                sendCombinedModeFormat(setup);
+            }
+            else
+            {
+                LPF2_LOG_W("Combined mode setup failed on port 0x%02X, falling back to single mode", (uint8_t)portNum);
+                fallbackToSingleMode();
+            }
             break;
 
         case 0x06: // Reset
@@ -943,8 +974,29 @@ namespace Lpf2
             INIT_DEVICE(ControlPlusHubPort::GYRO,
                         DeviceDescriptors::TECHNIC_MEDIUM_HUB_GYRO_SENSOR);
 
-            INIT_DEVICE(ControlPlusHubPort::LED,
-                        DeviceDescriptors::HUB_LED);
+//            INIT_DEVICE(ControlPlusHubPort::LED,
+//                        DeviceDescriptors::HUB_LED);
+
+            // Initialize LED with special handling for color control
+            {
+                INIT_DEVICE(ControlPlusHubPort::LED,
+                            DeviceDescriptors::HUB_LED);
+                // Set the LED write data callback - this will be called when app sends color commands
+                auto* ledDevice = m_ownedDevices.back();
+                extern int handleLEDWrite(uint8_t mode, const std::vector<uint8_t> &data, void *userData);
+                ledDevice->setWriteDataCallback(handleLEDWrite);
+/*                auto &ledPort = *(m_ownedPorts[(PortNum)ControlPlusHubPort::LED]);
+                auto ledDevice = new Virtual::GenericDevice(DeviceDescriptors::HUB_LED);
+                
+                // Set the LED write data callback - this will be called when app sends color commands
+                extern int handleLEDWrite(uint8_t mode, const std::vector<uint8_t> &data, void *userData);
+                ledDevice->setWriteDataCallback(handleLEDWrite);
+                
+                ledPort.attachDevice(ledDevice);
+                m_ownedDevices.push_back(ledDevice);
+*/                
+                LPF2_LOG_D("LED device initialized with color control callback");
+            }
 
             INIT_DEVICE(ControlPlusHubPort::TEMP2,
                         DeviceDescriptors::TECHNIC_MEDIUM_HUB_TEMPERATURE_SENSOR);

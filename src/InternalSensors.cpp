@@ -1,5 +1,8 @@
 #include "Lpf2/log/log.h"
 #include "Lpf2/HubEmulation.hpp"
+#include "Lpf2/DeviceDescLib.hpp"
+#include "Lpf2/Virtual/Device.hpp"
+#include "Lpf2/Virtual/Port.hpp"
 #include "InternalSensors.hpp"
 #include <Adafruit_NeoPixel.h>
 #include <NimBLEDevice.h>
@@ -16,6 +19,13 @@
 #define NUM_LEDS 1 
 #define LED_TYPE NEO_GRB 
 #define LED_BRIGHTNESS 255       // Maximum brightness (0-255)
+
+// Static local objects for Virtual Device
+static Lpf2::Virtual::Port virtualPortD;
+static Lpf2::Virtual::GenericDevice *virtualColorDistanceSensor = nullptr;
+
+// Track timing for sending simulated data updates
+static unsigned long lastSensorUpdate = 0;
 
 // Static instance for the Build-in LED
 static Adafruit_NeoPixel strip(NUM_LEDS, LED_DATA_PIN, LED_TYPE + NEO_KHZ800);
@@ -37,10 +47,21 @@ static const LEDColor ledColorMap[] = {
 static const int NUM_COLORS = sizeof(ledColorMap) / sizeof(LEDColor);
 
 void initInternalSensors(Lpf2::HubEmulation &hub) {
-    (void)hub;
+    virtualColorDistanceSensor = new Lpf2::Virtual::GenericDevice(Lpf2::DeviceDescriptors::COLOR_DISTANCE_SENSOR);
 
-    // Initialize the NeoPixel LED strip for hub LED color control.
-    // Real ColorDistanceSensor data comes from the physical UART sensor on port A.
+    virtualColorDistanceSensor->setModeData(0, { static_cast<uint8_t>(Lpf2::ColorIDX::BLUE) });
+    virtualColorDistanceSensor->setModeData(1, { 0x05 });
+    virtualColorDistanceSensor->setModeData(2, { 0x00, 0x00, 0x00, 0x00 });
+    virtualColorDistanceSensor->setModeData(3, { 65 });
+    virtualColorDistanceSensor->setModeData(4, { 12 });
+    virtualColorDistanceSensor->setModeData(5, { 0xff });
+    virtualColorDistanceSensor->setModeData(6, { 0x32, 0x00, 0x4B, 0x00, 0x64, 0x00 });
+    virtualColorDistanceSensor->setModeData(7, { 0xff, 0x00 });
+    virtualColorDistanceSensor->setModeData(8, { 0xff, 0x00, 0xff, 0x00 });
+
+    virtualPortD.attachDevice(virtualColorDistanceSensor);
+    hub.attachPort(Lpf2::PortNum(Lpf2::ControlPlusHubPort::D), &virtualPortD);
+
     strip.begin();
     strip.setBrightness(LED_BRIGHTNESS);
     strip.setPixelColor(0, strip.Color(0, 0, 0));  // Start LED off
@@ -69,10 +90,20 @@ void updateInternalSensors() {
         strip.show();
     } 
     else {
-        // Keep connection-state indicator silent when app is connected.
-        // Sensor value updates are produced by the real UART device path only.
-        strip.setPixelColor(0, strip.Color(0, 0, 0));
-        strip.show();
+        if (currentMillis - lastSensorUpdate >= 100) {
+            lastSensorUpdate = currentMillis;
+            const unsigned long cycleDuration = 1500;
+            unsigned long currentCycleTime = currentMillis % cycleDuration;
+            if (virtualColorDistanceSensor != nullptr) {
+                if (currentCycleTime < 750) {
+                    virtualColorDistanceSensor->setModeData(0, { static_cast<uint8_t>(Lpf2::ColorIDX::CYAN) });
+                    virtualColorDistanceSensor->setModeData(8, { 0x09, 0x00, 0xff, 0x00 });
+                } else {
+                    virtualColorDistanceSensor->setModeData(0, { static_cast<uint8_t>(Lpf2::ColorIDX::RED) });
+                    virtualColorDistanceSensor->setModeData(8, { 0x03, 0x00, 0xff, 0x00 });
+                }
+            }
+        }
     }
 }
 

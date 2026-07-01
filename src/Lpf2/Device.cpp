@@ -20,6 +20,7 @@
 #include "Lpf2/Devices/BasicMotor.hpp"
 #include "Lpf2/Devices/ColorSensor.hpp"
 #include "Lpf2/Devices/DistanceSensor.hpp"
+#include "Lpf2/Devices/ColorDistanceSensor.hpp"
 
 namespace Lpf2
 {
@@ -29,7 +30,7 @@ namespace Lpf2
         // Order matters
         EncoderMotor::registerFactory(DeviceRegistry::instance()); // EncoderMotor must be before BasicMotor, because we prefer EncoderMotors over BasicMotors
         BasicMotor::registerFactory(DeviceRegistry::instance());
-        // TODO: Add colordistanceSensor here! (above Color and Distance sensors)
+        ColorDistanceSensor::registerFactory(DeviceRegistry::instance()); // ColorDistanceSensor must be before Color and Distance sensors
         TechnicColorSensor::registerFactory(DeviceRegistry::instance());
         TechnicDistanceSensor::registerFactory(DeviceRegistry::instance());
     }

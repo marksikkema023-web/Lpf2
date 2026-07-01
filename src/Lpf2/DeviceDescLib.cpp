@@ -1060,4 +1060,160 @@ namespace Lpf2::DeviceDescriptors
             },
         }
     };
+    // Device 0x25
+    const DeviceDescriptor COLOR_DISTANCE_SENSOR =
+    {
+        .type = DeviceType::COLOR_DISTANCE_SENSOR,
+        .inModesMask = 0x0000, //?
+        .outModesMask = 0x0000, //?
+        .caps = 0x00, //?
+        .combos = {0x004F, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000},
+        .fwVersion = Version({
+            .Major = 1,
+            .Minor = 0,
+            .Bugfix = 0,
+            .Build = 0,
+        }),
+        .hwVersion = Version({
+            .Major = 1,
+            .Minor = 0,
+            .Bugfix = 0,
+            .Build = 0,
+        }),
+        .modes =
+        {
+            {
+                "COLOR",
+                0.0f, 10.0f,
+                0.0f, 100.0f,
+                0.0f, 10.0f,
+                "IDX",
+                0xC4, 0x00,
+                1, DATA8, 3, 0,
+                {},
+                0x00,
+                Mode::Flags{{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}
+            },
+            {
+                "PROX",
+                0.0f, 10.0f,
+                0.0f, 100.0f,
+                0.0f, 10.0f,
+                "DIS",
+                0x50, 0x00,
+                1, DATA8, 3, 0,
+                {},
+                0x00,
+                Mode::Flags{{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}
+            },
+            {
+                "COUNT",
+                0.0f, 100.0f,
+                0.0f, 100.0f,
+                0.0f, 100.0f,
+                "CNT",
+                0x08, 0x00,
+                1, DATA32, 4, 0,
+                {},
+                0x00,
+                Mode::Flags{{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}
+            },
+            {
+                "REFLT",
+                0.0f, 100.0f,
+                0.0f, 100.0f,
+                0.0f, 100.0f,
+                "PCT",
+                0x10, 0x00,
+                1, DATA8, 3, 0,
+                {},
+                0x00,
+                Mode::Flags{{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}
+            },
+            {
+                "AMBI",
+                0.0f, 100.0f,
+                0.0f, 100.0f,
+                0.0f, 100.0f,
+                "PCT",
+                0x10, 0x00,
+                1, DATA8, 3, 0,
+                {},
+                0x00,
+                Mode::Flags{{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}
+            },
+            {
+                "COL O",
+                0.0f, 10.0f,
+                0.0f, 100.0f,
+                0.0f, 10.0f,
+                "IDX",
+                0x00, 0x04,
+                1, DATA8, 3, 0,
+                {},
+                0x00,
+                Mode::Flags{{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}
+            },
+            {
+                "RGB I",
+                0.0f, 1023.0f,
+                0.0f, 100.0f,
+                0.0f, 1023.0f,
+                "RAW",
+                0x10, 0x00,
+                3, DATA16, 5, 0,
+                {},
+                0x00,
+                Mode::Flags{{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}
+            },
+            {
+                "IR Tx",
+                0.0f, 65535.0f,
+                0.0f, 100.0f,
+                0.0f, 65535.0f,
+                "",
+                0x00, 0x04,
+                1, DATA16, 5, 0,
+                {},
+                0x00,
+                Mode::Flags{{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}
+            },
+            {
+                "SPEC 1",
+                0.0f, 255.0f,
+                0.0f, 100.0f,
+                0.0f, 255.0f,
+                "",
+                0x00, 0x00,
+                4, DATA8, 3, 0,
+                {},
+                0x00,
+                Mode::Flags{{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}
+            },
+            {
+                "DEBUG",
+                0.0f, 1023.0f,
+                0.0f, 100.0f,
+                0.0f, 10.0f,
+                "",
+                0x10, 0x00,
+                2, DATA16, 5, 0,
+                {},
+                0x00,
+                Mode::Flags{{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}
+            },
+            {
+                "CALIB",
+                0.0f, 65535.0f,
+                0.0f, 100.0f,
+                0.0f, 65535.0f,
+                "",
+                0x10, 0x00,
+                8, DATA16, 5, 0,
+                {},
+                0x00,
+                Mode::Flags{{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}
+            },
+        }
+    };
 }; // namespace Lpf2::DeviceDescriptors
