@@ -974,10 +974,6 @@ namespace Lpf2
             INIT_DEVICE(ControlPlusHubPort::GYRO,
                         DeviceDescriptors::TECHNIC_MEDIUM_HUB_GYRO_SENSOR);
 
-//            INIT_DEVICE(ControlPlusHubPort::LED,
-//                        DeviceDescriptors::HUB_LED);
-
-            // Initialize LED with special handling for color control
             {
                 INIT_DEVICE(ControlPlusHubPort::LED,
                             DeviceDescriptors::HUB_LED);
@@ -985,16 +981,6 @@ namespace Lpf2
                 auto* ledDevice = m_ownedDevices.back();
                 extern int handleLEDWrite(uint8_t mode, const std::vector<uint8_t> &data, void *userData);
                 ledDevice->setWriteDataCallback(handleLEDWrite);
-/*                auto &ledPort = *(m_ownedPorts[(PortNum)ControlPlusHubPort::LED]);
-                auto ledDevice = new Virtual::GenericDevice(DeviceDescriptors::HUB_LED);
-                
-                // Set the LED write data callback - this will be called when app sends color commands
-                extern int handleLEDWrite(uint8_t mode, const std::vector<uint8_t> &data, void *userData);
-                ledDevice->setWriteDataCallback(handleLEDWrite);
-                
-                ledPort.attachDevice(ledDevice);
-                m_ownedDevices.push_back(ledDevice);
-*/                
                 LPF2_LOG_D("LED device initialized with color control callback");
             }
 
