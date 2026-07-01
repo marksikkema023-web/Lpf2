@@ -1,0 +1,2015 @@
+No.     Time           Source                Destination           Protocol Length Info
+     17 568123.465000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 17: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506cd
+
+No.     Time           Source                Destination           Protocol Length Info
+     30 568124.454000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 30: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506ce
+
+No.     Time           Source                Destination           Protocol Length Info
+     35 568126.465000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 35: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506cf
+
+No.     Time           Source                Destination           Protocol Length Info
+     40 568129.494000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 40: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506ce
+
+No.     Time           Source                Destination           Protocol Length Info
+     43 568130.514000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 43: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506cc
+
+No.     Time           Source                Destination           Protocol Length Info
+     47 568131.504000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 47: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506ce
+
+No.     Time           Source                Destination           Protocol Length Info
+     49 568132.524000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 49: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506cf
+
+No.     Time           Source                Destination           Protocol Length Info
+     55 568133.544000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 55: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506d0
+
+No.     Time           Source                Destination           Protocol Length Info
+     66 568134.534000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 66: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506cf
+
+No.     Time           Source                Destination           Protocol Length Info
+     70 568135.554000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 70: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506d0
+
+No.     Time           Source                Destination           Protocol Length Info
+     73 568136.544000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 73: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506d1
+
+No.     Time           Source                Destination           Protocol Length Info
+     80 568137.564000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 80: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506d2
+
+No.     Time           Source                Destination           Protocol Length Info
+     81 568137.774000  remote ()             localhost ()          ATT      27     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 81: Packet, 27 bytes on wire (216 bits), 27 bytes captured (216 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0f000400014c000400000000000010
+
+No.     Time           Source                Destination           Protocol Length Info
+     82 568137.812000  localhost ()          remote ()             ATT      17     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 82: Packet, 17 bytes on wire (136 bits), 17 bytes captured (136 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 0500420002
+
+No.     Time           Source                Destination           Protocol Length Info
+     84 568137.864000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 84: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 82]
+
+No.     Time           Source                Destination           Protocol Length Info
+     85 568137.865000  remote ()             localhost ()          ATT      22     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 85: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0a004700000100000000
+
+No.     Time           Source                Destination           Protocol Length Info
+     86 568137.867000  localhost ()          remote ()             ATT      22     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 86: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 0a004100020100000001
+
+No.     Time           Source                Destination           Protocol Length Info
+     88 568137.924000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 88: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 86]
+
+No.     Time           Source                Destination           Protocol Length Info
+     89 568137.925000  remote ()             localhost ()          ATT      22     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 89: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0a004700020100000001
+
+No.     Time           Source                Destination           Protocol Length Info
+     90 568137.930000  localhost ()          remote ()             ATT      22     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 90: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 0a004100010100000001
+
+No.     Time           Source                Destination           Protocol Length Info
+     91 568137.984000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 91: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 90]
+
+No.     Time           Source                Destination           Protocol Length Info
+     92 568137.985000  remote ()             localhost ()          ATT      22     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 92: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0a004700010100000001
+
+No.     Time           Source                Destination           Protocol Length Info
+     93 568137.986000  localhost ()          remote ()             ATT      22     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 93: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 0a004100030100000001
+
+No.     Time           Source                Destination           Protocol Length Info
+     95 568138.044000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 95: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 93]
+
+No.     Time           Source                Destination           Protocol Length Info
+     96 568138.045000  remote ()             localhost ()          ATT      22     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 96: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0a004700030100000001
+
+No.     Time           Source                Destination           Protocol Length Info
+     97 568138.048000  localhost ()          remote ()             ATT      21     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 97: Packet, 21 bytes on wire (168 bits), 21 bytes captured (168 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 090042000100201030
+
+No.     Time           Source                Destination           Protocol Length Info
+     98 568138.104000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 98: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 97]
+
+No.     Time           Source                Destination           Protocol Length Info
+     99 568138.113000  localhost ()          remote ()             ATT      17     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 99: Packet, 17 bytes on wire (136 bits), 17 bytes captured (136 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 0500420003
+
+No.     Time           Source                Destination           Protocol Length Info
+    101 568138.164000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 101: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 99]
+
+No.     Time           Source                Destination           Protocol Length Info
+    102 568138.164000  remote ()             localhost ()          ATT      19     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 102: Packet, 19 bytes on wire (152 bits), 19 bytes captured (152 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 07004800800700
+
+No.     Time           Source                Destination           Protocol Length Info
+    103 568138.165000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 103: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d004600000700000000001f00
+
+No.     Time           Source                Destination           Protocol Length Info
+    115 568139.575000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 115: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506ca
+
+No.     Time           Source                Destination           Protocol Length Info
+    119 568140.595000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 119: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506cb
+
+No.     Time           Source                Destination           Protocol Length Info
+    124 568141.792000  localhost ()          remote ()             ATT      21     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 124: Packet, 21 bytes on wire (168 bits), 21 bytes captured (168 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 0900810011073b6403
+
+No.     Time           Source                Destination           Protocol Length Info
+    126 568141.854000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 126: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 124]
+
+No.     Time           Source                Destination           Protocol Length Info
+    127 568141.855000  remote ()             localhost ()          ATT      17     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 127: Packet, 17 bytes on wire (136 bits), 17 bytes captured (136 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 050082000a
+
+No.     Time           Source                Destination           Protocol Length Info
+    130 568142.034000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 130: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d004600000701000000001f00
+
+No.     Time           Source                Destination           Protocol Length Info
+    131 568142.035000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 131: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d004600000703000000002100
+
+No.     Time           Source                Destination           Protocol Length Info
+    132 568142.094000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 132: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000070b000000062900
+
+No.     Time           Source                Destination           Protocol Length Info
+    133 568142.125000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 133: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d004600000717000000103500
+
+No.     Time           Source                Destination           Protocol Length Info
+    134 568142.185000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 134: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d004600000726000000184500
+
+No.     Time           Source                Destination           Protocol Length Info
+    135 568142.245000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 135: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007370000001f5600
+
+No.     Time           Source                Destination           Protocol Length Info
+    136 568142.275000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 136: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d004600000749000000236800
+
+No.     Time           Source                Destination           Protocol Length Info
+    137 568142.334000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 137: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000075b000000257a00
+
+No.     Time           Source                Destination           Protocol Length Info
+    138 568142.395000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 138: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000076d000000258c00
+
+No.     Time           Source                Destination           Protocol Length Info
+    139 568142.425000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 139: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000077f000000259d00
+
+No.     Time           Source                Destination           Protocol Length Info
+    140 568142.484000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 140: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000079200000025b100
+
+No.     Time           Source                Destination           Protocol Length Info
+    141 568142.545000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 141: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007a7000000275eff
+
+No.     Time           Source                Destination           Protocol Length Info
+    142 568142.575000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 142: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007be0000002c75ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    143 568142.604000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 143: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506cc
+
+No.     Time           Source                Destination           Protocol Length Info
+    144 568142.635000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 144: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007d40000002d8bff
+
+No.     Time           Source                Destination           Protocol Length Info
+    145 568142.695000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 145: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007ec0000002fa3ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    146 568142.755000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 146: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000070501000031bcff
+
+No.     Time           Source                Destination           Protocol Length Info
+    147 568142.784000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 147: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000071d01000033d4ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    148 568142.844000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 148: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000073501000032ecff
+
+No.     Time           Source                Destination           Protocol Length Info
+    149 568142.874000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 149: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000074d010000320400
+
+No.     Time           Source                Destination           Protocol Length Info
+    150 568142.934000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 150: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d004600000765010000321c00
+
+No.     Time           Source                Destination           Protocol Length Info
+    151 568142.995000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 151: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000077e010000323400
+
+No.     Time           Source                Destination           Protocol Length Info
+    152 568143.055000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 152: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000079b010000335100
+
+No.     Time           Source                Destination           Protocol Length Info
+    153 568143.084000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 153: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007b70100003a6e00
+
+No.     Time           Source                Destination           Protocol Length Info
+    154 568143.145000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 154: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007d20100003b8800
+
+No.     Time           Source                Destination           Protocol Length Info
+    155 568143.174000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 155: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007ea01000036a100
+
+No.     Time           Source                Destination           Protocol Length Info
+    158 568143.234000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 158: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007030200003352ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    159 568143.294000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 159: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000071f020000356eff
+
+No.     Time           Source                Destination           Protocol Length Info
+    160 568143.324000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 160: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000073a0200003889ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    161 568143.384000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 161: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000075702000039a6ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    162 568143.444000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 162: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007730200003ac2ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    163 568143.475000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 163: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000078e0200003addff
+
+No.     Time           Source                Destination           Protocol Length Info
+    165 568143.535000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 165: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007a902000038f7ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    166 568143.594000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 166: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007c4020000371200
+
+No.     Time           Source                Destination           Protocol Length Info
+    167 568143.624000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 167: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506cb
+
+No.     Time           Source                Destination           Protocol Length Info
+    168 568143.626000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 168: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007de020000382d00
+
+No.     Time           Source                Destination           Protocol Length Info
+    169 568143.685000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 169: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007fd020000394c00
+
+No.     Time           Source                Destination           Protocol Length Info
+    170 568143.745000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 170: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000071d0300003d6b00
+
+No.     Time           Source                Destination           Protocol Length Info
+    171 568143.775000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 171: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007390300003f8800
+
+No.     Time           Source                Destination           Protocol Length Info
+    177 568143.834000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 177: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007520300003ba100
+
+No.     Time           Source                Destination           Protocol Length Info
+    179 568143.894000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 179: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000076d0300003653ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    199 568143.924000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 199: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007890300003670ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    226 568143.955000  localhost ()          remote ()             ATT      22     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 226: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 0a004132000100000001
+
+No.     Time           Source                Destination           Protocol Length Info
+    229 568143.985000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 229: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007a60300003a8dff
+
+No.     Time           Source                Destination           Protocol Length Info
+    230 568144.014000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 230: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 226]
+
+No.     Time           Source                Destination           Protocol Length Info
+    231 568144.015000  remote ()             localhost ()          ATT      22     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 231: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0a004732000100000001
+
+No.     Time           Source                Destination           Protocol Length Info
+    232 568144.015000  localhost ()          remote ()             ATT      20     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 232: Packet, 20 bytes on wire (160 bits), 20 bytes captured (160 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 0800813211510003
+
+No.     Time           Source                Destination           Protocol Length Info
+    234 568144.045000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 234: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007c50300003cacff
+
+No.     Time           Source                Destination           Protocol Length Info
+    235 568144.074000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 235: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 232]
+
+No.     Time           Source                Destination           Protocol Length Info
+    236 568144.075000  remote ()             localhost ()          ATT      17     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 236: Packet, 17 bytes on wire (136 bits), 17 bytes captured (136 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 050082320a
+
+No.     Time           Source                Destination           Protocol Length Info
+    237 568144.076000  localhost ()          remote ()             ATT      20     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 237: Packet, 20 bytes on wire (160 bits), 20 bytes captured (160 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 080081001151007f
+
+No.     Time           Source                Destination           Protocol Length Info
+    238 568144.105000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 238: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007e20300003dc9ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    242 568144.134000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 242: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 237]
+
+No.     Time           Source                Destination           Protocol Length Info
+    243 568144.134000  remote ()             localhost ()          ATT      17     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 243: Packet, 17 bytes on wire (136 bits), 17 bytes captured (136 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 050082000a
+
+No.     Time           Source                Destination           Protocol Length Info
+    244 568144.135000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 244: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d0046000007ff0300003de6ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    249 568144.194000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 249: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000070904000033f0ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    251 568144.254000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 251: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000070a04000019f1ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    253 568144.284000  remote ()             localhost ()          ATT      19     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 253: Packet, 19 bytes on wire (152 bits), 19 bytes captured (152 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 07004600000205
+
+No.     Time           Source                Destination           Protocol Length Info
+    258 568144.344000  remote ()             localhost ()          ATT      19     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 258: Packet, 19 bytes on wire (152 bits), 19 bytes captured (152 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 07004600000200
+
+No.     Time           Source                Destination           Protocol Length Info
+    261 568144.615000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 261: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506cd
+
+No.     Time           Source                Destination           Protocol Length Info
+    273 568145.064000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 273: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000070b04000000f1ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    275 568145.095000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 275: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000070d04000001f4ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    276 568145.154000  remote ()             localhost ()          ATT      19     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 276: Packet, 19 bytes on wire (152 bits), 19 bytes captured (152 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 07004600000203
+
+No.     Time           Source                Destination           Protocol Length Info
+    280 568145.184000  remote ()             localhost ()          ATT      19     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 280: Packet, 19 bytes on wire (152 bits), 19 bytes captured (152 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 07004600000202
+
+No.     Time           Source                Destination           Protocol Length Info
+    281 568145.244000  remote ()             localhost ()          ATT      19     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 281: Packet, 19 bytes on wire (152 bits), 19 bytes captured (152 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 07004600000200
+
+No.     Time           Source                Destination           Protocol Length Info
+    285 568145.635000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 285: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506ce
+
+No.     Time           Source                Destination           Protocol Length Info
+    301 568146.324000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 301: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000070c04000000f3ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    303 568146.624000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 303: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506d0
+
+No.     Time           Source                Destination           Protocol Length Info
+    316 568147.644000  remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 316: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0600010506d1
+
+No.     Time           Source                Destination           Protocol Length Info
+    319 568147.815000  localhost ()          remote ()             ATT      22     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 319: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 0a004132000100000001
+
+No.     Time           Source                Destination           Protocol Length Info
+    321 568147.854000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 321: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 319]
+
+No.     Time           Source                Destination           Protocol Length Info
+    322 568147.855000  remote ()             localhost ()          ATT      22     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 322: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0a004732000100000001
+
+No.     Time           Source                Destination           Protocol Length Info
+    325 568147.956000  localhost ()          remote ()             ATT      20     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 325: Packet, 20 bytes on wire (160 bits), 20 bytes captured (160 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 0800813211510003
+
+No.     Time           Source                Destination           Protocol Length Info
+    328 568148.004000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 328: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 325]
+
+No.     Time           Source                Destination           Protocol Length Info
+    329 568148.005000  remote ()             localhost ()          ATT      17     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 329: Packet, 17 bytes on wire (136 bits), 17 bytes captured (136 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 050082320a
+
+No.     Time           Source                Destination           Protocol Length Info
+    330 568148.005000  localhost ()          remote ()             ATT      20     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 330: Packet, 20 bytes on wire (160 bits), 20 bytes captured (160 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 080081001151007f
+
+No.     Time           Source                Destination           Protocol Length Info
+    331 568148.064000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 331: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 330]
+
+No.     Time           Source                Destination           Protocol Length Info
+    332 568148.065000  remote ()             localhost ()          ATT      17     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 332: Packet, 17 bytes on wire (136 bits), 17 bytes captured (136 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 050082000a
+
+No.     Time           Source                Destination           Protocol Length Info
+    333 568148.067000  localhost ()          remote ()             ATT      22     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 333: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 0a004132000100000001
+
+No.     Time           Source                Destination           Protocol Length Info
+    338 568148.124000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 338: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 333]
+
+No.     Time           Source                Destination           Protocol Length Info
+    339 568148.125000  remote ()             localhost ()          ATT      22     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 339: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0a004732000100000001
+
+No.     Time           Source                Destination           Protocol Length Info
+    340 568148.125000  localhost ()          remote ()             ATT      20     Sent Write Request, Handle: 0x000e (Unknown)
+
+Frame 340: Packet, 20 bytes on wire (160 bits), 20 bytes captured (160 bits)
+Bluetooth
+PacketLogger Sent ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Request (0x12)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0010 = Method: Write Request (0x12)
+    Handle: 0x000e (Unknown)
+    Value: 0800813211510003
+
+No.     Time           Source                Destination           Protocol Length Info
+    343 568148.184000  remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x000e (Unknown)
+
+Frame 343: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Write Response (0x13)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 0011 = Method: Write Response (0x13)
+    [Handle: 0x000e (Unknown)]
+    [Request in Frame: 340]
+
+No.     Time           Source                Destination           Protocol Length Info
+    344 568148.185000  remote ()             localhost ()          ATT      17     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 344: Packet, 17 bytes on wire (136 bits), 17 bytes captured (136 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 050082320a
+
+No.     Time           Source                Destination           Protocol Length Info
+    364 568149.024000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 364: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000070d04000000f4ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    366 568149.055000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 366: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000070c04000000f3ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    367 568149.115000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 367: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000070d04000000f4ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    368 568149.144000  remote ()             localhost ()          ATT      20     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 368: Packet, 20 bytes on wire (160 bits), 20 bytes captured (160 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 080046000004f4ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    370 568149.204000  remote ()             localhost ()          ATT      21     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 370: Packet, 21 bytes on wire (168 bits), 21 bytes captured (168 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 09004600000601f3ff
+
+No.     Time           Source                Destination           Protocol Length Info
+    372 568149.264000  remote ()             localhost ()          ATT      25     Rcvd Handle Value Notification, Handle: 0x000e (Unknown)
+
+Frame 372: Packet, 25 bytes on wire (200 bits), 25 bytes captured (200 bits)
+Bluetooth
+PacketLogger Recv ACL Data
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+    Opcode: Handle Value Notification (0x1b)
+        0... .... = Authentication Signature: False
+        .0.. .... = Command: False
+        ..01 1011 = Method: Handle Value Notification (0x1b)
+    Handle: 0x000e (Unknown)
+    Value: 0d00460000070c04000000f3ff

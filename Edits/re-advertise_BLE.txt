@@ -1,0 +1,13 @@
+HubEmulation.cpp Reconnects, but looses connection to the devices, just reboot maybe would be better
+        void onDisconnect(NimBLEServer *pServer, NimBLEConnInfo &connInfo, int reason) override
+        {
+            LPF2_LOG_D("Device disconnected, reason: %i", reason);
+            _lpf2HubEmulation->m_connected = false;
+            _lpf2HubEmulation->m_subscribed = false;
+            _lpf2HubEmulation->m_bleConnHandle = 0xFFFF;
+            // Ensure we advertise again so the app can reconnect without a reboot
+            LPF2_LOG_D("Restarting advertising after disconnect");
+            NimBLEDevice::startAdvertising();
+            _lpf2HubEmulation->m_advertising = true;
+        }
+

@@ -1,0 +1,98 @@
+[2.596000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0506d2
+[3.586000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0506d0
+[3.856000000] HUB -> APP | Other Notification (Type: 0x04) | Raw: 0f000403014c000400000000000010
+[3.886000000] APP -> HUB (Critical Setup Request) | Message Type: 0x42 | Raw: 0500420302
+[3.945000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[3.946000000] HUB -> APP | Other Notification (Type: 0x47) | Raw: 0a004703000100000000
+[3.953000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x41 | Raw: 0a004103020100000001
+[3.954000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x41 | Raw: 0a004103010100000001
+[3.955000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x41 | Raw: 0a004103030100000001
+[3.956000000] APP -> HUB (Critical Setup Request) | Message Type: 0x42 | Raw: 090042030100201030
+[4.005000000] HUB -> APP | Other Notification (Type: 0x47) | Raw: 0a004703020100000001
+[4.006000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[4.006000000] HUB -> APP | Other Notification (Type: 0x47) | Raw: 0a004703010100000001
+[4.007000000] HUB -> APP | Other Notification (Type: 0x47) | Raw: 0a004703030100000001
+[4.016000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x42 | Raw: 0500420303
+[4.065000000] HUB -> APP | Other Notification (Type: 0x48) | Raw: 07004803800700
+[4.066000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007000000000050ff
+[4.096000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[4.155000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[4.185000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000450ff
+[4.335000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[4.396000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000450ff
+[4.546000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[4.576000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0506d1
+[4.606000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000450ff
+[4.696000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[4.696000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000450ff
+[4.756000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000450ff
+[4.876000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[4.906000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000450ff
+[4.995000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[4.996000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000450ff
+[5.026000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[5.086000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[5.146000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[5.176000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000450ff
+[5.296000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[5.326000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000450ff
+[5.446000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[5.476000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000450ff
+[5.495000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x81 | Raw: 0900810311073b6403
+[5.536000000] HUB -> APP | Other Notification (Type: 0x82) | Raw: 050082030a
+[5.595000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[5.625000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 08004603000451ff
+[5.686000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007040000000154ff
+[5.746000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d00460300070c000000085dff
+[5.775000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007170000000f67ff
+[5.836000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007240000001775ff
+[5.896000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007350000001c85ff
+[5.926000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007480000002198ff
+[5.986000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d00460300075d00000027adff
+[6.046000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007710000002ac1ff
+[6.076000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007840000002ad4ff
+[6.136000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d00460300079800000028e8ff
+[6.166000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007ad00000029feff
+[6.226000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007c30000002b1400
+[6.286000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007db0000002e2b00
+[6.316000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007f2000000304200
+[6.376000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d00460300070d010000345d00
+[6.436000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d004603000726010000367600
+[6.466000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d00460300073e010000348e00
+[6.526000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d00460300075501000032a600
+[6.555000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0506d0
+[6.586000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d00460300076f0100003157ff
+[6.616000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d00460300078a0100003473ff
+[6.676000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007a6010000388eff
+[6.736000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007c201000039abff
+[6.766000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007dd01000039c5ff
+[6.856000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007f401000038dcff
+[6.886000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d00460300070e02000036f6ff
+[6.916000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d004603000729020000351100
+[6.976000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d004603000744020000372d00
+[7.036000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007630200003a4c00
+[7.066000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007810200003d6900
+[7.126000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d00460300079c0200003d8500
+[7.186000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007b7020000399f00
+[7.216000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007d10200003751ff
+[7.276000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007ed020000376eff
+[7.306000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007090300003889ff
+[7.366000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007250300003aa6ff
+[7.426000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007430300003ec4ff
+[7.456000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d00460300075f0300003edfff
+[7.516000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d00460300077a03000039faff
+[7.526000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x41 | Raw: 0a004132000100000001
+[7.527000000] APP -> HUB (Critical Setup Request) | Message Type: 0x81 | Raw: 0800813211510003
+[7.575000000] HUB -> APP | Other Notification (Type: 0x47) | Raw: 0a004732000100000001
+[7.576000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[7.576000000] HUB -> APP | Other Notification (Type: 0x82) | Raw: 050082320a
+[7.577000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x81 | Raw: 080081031151007f
+[7.577000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d004603000795030000371500
+[7.606000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007b2030000393200
+[7.635000000] HUB -> APP | Other Notification (Type: 0x82) | Raw: 050082030a
+[7.665000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007c90300003a4a00
+[7.725000000] HUB -> APP | Port 3 Motor Feedback -> Raw Payload: 0d0046030007ce0300002c4e00
+[7.755000000] HUB -> APP | Other Notification (Type: 0x46) | Raw: 07004603000210
+[7.815000000] HUB -> APP | Other Notification (Type: 0x46) | Raw: 07004603000202
+[7.876000000] HUB -> APP | Other Notification (Type: 0x46) | Raw: 07004603000200
+[10.546000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0506d1

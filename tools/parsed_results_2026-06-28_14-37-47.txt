@@ -1,0 +1,17 @@
+[1.518000000] APP -> HUB (Handshake Trigger) | Opcode: 0x08 | Waiting for Hub...
+[1.574000000] APP -> HUB (Handshake Trigger) | Opcode: 0x09 | Waiting for Hub...
+[2.045000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x81 | Raw: 08008103115105ff
+[2.045000000] APP -> HUB (Critical Setup Request) | Message Type: 0x41 | Raw: 0a004132000100000001
+[2.084000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[2.084000000] HUB -> APP | Other Notification (Type: 0x82) | Raw: 050082030a
+[2.094000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x81 | Raw: 0800813211510003
+[2.095000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x81 | Raw: 08008103115105ff
+[2.095000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x41 | Raw: 0a004132000100000001
+[2.096000000] APP -> HUB (Critical Setup Request) | Message Type: 0x81 | Raw: 0800813211510003
+[2.114000000] HUB -> APP | Other Notification (Type: 0x47) | Raw: 0a004732000100000001
+[2.144000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[2.144000000] HUB -> APP | Other Notification (Type: 0x82) | Raw: 050082320a
+[2.174000000] HUB -> APP | Other Notification (Type: 0x82) | Raw: 050082030a
+[2.174000000] HUB -> APP | Other Notification (Type: 0x47) | Raw: 0a004732000100000001
+[2.204000000] HUB -> APP | Other Notification (Type: 0x82) | Raw: 050082320a
+[2.384000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0506d0

@@ -1,0 +1,152 @@
+HubEmulation.cpp LED is green when connected and stays green, changing color doesn't work yet
+        case HubType::CONTROL_PLUS_HUB:
+        {
+            INIT_DEVICE(ControlPlusHubPort::ACCELEROMETER,
+                        DeviceDescriptors::TECHNIC_MEDIUM_HUB_ACCELEROMETER);
+
+            INIT_DEVICE(ControlPlusHubPort::CURRENT,
+                        DeviceDescriptors::CURRENT_SENSOR);
+
+            INIT_DEVICE(ControlPlusHubPort::GESTURE,
+                        DeviceDescriptors::TECHNIC_MEDIUM_HUB_GEST_SENSOR);
+
+            INIT_DEVICE(ControlPlusHubPort::GYRO,
+                        DeviceDescriptors::TECHNIC_MEDIUM_HUB_GYRO_SENSOR);
+
+            // Initialize LED with special handling for color control
+            {
+                INIT_DEVICE(ControlPlusHubPort::LED,
+                            DeviceDescriptors::HUB_LED);
+                // Set the LED write data callback - this will be called when app sends color commands
+                auto* ledDevice = m_ownedDevices.back();
+                extern int handleLEDWrite(uint8_t mode, const std::vector<uint8_t> &data, void *userData);
+                ledDevice->setWriteDataCallback(handleLEDWrite);
+/*                auto &ledPort = *(m_ownedPorts[(PortNum)ControlPlusHubPort::LED]);
+                auto ledDevice = new Virtual::GenericDevice(DeviceDescriptors::HUB_LED);
+                
+                // Set the LED write data callback - this will be called when app sends color commands
+                extern int handleLEDWrite(uint8_t mode, const std::vector<uint8_t> &data, void *userData);
+                ledDevice->setWriteDataCallback(handleLEDWrite);
+                
+                ledPort.attachDevice(ledDevice);
+                m_ownedDevices.push_back(ledDevice);
+*/                
+                LPF2_LOG_D("LED device initialized with color control callback");
+            }
+
+            INIT_DEVICE(ControlPlusHubPort::TEMP2,
+                        DeviceDescriptors::TECHNIC_MEDIUM_HUB_TEMPERATURE_SENSOR);
+
+            INIT_DEVICE(ControlPlusHubPort::TEMP,
+                        DeviceDescriptors::TECHNIC_MEDIUM_HUB_TEMPERATURE_SENSOR);
+
+            INIT_DEVICE(ControlPlusHubPort::TILT,
+                        DeviceDescriptors::TECHNIC_MEDIUM_HUB_TILT_SENSOR);
+
+            INIT_DEVICE(ControlPlusHubPort::VOLTAGE,
+                        DeviceDescriptors::VOLTAGE_SENSOR);
+            break;
+        }
+        default:
+            break;
+        }
+
+#undef INIT_DEVICE
+------------------------------------------------------
+main.cpp
+#include "Lpf2/log/log.h"
+
+// Include NeoPixel library for addressable RGB LED control
+#include <Adafruit_NeoPixel.h>
+
+// LED Control Pins - Addressable RGB LED (WS2812B/NeoPixel)
+#if defined(USING_XIAO)
+    #define LED_DATA_PIN 2       // Single data pin
+#elif defined(USING_SUPERMINI)
+    #define LED_DATA_PIN 48      // ESP32-S3-SuperMini built-in RGB LED on GPIO48
+#else
+    #define LED_DATA_PIN 2       // Default fallback
+#endif
+
+#define NUM_LEDS 1               // Single RGB LED
+#define LED_TYPE NEO_GRB         // NeoPixel RGB color order (try NEO_RGB if colors are wrong)
+#define LED_BRIGHTNESS 255       // Maximum brightness (0-255)
+
+// Create NeoPixel object for single LED
+Adafruit_NeoPixel strip(NUM_LEDS, LED_DATA_PIN, LED_TYPE + NEO_KHZ800);
+
+// LED Color definitions (RGB LED color codes from LEGO app)
+struct LEDColor {
+    uint8_t red;
+    uint8_t green;
+    uint8_t blue;
+};
+
+// Map LEGO color codes to RGB values
+const LEDColor ledColorMap[] = {
+    {0, 0, 0},           // 0x00: Black (off)
+    {255, 255, 255},     // 0x01: White
+    {255, 0, 0},         // 0x02: Red
+    {0, 255, 0},         // 0x03: Green
+    {255, 255, 0},       // 0x04: Yellow
+    {255, 165, 0},       // 0x05: Orange
+    {0, 0, 255},         // 0x06: Blue
+    {255, 0, 255},       // 0x07: Purple/Magenta
+    {255, 192, 203},     // 0x08: Pink
+    {255, 0, 0},         // 0x09: Red (alternate)
+    {255, 255, 255},     // 0x0A: White (alternate)
+};
+
+const int NUM_COLORS = sizeof(ledColorMap) / sizeof(LEDColor);
+
+namespace Lpf2
+{
+    // LED Device callback function - Addressable RGB LED (WS2812B/NeoPixel)
+    int handleLEDWrite(uint8_t mode, const std::vector<uint8_t> &data, void *userData)
+    {
+        if (data.empty()) return 0;
+        
+        uint8_t colorCode = data[0];
+        
+        LPF2_LOG_I("[LED] Color command received: 0x%02X", colorCode);
+        Serial.printf("[LED] App command received: 0x%02X\n", colorCode);
+        
+        if (colorCode < NUM_COLORS) {
+            const LEDColor &color = ledColorMap[colorCode];
+            LPF2_LOG_I("[LED] Setting color to RGB(%d, %d, %d)", color.red, color.green, color.blue);
+            Serial.printf("[LED] Setting RGB to (%d, %d, %d)\n", color.red, color.green, color.blue);
+            
+            // Set NeoPixel color
+            strip.setPixelColor(0, strip.Color(color.red, color.green, color.blue));
+            strip.show();
+            
+            Serial.printf("[LED] NeoPixel updated: RGB(%d, %d, %d)\n", color.red, color.green, color.blue);
+        } else {
+            LPF2_LOG_W("[LED] Unknown color code: 0x%02X", colorCode);
+            Serial.printf("[LED] Unknown color code: 0x%02X\n", colorCode);
+        }
+        
+        return 0;
+    }
+}
+
+Lpf2::HubEmulation hub("Technic Hub", Lpf2::HubType::CONTROL_PLUS_HUB);
+-------------------------------------
+void setup()
+{
+    Serial.begin(981200);
+    delay(100);
+    
+    Serial.println("\n\n=== ESP32-S3-SuperMini NeoPixel RGB LED Starting ===");
+    
+    // Initialize NeoPixel strip
+    strip.begin();
+    strip.setBrightness(LED_BRIGHTNESS);
+    strip.setPixelColor(0, strip.Color(0, 0, 0));  // Start LED off
+    strip.show();
+    Serial.printf("[LED] NeoPixel initialized on GPIO%d\n", LED_DATA_PIN);
+    
+    Serial.println("=== Ready for BLE App connection ===\n");
+    
+    lpf2_set_runtime_log_level(LPF2_LOG_LEVEL_DEBUG); // enable debug output
+

@@ -1,0 +1,58 @@
+20:09:55.004 > [ 50017][D][HubEmulation.cpp:1148] update(): RSSI: -37
+20:09:55.005 > [ 50018][D][HubEmulation.cpp:157] sendHubPropertyUpdate(): Sent prop update: -37
+20:09:55.015 > [  message (6): 0x06, 0x00, 0x01, 0x05, 0x06, 0xdb
+20:09:57.292 > [ 52306][D][device.hpp:104] setUartPinsState(): Setting uart pins state: highZ=false
+20:09:57.293 > [ 52307][D][PortAnalog.cpp:80] doAnalogID(): Uart detected
+20:09:58.293 > [ 53319][W][PortProcess.cpp:201] process(): Speed change not supported, continuing at 2400 baud
+20:09:58.393 > [ 53408][D][PortParser.cpp:66] parseMessage(): SYNC received.
+20:09:59.359 > [ 54373][D][PortParser.cpp:53] parseMessage(): Info end ACK received.
+20:09:59.360 > [ 54375][D][PortParser.cpp:56] parseMessage(): Device data not received, waiting for more info.
+20:10:00.007 > m
+20:10:00.007 > [ 55021][D][HubEmulation.cpp:157] sendHubPropertyUpdate(): Sent prop update: -50
+20:10:00.019 > [ 55032[D][HubEmulation.cpp:1074] writeResponse(): write message (6): 0x06, 0x00, 0x01, 0x05, 0x06, 0xce
+20:10:00.336 > [ 55349][D][PortParser.cpp:168] parseMessageCMD(): Set device details from descriptor lib
+20:10:02.529 > [ 57542][W][PortParser.cpp:360] parseMessageInfo(): Unknown info: 0x08, msg: 0x08, 0x00, 0x07, 0x00, 0x00, 0x05, 0x43, 0x31, 0x32, 0x33, 0x54, 0x4c, 0x34, 0x00, 0x00, 0x00, 0x00
+20:10:02.530 > [ 57544][W][PortParser.cpp:360] parseMessageInfo(): Unknown info: 0x09, msg: 0x09, 0xa0, 0x0f, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0x28, 0x23, 0x00, 0x00, 0xca, 0x03, 0x00, 0x00
+20:10:02.531 > [ 57545][W][PortParser.cpp:360] parseMessageInfo(): Unknown info: 0x0A, msg: 0x0a, 0x10, 0x27, 0x00, 0x00, 0xe8, 0x03, 0x00, 0x00, 0x50, 0xc3, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+20:10:02.532 > [ 57546][W][PortParser.cpp:360] parseMessageInfo(): Unknown info: 0x0B, msg: 0x0b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+20:10:02.533 > [ 57547][W][PortParser.cpp:360] parseMessageInfo(): Unknown info: 0x0C, msg: 0x0c, 0x00, 0x00, 0x00, 0x00
+20:10:02.534 > [ 57548][D][PortParser.cpp:53] parseMessage(): Info end ACK received.
+20:10:02.552 > [ 57565][D][PortProcess.cpp:295] process(): Sent ACK after info, changing speed.
+20:10:02.555 > [ 57569][I][PortParser.cpp:80] parseMessage(): Device connected, type: 0x4C
+20:10:02.556 > [ 57570][D][PortProcess.cpp:283] process(): Succesfully changed speed to 115200 baud
+20:10:02.557 > [ 57571][D][PortProcess.cpp:284] process(): Setting default mode: 4
+20:10:02.559 > [ 57572][D][PortWrite.cpp:65] setMode(): Set mode to 4
+20:10:02.560 > [ 57573][I][HubEmulation.cpp:783] checkPort(): Device connected to port 0
+20:10:02.561 > [ 57574][W][PortParser.cpp:219] parseMessageCMD(): Unknown command: 0x04
+20:10:02.571 > [ 57584][D][HubEmulation.cpp:1074] writeResponse(): write message (15): 0x0f, 0x00, 0x04, 0x00, 0x01, 0x4c, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10
+20:10:02.631 > [ 57643][D][HubEmulation.cpp:83] processMessages(): message received (5): 0x05, 0x00, 0x42, 0x00, 0x02
+20:10:02.632 > PortInputFormatSetupCombinedMessage(): Combined lock: port 0x00
+20:10:02.643 > [ 57656][D][HubEmulation.cpp:1074] writeResponse(): write message (9): 0x09, 0x00, 0x48, 0x00, 0x00, 0x00, 0x20, 0x10, 0x30
+20:10:02.645 > ages(): message received (10): 0x0a, 0x00, 0x41, 0x00, 0x02, 0x01, 0x00, 0x00, 0x00, 0x01
+20:10:02.655 > [ 57669][D][HubEmulation.cpp:1074] writeResponse(): write message (10): 0x0a, 0x00, 0x47, 0x00, 0x02, 0x01, 0x00, 0x00, 0x00, 0x01
+20:10:02.668 > [HubEmulation.cpp:83] processMessages(): message received (10): 0x0a, 0x00, 0x41, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x01
+20:10:02.669 > [ 57682][D][HubEmulation.cpp:1074] writeResponse(): write message (10): 0x0a, 0x00, 0x47, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x01
+20:10:02.690 > ge received (10): 0x0a, 0x00, 0x41, 0x00, 0x03, 0x01, 0x00, 0x00, 0x00, 0x01
+20:10:02.701 > [ 57715][D][HubEmulation.cpp:1074] writeResponse(): write message (10): 0x0a, 0x00, 0x47, 0x00, 0x03, 0x01, 0x00, 0x00, 0x00, 0x01
+20:10:02.703 > ge received (9): 0x09, 0x00, 0x42, 0x00, 0x01, 0x00, 0x20, 0x10, 0x30
+20:10:02.704 > [ 57718][D][HubEmulation.cpp:602] handlePortInputFormatSetupCombinedMessage(): Combined set combo: port 0x00, combo 0
+20:10:02.715 > [ 57729][D][HubEmulation.cpp:1074] writeResponse(): write message (9): 0x09, 0x00, 0x48, 0x00, 0x00, 0x00, 0x20, 0x10, 0x30
+20:10:02.717 > message received (5): 0x05, 0x00, 0x42, 0x00, 0x03
+20:10:02.718 > [ 57732][D][HubEmulation.cpp:613] handlePortInputFormatSetupCombinedMessage(): Combined unlock + multiupdate: port 0x00
+20:10:02.719 > [ 57733][W][PortWrite.cpp:73] setModeCombo(): Invalid combo index: 0 (max -1)
+20:10:02.730 > [ 57744][D][HubEmulation.cpp:1074] writeResponse(): write message (9): 0x09, 0x00, 0x48, 0x00, 0x01, 0x00, 0x20, 0x10, 0x30
+20:10:03.590 > ge received (9): 0x09, 0x00, 0x81, 0x00, 0x11, 0x07, 0x3b, 0x64, 0x03
+20:10:03.601 > [ 58614][D][HubEmulation.cpp:1074] writeResponse(): write message (5): 0x05, 0x00, 0x82, 0x00, 0x0a
+20:10:05.007 > m
+20:10:05.007 > [ 60021][D][HubEmulation.cpp:157] sendHubPropertyUpdate(): Sent prop update: -40
+20:10:05.019 > [  message (6): 0x06, 0x00, 0x01, 0x05, 0x06, 0xd8
+20:10:06.080 > ge received (10): 0x0a, 0x00, 0x41, 0x32, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+20:10:06.081 > [ 61095][I][Device.hpp:227] setMode(): [17] set mode 0
+20:10:06.092 > [  message (10): 0x0a, 0x00, 0x47, 0x32, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+20:10:06.094 > ge received (8): 0x08, 0x00, 0x81, 0x32, 0x11, 0x51, 0x00, 0x03
+20:10:06.095 > [ 61109][I][Device.hpp:219] writeData(): [17] write mode 0: 0x03
+20:10:06.107 > tion.cpp:1074] writeResponse(): write message (5): 0x05, 0x00, 0x82, 0x32, 0x0a
+20:10:06.108 > ge received (8): 0x08, 0x00, 0x81, 0x00, 0x11, 0x51, 0x00, 0x7f
+20:10:06.109 > [ 61123][D][PortWrite.cpp:159] writeData(): writeData: mode 0, data size 1
+20:10:06.110 > [ 61124][D][PortWrite.cpp:162] writeData(): startPower: 127
+20:10:06.122 >  message (5): 0x05, 0x00, 0x82, 0x00, 0x0a

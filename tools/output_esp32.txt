@@ -1,0 +1,59 @@
+No.     Time           Source                Destination           Protocol Length Info
+    132 5.896000       remote ()             localhost ()          ATT      18     Rcvd Handle Value Notification, Handle: 0x0010 (Unknown)
+
+Frame 132: Packet, 18 bytes on wire (144 bits), 18 bytes captured (144 bits)
+Bluetooth
+Bluetooth HCI H4
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+    140 6.460000       localhost ()          remote ()             ATT      22     Sent Write Request, Handle: 0x0010 (Unknown)
+
+Frame 140: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+Bluetooth HCI H4
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+    141 6.496000       remote ()             localhost ()          ATT      10     Rcvd Write Response, Handle: 0x0010 (Unknown)
+
+Frame 141: Packet, 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+Bluetooth
+Bluetooth HCI H4
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+    142 6.496000       remote ()             localhost ()          ATT      22     Rcvd Handle Value Notification, Handle: 0x0010 (Unknown)
+
+Frame 142: Packet, 22 bytes on wire (176 bits), 22 bytes captured (176 bits)
+Bluetooth
+Bluetooth HCI H4
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+    143 6.508000       localhost ()          remote ()             ATT      20     Sent Write Command, Handle: 0x0010 (Unknown)
+
+Frame 143: Packet, 20 bytes on wire (160 bits), 20 bytes captured (160 bits)
+Bluetooth
+Bluetooth HCI H4
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+    145 6.556000       remote ()             localhost ()          ATT      17     Rcvd Handle Value Notification, Handle: 0x0010 (Unknown)
+
+Frame 145: Packet, 17 bytes on wire (136 bits), 17 bytes captured (136 bits)
+Bluetooth
+Bluetooth HCI H4
+Bluetooth HCI ACL Packet
+Bluetooth L2CAP Protocol
+Bluetooth Attribute Protocol

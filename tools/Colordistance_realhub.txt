@@ -1,0 +1,418 @@
+[2.006000000] APP -> HUB (Handshake Trigger) | Opcode: 0x02 | Waiting for Hub...
+[2.091000000] APP -> HUB (Handshake Trigger) | Opcode: 0x03 | Waiting for Hub...
+[2.092000000] APP -> HUB (Handshake Trigger) | Opcode: 0x10 | Waiting for Hub...
+[2.151000000] APP -> HUB (Handshake Trigger) | Opcode: 0x11 | Waiting for Hub...
+[2.151000000] APP -> HUB (Handshake Trigger) | Opcode: 0x10 | Waiting for Hub...
+[2.211000000] APP -> HUB (Handshake Trigger) | Opcode: 0x11 | Waiting for Hub...
+[2.211000000] APP -> HUB (Handshake Trigger) | Opcode: 0x10 | Waiting for Hub...
+[2.273000000] APP -> HUB (Handshake Trigger) | Opcode: 0x11 | Waiting for Hub...
+[2.273000000] APP -> HUB (Handshake Trigger) | Opcode: 0x10 | Waiting for Hub...
+[2.331000000] APP -> HUB (Handshake Trigger) | Opcode: 0x01 | Waiting for Hub...
+[2.336000000] APP -> HUB (Handshake Trigger) | Opcode: 0x08 | Waiting for Hub...
+[2.391000000] APP -> HUB (Handshake Trigger) | Opcode: 0x09 | Waiting for Hub...
+[2.392000000] APP -> HUB (Handshake Trigger) | Opcode: 0x04 | Waiting for Hub...
+[2.452000000] APP -> HUB (Handshake Trigger) | Opcode: 0x05 | Waiting for Hub...
+[2.455000000] APP -> HUB (Handshake Trigger) | Opcode: 0x12 | Waiting for Hub...
+[2.512000000] APP -> HUB (Handshake Trigger) | Opcode: 0x01 | Waiting for Hub...
+[2.513000000] Unknown Opcode 0x06 | Raw: 23d1bcea5f782316deef121225160000
+[2.571000000] APP -> HUB (Handshake Trigger) | Opcode: 0x01 | Waiting for Hub...
+[2.572000000] Unknown Opcode 0x06 | Raw: 00000000000000b000405104c0ff00f0
+[2.631000000] APP -> HUB (Handshake Trigger) | Opcode: 0x01 | Waiting for Hub...
+[2.638000000] APP -> HUB (Handshake Trigger) | Opcode: 0x08 | Waiting for Hub...
+[2.692000000] APP -> HUB (Handshake Trigger) | Opcode: 0x09 | Waiting for Hub...
+[2.705000000] APP -> HUB (Handshake Trigger) | Opcode: 0x04 | Waiting for Hub...
+[2.751000000] APP -> HUB (Handshake Trigger) | Opcode: 0x05 | Waiting for Hub...
+[2.753000000] APP -> HUB (Handshake Trigger) | Opcode: 0x12 | Waiting for Hub...
+[2.811000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[2.812000000] HUB -> APP | Other Notification (Type: 0x04) | Raw: 0f0004030125000000001000000010
+[2.812000000] HUB -> APP | Other Notification (Type: 0x04) | Raw: 0f0004320117000000001000000010
+[2.813000000] HUB -> APP | Other Notification (Type: 0x04) | Raw: 0f00043b0115000000001000000010
+[2.814000000] HUB -> APP | Other Notification (Type: 0x04) | Raw: 0f00043c0114000000001000000010
+[2.814000000] HUB -> APP | Other Notification (Type: 0x04) | Raw: 0f00043d013c000000001000000010
+[2.842000000] HUB -> APP | Other Notification (Type: 0x04) | Raw: 0f000460013c000100000001000000
+[2.842000000] HUB -> APP | Other Notification (Type: 0x04) | Raw: 0f0004610139000100000001000000
+[2.843000000] HUB -> APP | Other Notification (Type: 0x04) | Raw: 0f000462013a000100000001000000
+[2.843000000] HUB -> APP | Other Notification (Type: 0x04) | Raw: 0f000463013b000100000001000000
+[2.844000000] HUB -> APP | Other Notification (Type: 0x04) | Raw: 0f0004640136000100000001000000
+[2.865000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x03 | Raw: 0500030201
+[2.865000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x03 | Raw: 0500030203
+[2.866000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x03 | Raw: 0500030401
+[2.867000000] APP -> HUB (Critical Setup Request) | Message Type: 0x03 | Raw: 0500030403
+[2.902000000] HUB -> APP | Other Notification (Type: 0x03) | Raw: 060003020400
+[2.902000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[2.903000000] HUB -> APP | Other Notification (Type: 0x03) | Raw: 060003040400
+[2.918000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x03 | Raw: 0500030101
+[2.919000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x03 | Raw: 0500030103
+[2.921000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x03 | Raw: 0500030301
+[2.923000000] APP -> HUB (Critical Setup Request) | Message Type: 0x03 | Raw: 0500030303
+[2.962000000] HUB -> APP | Other Notification (Type: 0x03) | Raw: 060003010400
+[2.962000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[2.963000000] HUB -> APP | Other Notification (Type: 0x03) | Raw: 060003030400
+[2.967000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x01 | Raw: 0500010405
+[2.968000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x01 | Raw: 0500010305
+[2.968000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x01 | Raw: 0500010905
+[2.968000000] APP -> HUB (Critical Setup Request) | Message Type: 0x01 | Raw: 0500010805
+[3.021000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 040600000008
+[3.022000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[3.022000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 030600000011
+[3.023000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0906335f30325f30305f76312e31
+[3.024000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 08064c45474f2053797374656d20412f53
+[3.034000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x01 | Raw: 0500010705
+[3.035000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x01 | Raw: 0500010a05
+[3.035000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x01 | Raw: 0500010d05
+[3.037000000] APP -> HUB (Critical Setup Request) | Message Type: 0x01 | Raw: 0500010202
+[3.081000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 070600
+[3.111000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[3.112000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0a060003
+[3.112000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0d0690842b791756
+[3.113000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 020600
+[3.120000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x01 | Raw: 0500010205
+[3.126000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x01 | Raw: 0500010502
+[3.127000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x01 | Raw: 0500010505
+[3.127000000] APP -> HUB (Critical Setup Request) | Message Type: 0x01 | Raw: 0500010602
+[3.171000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 020600
+[3.172000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[3.172000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 050600
+[3.173000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 050600
+[3.174000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 060659
+[3.185000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x01 | Raw: 0500010605
+[3.186000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x01 | Raw: 0500010102
+[3.186000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x01 | Raw: 0500010105
+[3.187000000] APP -> HUB (Critical Setup Request) | Message Type: 0x41 | Raw: 0a004103080100000001
+[3.231000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 060659
+[3.232000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[3.232000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0106546563686e696320487562
+[3.233000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0106546563686e696320487562
+[3.234000000] HUB -> APP | Other Notification (Type: 0x47) | Raw: 0a004703080100000001
+[3.234000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff00ff00
+[3.237000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x41 | Raw: 0a004161000100000001
+[3.238000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x41 | Raw: 0a004163000100000001
+[3.262000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff06ff00
+[3.291000000] HUB -> APP | Other Notification (Type: 0x47) | Raw: 0a004761000100000001
+[3.292000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff71005710
+[3.293000000] HUB -> APP | Other Notification (Type: 0x47) | Raw: 0a004763000100000001
+[3.293000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004563000000000100
+[3.322000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005710
+[3.381000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff71005710
+[3.412000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005710
+[3.472000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005710
+[3.501000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005810
+[3.562000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff71005810
+[3.622000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005810
+[3.652000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005810
+[3.712000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005810
+[3.772000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005810
+[3.802000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005810
+[3.862000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005810
+[3.892000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005810
+[3.952000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005810
+[4.012000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005710
+[4.042000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005710
+[4.102000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005810
+[4.162000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff71005810
+[4.192000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005810
+[4.252000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005810
+[4.312000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005910
+[4.341000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005910
+[4.401000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005910
+[4.462000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005910
+[4.492000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005910
+[4.552000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005910
+[4.612000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff71005910
+[4.642000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005910
+[4.702000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005910
+[4.762000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff71005910
+[4.792000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005910
+[4.882000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005910
+[4.942000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005910
+[4.972000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005a10
+[5.002000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005a10
+[5.061000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005a10
+[5.062000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0506db
+[5.083000000] APP -> HUB (Handshake Trigger) | Opcode: 0x08 | Waiting for Hub...
+[5.121000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005a10
+[5.122000000] APP -> HUB (Handshake Trigger) | Opcode: 0x09 | Waiting for Hub...
+[5.151000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005a10
+[5.212000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005a10
+[5.242000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005a10
+[5.302000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005a10
+[5.332000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff71005a10
+[5.392000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005a10
+[5.452000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005a10
+[5.482000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff71005a10
+[5.542000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005910
+[5.601000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005a10
+[5.632000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005a10
+[5.652000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x81 | Raw: 08008103115105ff
+[5.654000000] APP -> HUB (Critical Setup Request) | Message Type: 0x41 | Raw: 0a004132000100000001
+[5.691000000] HUB -> APP | Other Notification (Type: 0x82) | Raw: 050082030a
+[5.692000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[5.692000000] HUB -> APP | Other Notification (Type: 0x47) | Raw: 0a004732000100000001
+[5.693000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005a10
+[5.694000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x81 | Raw: 0800813211510003
+[5.694000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x81 | Raw: 08008103115105ff
+[5.705000000] APP -> HUB (Fast Motor/LED Command) | Message Type: 0x41 | Raw: 0a004132000100000001
+[5.707000000] APP -> HUB (Critical Setup Request) | Message Type: 0x81 | Raw: 0800813211510003
+[5.751000000] HUB -> APP | Other Notification (Type: 0x82) | Raw: 050082320a
+[5.752000000] APP -> HUB (Handshake Trigger) | Opcode: 0x13 | Waiting for Hub...
+[5.752000000] HUB -> APP | Other Notification (Type: 0x82) | Raw: 050082030a
+[5.753000000] HUB -> APP | Other Notification (Type: 0x47) | Raw: 0a004732000100000001
+[5.753000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005a10
+[5.754000000] HUB -> APP | Other Notification (Type: 0x82) | Raw: 050082320a
+[5.782000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005a10
+[5.842000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005b10
+[5.932000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005b10
+[5.991000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005b10
+[6.052000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005b10
+[6.082000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005b10
+[6.141000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff71005b10
+[6.201000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff71005b10
+[6.232000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005b10
+[6.292000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005b10
+[6.352000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005b10
+[6.382000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff71005b10
+[6.442000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005c10
+[6.502000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005c10
+[6.532000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005c10
+[6.592000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005c10
+[6.652000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005c10
+[6.682000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005c10
+[6.741000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff71005c10
+[6.801000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005c10
+[6.832000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005d10
+[6.891000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005c10
+[6.921000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff72005c10
+[6.982000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005c10
+[7.041000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005c10
+[7.072000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005c10
+[7.132000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005c10
+[7.191000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff72005c10
+[7.222000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005c10
+[7.282000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005d10
+[7.341000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005c10
+[7.372000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005c10
+[7.432000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005c10
+[7.492000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005d10
+[7.522000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff72005d10
+[7.581000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005d10
+[7.641000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f0ff71005d10
+[7.671000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005d10
+[7.732000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005d10
+[7.792000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff72005d10
+[7.821000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005d10
+[7.881000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005d10
+[7.942000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005d10
+[7.972000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005d10
+[8.032000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff72005d10
+[8.092000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005e10
+[8.122000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71005d10
+[8.181000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005e10
+[8.212000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005e10
+[8.272000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005e10
+[8.332000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005e10
+[8.362000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff72005e10
+[8.422000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005e10
+[8.481000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005e10
+[8.512000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73005e10
+[8.572000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73005e10
+[8.632000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005e10
+[8.662000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff73005e10
+[8.722000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73005f10
+[8.782000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005f10
+[8.812000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005f10
+[8.872000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73005f10
+[8.932000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73005e10
+[8.962000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff73005f10
+[9.021000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73005e10
+[9.081000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73005e10
+[9.112000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73005f10
+[9.172000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73005f10
+[9.232000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73005f10
+[9.262000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73005f10
+[9.352000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73005f10
+[9.442000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff72005f10
+[9.472000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005f10
+[9.532000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff74006010
+[9.562000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005e10
+[9.592000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff05ff00
+[9.622000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006010
+[9.654000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73005f10
+[9.712000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73005f10
+[9.712000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff06ff00
+[9.772000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73005f10
+[9.802000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff72005f10
+[9.862000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73005f10
+[9.922000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73005f10
+[9.952000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73005f10
+[10.012000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73005f10
+[10.042000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0506da
+[10.072000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72005f10
+[10.102000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f5ff74006010
+[10.162000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff74005f10
+[10.222000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72005f10
+[10.252000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73006010
+[10.312000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff05ff00
+[10.312000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73006010
+[10.313000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff06ff00
+[10.372000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff72006010
+[10.402000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006010
+[10.462000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff07ff00
+[10.462000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f5ff73006010
+[10.492000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff08ff00
+[10.522000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006010
+[10.522000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff0aff00
+[10.552000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006010
+[10.612000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f5ff73006010
+[10.672000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73006010
+[10.702000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff71006010
+[10.762000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73006010
+[10.822000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f6ff74006010
+[10.852000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006110
+[10.912000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561efff71006010
+[10.972000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f7ff74006010
+[10.972000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff09ff00
+[11.002000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f7ff74006010
+[11.002000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff08ff00
+[11.062000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561efff71006010
+[11.062000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff07ff00
+[11.092000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006110
+[11.122000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff06ff00
+[11.152000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f7ff74006110
+[11.212000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006010
+[11.242000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff05ff00
+[11.242000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f0ff71006010
+[11.302000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f6ff73006110
+[11.302000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff04ff00
+[11.362000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f5ff72006110
+[11.362000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030004ff00
+[11.392000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff72006110
+[11.422000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030003ff00
+[11.452000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006010
+[11.452000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030002ff00
+[11.512000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f5ff73006110
+[11.542000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff72006010
+[11.572000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030000ff01
+[11.602000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f0ff71006010
+[11.602000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030001ff01
+[11.662000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f6ff73006010
+[11.662000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030001ff01
+[11.692000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006010
+[11.692000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030901ff02
+[11.752000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561efff71006010
+[11.752000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030900ff02
+[11.812000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff72006110
+[11.812000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030900ff03
+[11.842000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f5ff73006110
+[11.902000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f0ff72006010
+[11.962000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f0ff72006010
+[11.992000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f5ff73006010
+[12.052000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006010
+[12.112000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f0ff71006010
+[12.142000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73006010
+[12.202000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f5ff73006110
+[12.202000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030900ff03
+[12.262000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f0ff72006010
+[12.292000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff72006010
+[12.352000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f7ff74006110
+[12.382000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f5ff73006110
+[12.442000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff72006110
+[12.502000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73006110
+[12.532000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f5ff73006110
+[12.592000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030900ff04
+[12.592000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff72006010
+[12.593000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030700ff04
+[12.652000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73006010
+[12.682000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73006110
+[12.742000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006110
+[12.802000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff73006010
+[12.832000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030700ff05
+[12.832000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73006110
+[12.892000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006110
+[12.952000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006110
+[12.982000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73006110
+[13.042000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006110
+[13.042000000] HUB -> APP | Hub Status/Button Alert | Raw Data: 0506d9
+[13.102000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006110
+[13.102000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030700ff04
+[13.132000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006110
+[13.132000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030700ff04
+[13.192000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73006110
+[13.192000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030000ff03
+[13.252000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006110
+[13.282000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006110
+[13.282000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030000ff02
+[13.342000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006110
+[13.342000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030300ff02
+[13.402000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030300ff01
+[13.402000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006110
+[13.432000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006110
+[13.492000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030300ff01
+[13.492000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006210
+[13.552000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006110
+[13.582000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006110
+[13.642000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006110
+[13.672000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030500ff01
+[13.732000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006110
+[13.732000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff71006210
+[13.792000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006110
+[13.822000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff72006110
+[13.882000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006110
+[13.942000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006110
+[13.972000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006110
+[14.032000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006110
+[14.092000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006110
+[14.092000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030501ff00
+[14.122000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006110
+[14.182000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006210
+[14.242000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006110
+[14.272000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030001ff00
+[14.272000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006110
+[14.273000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff01ff00
+[14.332000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006210
+[14.332000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff04ff00
+[14.392000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff73006210
+[14.392000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff0aff00
+[14.422000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f9ff74006110
+[14.482000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006210
+[14.482000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004563000001000100
+[14.542000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561eeff70006110
+[14.542000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004563000000000100
+[14.572000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f7ff73006110
+[14.632000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f7ff73006210
+[14.692000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561efff71006210
+[14.722000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff71006210
+[14.752000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff09ff00
+[14.782000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f6ff73006310
+[14.782000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff08ff00
+[14.842000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006210
+[14.842000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff08ff00
+[14.872000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f0ff71006310
+[14.872000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff07ff00
+[14.932000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff73006310
+[14.933000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030004ff00
+[14.992000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff72006310
+[14.992000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 080045030003ff00
+[15.022000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f0ff71006210
+[15.082000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff03ff00
+[15.082000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff71006310
+[15.142000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f5ff73006310
+[15.172000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff71006310
+[15.202000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff04ff00
+[15.232000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff71006310
+[15.262000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff72006310
+[15.322000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006410
+[15.352000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 08004503ff05ff00
+[15.382000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561efff71006410
+[15.412000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006310
+[15.472000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff72006310
+[15.532000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff71006310
+[15.562000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff71006310
+[15.622000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff72006310
+[15.682000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff72006310
+[15.712000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f0ff71006410
+[15.772000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006410
+[15.832000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f3ff72006410
+[15.862000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff71006410
+[15.922000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f2ff71006410
+[15.982000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f4ff72006410
+[16.013000000] HUB -> APP | Other Notification (Type: 0x45) | Raw: 0a004561f1ff71006410

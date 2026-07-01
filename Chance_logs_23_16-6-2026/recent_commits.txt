@@ -1,0 +1,712 @@
+  4 changes: 3 additions & 1 deletion4  
+examples/EmulatedHub/EmulatedHub.cpp
+Original file line number	Diff line number	Diff line change
+@@ -24,7 +24,7 @@
+
+Lpf2::HubEmulation hub("Technic Hub", Lpf2::HubType::CONTROL_PLUS_HUB);
+
+// #define USE_LOCAL_PORT 1
+#define USE_LOCAL_PORT 1
+
+#ifdef USE_LOCAL_PORT
+#include "../LocalPort/device.hpp"
+@@ -36,6 +36,8 @@ Lpf2::Local::Port port(io);
+void setup()
+{
+    Serial.begin(981200);
+    lpf2_log_init();
+    lpf2_set_runtime_log_level(LPF2_LOG_LEVEL_DEBUG);
+    Lpf2::DeviceRegistry::registerDefault();
+    Lpf2::DeviceDescRegistry::registerDefault();
+    hub.setUseBuiltInDevices(true);
+  2 changes: 2 additions & 0 deletions2  
+examples/LocalPort/LocalPort.cpp
+Original file line number	Diff line number	Diff line change
+@@ -50,6 +50,8 @@ Lpf2::DeviceManager deviceManager(portA);
+void setup()
+{
+    Serial.begin(981200);
+    lpf2_log_init();
+    lpf2_set_runtime_log_level(LPF2_LOG_LEVEL_DEBUG);
+    Lpf2::DeviceRegistry::registerDefault();
+    Lpf2::DeviceDescRegistry::registerDefault();
+
+  2 changes: 2 additions & 0 deletions2  
+examples/RemotePort/RemotePort.cpp
+Original file line number	Diff line number	Diff line change
+@@ -29,6 +29,8 @@ Lpf2::Hub hub;
+void setup()
+{
+    Serial.begin(981200);
+    lpf2_log_init();
+    lpf2_set_runtime_log_level(LPF2_LOG_LEVEL_DEBUG);
+    Lpf2::DeviceRegistry::registerDefault();
+    Lpf2::DeviceDescRegistry::registerDefault();
+    hub.init();
+  20 changes: 19 additions & 1 deletion20  
+include/Lpf2/HubEmulation.hpp
+Original file line number	Diff line number	Diff line change
+@@ -106,25 +106,43 @@ namespace Lpf2
+            uint8_t mode;
+            uint32_t delta;
+            bool notify;
+            
+
+            std::vector<uint8_t> lastRaw;
+        };
+        // map<PortNum, map<ModeNum, Setup>>
+        std::unordered_map<PortNum, std::unordered_map<uint8_t, PortInputSetupSingle>> m_portSetupSingle;
+
+        struct PortInputSetupCombined
+        {
+            PortNum portNum;
+            uint8_t comboIndex = 0;
+            bool locked = false;          // true between Lock (0x02) and Unlock (0x03/0x04)
+            bool active = false;          // true after Unlock, suppresses single-mode updates
+            bool multiUpdateEnabled = false;
+            // each byte: high nibble = mode, low nibble = dataset
+            std::vector<uint8_t> modeDatasetPairs;
+            // per-mode snapshot of rawData used for delta comparisons
+            std::unordered_map<uint8_t, std::vector<uint8_t>> lastRawPerMode;
+        };
+        // map<PortNum, active combined setup>
+        std::unordered_map<PortNum, PortInputSetupCombined> m_portSetupCombined;
+
+        void sendHubAlertUpdate(HubAlertType alert);
+        void resetHubAlerts();
+        void handleHubAlertsMessage(std::vector<uint8_t> message);
+        void handleHubActionsMessage(std::vector<uint8_t> message);
+        void handlePortInformationRequestMessage(std::vector<uint8_t> message);
+        void handlePortModeInformationRequestMessage(std::vector<uint8_t> message);
+        void handlePortInputFormatSetupSingleMessage(std::vector<uint8_t> message);
+        void handlePortInputFormatSetupCombinedMessage(std::vector<uint8_t> message);
+        void handlePortOutputCommandMessage(std::vector<uint8_t> message);
+
+        void checkPort(PortNum portNum, Port* port);
+        void checkPortModeValueSingle(PortInputSetupSingle &setup, Port* port);
+        void checkPortModeValueCombined(PortInputSetupCombined &setup, Port* port);
+
+        void sendPortValueSingle(PortInputSetupSingle &setup, Port* port);
+        void sendPortValueCombined(PortInputSetupCombined &setup, Port* port);
+
+        void initBuiltInPorts();
+        void initBuiltInDevices();
+  1 change: 1 addition & 0 deletions1  
+include/Lpf2/Local/EmulatedPort.hpp
+Original file line number	Diff line number	Diff line change
+@@ -86,6 +86,7 @@ namespace Lpf2::Local
+        uint8_t m_mode = 0;
+        // std::vector<uint8_t> m_lastModeData;
+        uint8_t m_nextModeExt = 0;
+        std::vector<uint8_t> m_comboPairs; // empty = single mode; populated by CMD_WRITE
+        enum class HostType
+        {
+            NONE,
+  1 change: 1 addition & 0 deletions1  
+include/Lpf2/Local/Port.hpp
+Original file line number	Diff line number	Diff line change
+@@ -141,6 +141,7 @@ namespace Lpf2::Local
+        uint64_t m_start = 0;
+
+        uint8_t m_mode = 0;
+        int8_t m_activeCombo = -1; // -1 = single mode, >=0 = active combo index
+
+        float ch0Measurements[MEASUREMENTS];
+        float ch1Measurements[MEASUREMENTS];
+  19 changes: 15 additions & 4 deletions19  
+include/Lpf2/Port.hpp
+Original file line number	Diff line number	Diff line change
+@@ -147,12 +147,12 @@ namespace Lpf2
+        uint8_t getModeCount() const { return m_modeData.size(); }
+        uint8_t getViewCount() const { return m_viewCount; }
+        const std::vector<Mode> &getModes() const { return m_modeData; }
+        uint8_t getModeComboCount() const { return m_modeCombos.size(); }
+        uint8_t getModeComboCount() const { return m_comboNum; }
+        const std::vector<uint16_t> &getModeCombos() const { return m_modeCombos; }
+
+        uint16_t getModeCombo(uint8_t combo) const
+        {
+            if (combo >= m_modeCombos.size() || combo >= 16)
+            if (combo >= m_comboNum || combo >= 16)
+                return 0;
+            return m_modeCombos[combo];
+        }
+@@ -165,7 +165,11 @@ namespace Lpf2
+         * @returns mode bitmask
+         */
+        uint16_t getOutputModes() const { return m_outModesMask; }
+        uint8_t getCapabilities() const { return m_capabilities; }
+        uint8_t getCapabilities() const
+        {
+            // Always reflect combinable bit from actual combo count, regardless of descriptor.
+            return m_comboNum > 0 ? (m_capabilities | 0x04) : m_capabilities;
+        }
+
+        Version getFwVersion() const { return m_fwVersion; }
+        Version getHwVersion() const { return m_hwVersion; }
+@@ -186,6 +190,12 @@ namespace Lpf2
+            m_modeCount = m_modeData.size();
+            m_viewCount = 0; // TODO: add to desc
+            m_modeCombos = desc->combos;
+            m_comboNum = 0;
+            for (auto c : m_modeCombos)
+            {
+                if (c == 0) break;
+                m_comboNum++;
+            }
+            m_capabilities = desc->caps;
+            m_inModesMask = desc->inModesMask;
+            m_outModesMask = desc->outModesMask;
+@@ -251,8 +261,9 @@ namespace Lpf2
+            m_valueChangeCallback = callback;
+        }
+
+    protected:
+    public:
+        static uint8_t getDataSize(uint8_t format);
+    protected:
+        static ModeNum getDefaultMode(DeviceType id);
+        static bool deviceIsAbsMotor(DeviceType id);
+
+  1 change: 1 addition & 0 deletions1  
+platformio.ini
+Original file line number	Diff line number	Diff line change
+@@ -11,6 +11,7 @@ build_flags =
+	-DARDUINO_USB_CDC_ON_BOOT=1
+	-DCONFIG_ESP_CONSOLE_USB_SERIAL_JTAG=1
+	-DCONFIG_ARDUHAL_LOG_COLORS=1
+	-DLPF2_USE_ARDUINO_SERIAL=1
+	-DLPF2_LOG_LEVEL=4
+	-std=gnu++2a
+	-Wformat
+  1 change: 1 addition & 0 deletions1  
+src/Lpf2/DeviceDescLib.cpp
+Original file line number	Diff line number	Diff line change
+@@ -964,6 +964,7 @@ namespace Lpf2::DeviceDescriptors
+        }
+    };
+
+    // Device 0x2E
+    const DeviceDescriptor TECHNIC_LARGE_LINEAR_MOTOR =
+    {
+        .type = DeviceType::TECHNIC_LARGE_LINEAR_MOTOR,
+  170 changes: 163 additions & 7 deletions170  
+src/Lpf2/HubEmulation.cpp
+Original file line number	Diff line number	Diff line change
+@@ -113,7 +113,7 @@ namespace Lpf2
+            handlePortModeInformationRequestMessage(message);
+            break;
+        case MessageType::PORT_INPUT_FORMAT_SETUP_COMBINEDMODE:
+            LPF2_LOG_W("PORT_INPUT_FORMAT_SETUP_COMBINEDMODE not implemented yet");
+            handlePortInputFormatSetupCombinedMessage(message);
+            break;
+        case MessageType::PORT_INPUT_FORMAT_SETUP_SINGLE:
+            handlePortInputFormatSetupSingleMessage(message);
+@@ -547,7 +547,7 @@ namespace Lpf2
+            LPF2_LOG_W("Port input format setup (single) for unattached port %d", portNum);
+            return;
+        }
+        // Port *port = attachedPorts[portNum];
+        Port *port = m_attachedPorts[portNum];
+        uint8_t modeNum = message[(uint8_t)MessageByte::OPERATION];
+
+        PortInputSetupSingle setup;
+@@ -557,13 +557,159 @@ namespace Lpf2
+        std::memcpy(&setup.delta, message.data() + 5, 4);
+        setup.notify = message[9];
+
+        LPF2_LOG_D("Single set: port 0x%02X, mode %d, delta %d, notify %d", (uint8_t)portNum, modeNum, setup.delta, setup.notify);
+
+        m_portSetupSingle[portNum][modeNum] = setup;
+
+        auto combinedIt = m_portSetupCombined.find(portNum);
+        bool locked = combinedIt != m_portSetupCombined.end() && combinedIt->second.locked;
+        if (!locked)
+            port->setMode(modeNum);
+
+        message.erase(message.begin(), message.begin() + 3);
+
+        writeResponse(MessageType::PORT_INPUT_FORMAT_SINGLE, message);
+    }
+
+    void HubEmulation::handlePortInputFormatSetupCombinedMessage(std::vector<uint8_t> message)
+    {
+        if (message.size() < 5)
+        {
+            LPF2_LOG_E("Unexpected message length: %i", message.size());
+            return;
+        }
+        PortNum portNum = (PortNum)message[(uint8_t)MessageByte::PORT_ID];
+        if (m_attachedPorts.find(portNum) == m_attachedPorts.end())
+        {
+            LPF2_LOG_W("Port input format setup (combined) for unattached port %d", portNum);
+            return;
+        }
+        Port *port = m_attachedPorts[portNum];
+        uint8_t subCmd = message[(uint8_t)MessageByte::OPERATION];
+
+        auto &setup = m_portSetupCombined[portNum];
+        setup.portNum = portNum;
+
+        switch (subCmd)
+        {
+        case 0x01: // Set Mode & Dataset Combination
+        {
+            if (message.size() < 6)
+            {
+                LPF2_LOG_E("Unexpected message length: %i", message.size());
+                return;
+            }
+            setup.comboIndex = message[5];
+            setup.modeDatasetPairs.assign(message.begin() + 6, message.end());
+            std::sort(setup.modeDatasetPairs.begin(), setup.modeDatasetPairs.end(),
+                      [](uint8_t a, uint8_t b) { return (a >> 4) < (b >> 4); });
+            LPF2_LOG_D("Combined set combo: port 0x%02X, combo %d", (uint8_t)portNum, setup.comboIndex);
+            break;
+        }
+        case 0x02: // Lock for Setup
+            LPF2_LOG_D("Combined lock: port 0x%02X", (uint8_t)portNum);
+            setup.locked = true;
+            setup.active = false;
+            setup.multiUpdateEnabled = false;
+            break;
+
+        case 0x03: // Unlock + MultiUpdate Enabled
+            LPF2_LOG_D("Combined unlock + multiupdate: port 0x%02X", (uint8_t)portNum);
+            setup.locked = false;
+            setup.active = true;
+            setup.multiUpdateEnabled = true;
+            port->setModeCombo(setup.comboIndex);
+            break;
+
+        case 0x04: // Unlock + MultiUpdate Disabled
+            LPF2_LOG_D("Combined unlock (no multiupdate): port 0x%02X", (uint8_t)portNum);
+            setup.locked = false;
+            setup.active = true;
+            setup.multiUpdateEnabled = false;
+            port->setModeCombo(setup.comboIndex);
+            break;
+
+        case 0x06: // Reset
+            LPF2_LOG_D("Combined reset: port 0x%02X", (uint8_t)portNum);
+            setup.modeDatasetPairs.clear();
+            setup.lastRawPerMode.clear();
+            setup.comboIndex = 0;
+            setup.locked = false;
+            setup.active = false;
+            setup.multiUpdateEnabled = false;
+            break;
+
+        default:
+            LPF2_LOG_E("Unknown combined mode sub-command: 0x%02X", subCmd);
+            return;
+        }
+
+        std::vector<uint8_t> response;
+        response.push_back((uint8_t)portNum);
+        response.push_back(setup.multiUpdateEnabled ? 0x01 : 0x00);
+        response.push_back(setup.comboIndex);
+        response.insert(response.end(), setup.modeDatasetPairs.begin(), setup.modeDatasetPairs.end());
+        writeResponse(MessageType::PORT_INPUT_FORMAT_COMBINEDMODE, response);
+    }
+
+    void HubEmulation::checkPortModeValueCombined(PortInputSetupCombined &setup, Port *port)
+    {
+        if (!setup.multiUpdateEnabled || setup.modeDatasetPairs.empty())
+            return;
+
+        bool shouldSend = false;
+        for (uint8_t nibblePair : setup.modeDatasetPairs)
+        {
+            uint8_t modeNum = (nibblePair >> 4) & 0x0F;
+            uint8_t dataSet = nibblePair & 0x0F;
+            if (modeNum >= port->getModeCount())
+                continue;
+
+            uint32_t delta = 1;
+            if (m_portSetupSingle[setup.portNum].count(modeNum))
+                delta = m_portSetupSingle[setup.portNum][modeNum].delta;
+
+            auto &lastRaw = setup.lastRawPerMode[modeNum];
+            if (std::abs(port->getValue(modeNum, dataSet) - port->getValue(modeNum, lastRaw, dataSet)) >= delta)
+            {
+                shouldSend = true;
+                break;
+            }
+        }
+
+        if (shouldSend)
+        {
+            for (uint8_t nibblePair : setup.modeDatasetPairs)
+            {
+                uint8_t modeNum = (nibblePair >> 4) & 0x0F;
+                if (modeNum >= port->getModeCount())
+                    continue;
+                setup.lastRawPerMode[modeNum] = port->getModes()[modeNum].rawData;
+            }
+            sendPortValueCombined(setup, port);
+            vTaskDelay(1);
+        }
+    }
+
+    void HubEmulation::sendPortValueCombined(PortInputSetupCombined &setup, Port *port)
+    {
+        std::vector<uint8_t> message;
+        message.push_back((uint8_t)setup.portNum);
+        for (uint8_t nibblePair : setup.modeDatasetPairs)
+        {
+            uint8_t modeNum = (nibblePair >> 4) & 0x0F;
+            uint8_t dataSet = nibblePair & 0x0F;
+            if (modeNum >= port->getModeCount())
+                continue;
+            const auto &mode = port->getModes()[modeNum];
+            uint8_t dataSize = Port::getDataSize(mode.format);
+            size_t offset = (size_t)dataSet * dataSize;
+            if (offset + dataSize <= mode.rawData.size())
+                message.insert(message.end(), mode.rawData.begin() + offset, mode.rawData.begin() + offset + dataSize);
+        }
+        writeResponse(MessageType::PORT_VALUE_COMBINEDMODE, message);
+    }
+
+    void Lpf2::HubEmulation::handlePortOutputCommandMessage(std::vector<uint8_t> message)
+    {
+        if (message.size() < 6)
+@@ -665,11 +811,21 @@ namespace Lpf2
+            vTaskDelay(1);
+        }
+
+        std::for_each(m_portSetupSingle[portNum].begin(), m_portSetupSingle[portNum].end(),
+            [this, port](auto &pair)
+            {
+                checkPortModeValueSingle(pair.second, port);
+            });
+        auto combinedIt = m_portSetupCombined.find(portNum);
+        bool combinedActive = combinedIt != m_portSetupCombined.end() &&
+                              (combinedIt->second.locked || combinedIt->second.active);
+
+        if (!combinedActive)
+        {
+            std::for_each(m_portSetupSingle[portNum].begin(), m_portSetupSingle[portNum].end(),
+                [this, port](auto &pair)
+                {
+                    checkPortModeValueSingle(pair.second, port);
+                });
+        }
+
+        if (combinedIt != m_portSetupCombined.end() && !combinedIt->second.locked)
+            checkPortModeValueCombined(combinedIt->second, port);
+    }
+
+    void HubEmulation::checkPortModeValueSingle(PortInputSetupSingle &setup, Port *port)
+  42 changes: 42 additions & 0 deletions42  
+src/Lpf2/Local/EmulatedPort.cpp
+Original file line number	Diff line number	Diff line change
+@@ -150,6 +150,7 @@ namespace Lpf2::Local
+            {
+                return;
+            }
+            m_comboPairs.clear();
+            m_mode = msg.data[0];
+            LPF2_LOG_D("Selected mode: %i, msg: %s", m_mode, Utils::bytes_to_hexString(msg.data).c_str());
+        }
+@@ -158,6 +159,26 @@ namespace Lpf2::Local
+            if (msg.data.size() >= 1)
+                m_nextModeExt = msg.data[0];
+        }
+        else if (msg.msg == MESSAGE_CMD && msg.cmd == CMD_WRITE)
+        {
+            // byte 0: 0x23, byte 1: combo index, bytes 2+: (mode<<4)|dataset pairs
+            if (msg.data.size() < 3)
+                return;
+            uint8_t comboIdx = msg.data[1];
+            auto combos = m_device->getModeCombos();
+            if (comboIdx >= combos.size() || combos[comboIdx] == 0)
+            {
+                LPF2_LOG_W("CMD_WRITE: invalid combo index %i", (int)comboIdx);
+                return;
+            }
+            Message echo = msg;
+            m_writer.write(echo);
+            m_comboPairs.clear();
+            uint8_t numPairs = msg.data[0] & 0x0F;
+            for (uint8_t i = 0; i < numPairs && (2 + i) < msg.data.size(); i++)
+                m_comboPairs.push_back(msg.data[2 + i]);
+            LPF2_LOG_D("CMD_WRITE: combo %i, %d pairs", (int)comboIdx, (int)m_comboPairs.size());
+        }
+        else if (msg.msg == MESSAGE_DATA)
+        {
+            uint8_t mode = msg.cmd + m_nextModeExt;
+@@ -173,6 +194,26 @@ namespace Lpf2::Local
+
+    void EmulatedPort::sendUpdate(uint8_t modeNum)
+    {
+        if (!m_comboPairs.empty())
+        {
+            // Combined mode: concatenate rawData for each (mode<<4)|dataset pair.
+            // Header uses cmd=0 (mode bank 0), confirmed from captures.
+            Message msg;
+            msg.msg = MESSAGE_DATA;
+            msg.cmd = 0;
+            for (uint8_t pair : m_comboPairs)
+            {
+                uint8_t pairMode = (pair >> 4) & 0x0F;
+                if (m_device->getModes().size() > pairMode)
+                {
+                    const auto &raw = m_device->getModes()[pairMode].rawData;
+                    msg.data.insert(msg.data.end(), raw.begin(), raw.end());
+                }
+            }
+            m_writer.write(msg);
+            return;
+        }
+
+        if (modeNum == 0xFF)
+        {
+            modeNum = m_mode;
+@@ -376,6 +417,7 @@ namespace Lpf2::Local
+        m_infoState = InfoState::CMD;
+        m_hostType = HostType::NONE;
+        m_baud = 115200;
+        m_comboPairs.clear();
+        changeBaud(m_baud);
+        m_serial->discardRxFiFo();
+        m_parser.clearBuf();
+  36 changes: 35 additions & 1 deletion36  
+src/Lpf2/Local/PortParser.cpp
+Original file line number	Diff line number	Diff line change
+@@ -81,6 +81,32 @@ namespace Lpf2::Local
+                m_status = STATUS::STATUS_DATA_RECEIVED;
+            }
+            m_startRec = LPF2_GET_TIME();
+
+            if (m_activeCombo >= 0 && (size_t)m_activeCombo < m_modeCombos.size())
+            {
+                nextModeExt = false;
+                uint16_t bitmask = m_modeCombos[m_activeCombo];
+                size_t offset = 0;
+                for (int m = 0; m < 16 && offset < msg.data.size(); m++)
+                {
+                    if (!(bitmask & (1u << m)))
+                        continue;
+                    if ((size_t)m >= m_modeData.size())
+                        break;
+                    uint8_t size = m_modeData[m].data_sets * getDataSize(m_modeData[m].format);
+                    size_t available = msg.data.size() - offset;
+                    uint8_t readLen = (size <= available) ? size : (uint8_t)available;
+                    if (m_modeData[m].rawData.size() < readLen)
+                        m_modeData[m].rawData.resize(readLen);
+                    for (int i = 0; i < readLen; i++)
+                        m_modeData[m].rawData[i] = msg.data[offset + i];
+                    if (m_valueChangeCallback)
+                        m_valueChangeCallback(m);
+                    offset += size;
+                }
+                break;
+            }
+
+            uint8_t mode = GET_MODE(msg.header);
+
+            if (nextModeExt)
+@@ -188,6 +214,12 @@ namespace Lpf2::Local
+            }
+            break;
+        }
+        case CMD_WRITE:
+        {
+            // Device may echo CMD_WRITE (e.g. combined mode echo); ignore.
+            LPF2_LOG_D("CMD_WRITE from device (ignored)");
+            break;
+        }
+        default:
+        {
+            LPF2_LOG_W("Unknown command: 0x%02X", msg.cmd);
+@@ -302,12 +334,14 @@ namespace Lpf2::Local
+            {
+                break;
+            }
+            m_comboNum = num;
+            for (int i = 0; i < num; i++)
+            {
+                std::memcpy(&m_modeCombos[i], msg.data.data() + 1 + (i * 2), 2);
+                if (m_comboNum == 0 && m_modeCombos[i] == 0)
+                if (m_modeCombos[i] == 0)
+                {
+                    m_comboNum = i;
+                    break;
+                }
+            }
+            break;
+  1 change: 1 addition & 0 deletions1  
+src/Lpf2/Local/PortProcess.cpp
+Original file line number	Diff line number	Diff line change
+@@ -318,6 +318,7 @@ namespace Lpf2::Local
+        m_deviceType = DeviceType::UNKNOWNDEVICE;
+        m_deviceDataReceived = false;
+        m_modeCount = m_viewCount = 0;
+        m_activeCombo = -1;
+        m_comboNum = 0;
+        m_modeData.resize(0);
+        m_modeCombos.clear();
+  73 changes: 57 additions & 16 deletions73  
+src/Lpf2/Local/PortWrite.cpp
+Original file line number	Diff line number	Diff line change
+@@ -27,37 +27,78 @@ namespace Lpf2::Local
+            return 1;
+        }
+
+        m_activeCombo = -1;
+        m_mode = mode;
+        uint8_t header = MESSAGE_CMD | CMD_SELECT;
+        uint8_t checksum = header ^ 0xFF;
+        checksum ^= (uint8_t)mode;
+
+        uint8_t modeInBank = mode & 0x07;
+        uint8_t selectHeader = MESSAGE_CMD | LENGTH_1 | CMD_SELECT;
+
+        {
+            Utils::MutexLock lock(m_serialMutex);
+            m_serial->write(header);
+            m_serial->write((uint8_t)mode);
+            m_serial->write(checksum);
+            if (mode >= 8)
+            {
+                uint8_t extHeader = MESSAGE_CMD | LENGTH_1 | CMD_EXT_MODE;
+                m_serial->write(extHeader);
+                m_serial->write((uint8_t)0x08);
+                m_serial->write((uint8_t)(extHeader ^ 0xFF ^ 0x08));
+            }
+            m_serial->write(selectHeader);
+            m_serial->write(modeInBank);
+            m_serial->write((uint8_t)(selectHeader ^ 0xFF ^ modeInBank));
+            m_serial->flush();
+        }
+
+        if (m_modeData[mode].flags.pin1())
+        if (mode < m_modeData.size())
+        {
+            LPF2_LOG_D("Setting pin1 high, pin2 low");
+            m_pwm->out(255, 0);
+        }
+        else if (m_modeData[mode].flags.pin2())
+        {
+            LPF2_LOG_D("Setting pin2 high, pin1 low");
+            m_pwm->out(0, 255);
+            if (m_modeData[mode].flags.pin1())
+            {
+                LPF2_LOG_D("Setting pin1 high, pin2 low");
+                m_pwm->out(255, 0);
+            }
+            else if (m_modeData[mode].flags.pin2())
+            {
+                LPF2_LOG_D("Setting pin2 high, pin1 low");
+                m_pwm->out(0, 255);
+            }
+        }
+
+        LPF2_LOG_D("Set mode to %i (%s)", mode, m_modeData[mode].name.c_str());
+        LPF2_LOG_D("Set mode to %i", mode);
+        return 0;
+    }
+
+    int Port::setModeCombo(uint8_t idx)
+    {
+        LPF2_LOG_W("Set mode Combo: %i, unimplemented!", idx);
+        if (idx >= m_comboNum || m_modeCombos[idx] == 0)
+        {
+            LPF2_LOG_W("Invalid combo index: %i (max %i)", idx, (int)m_comboNum - 1);
+            return 1;
+        }
+
+        uint16_t bitmask = m_modeCombos[idx];
+        // CMD_WRITE activates combined mode. Format confirmed from LEGO Technic hub captures.
+        // Byte 0: 0x20 | num_pairs (bit 5 = combined mode flag, bits 0-3 = pair count).
+        // Byte 1: combo index.
+        // Bytes 2+: (mode<<4)|dataset nibble pairs in ascending mode order.
+        // Writer pads to next power-of-2 automatically.
+        uint8_t numPairs = (uint8_t)__builtin_popcount(bitmask);
+        Message msg;
+        msg.msg = MESSAGE_CMD;
+        msg.cmd = CMD_WRITE;
+        msg.data.push_back(0x20 | numPairs);
+        msg.data.push_back(idx);
+        for (int m = 0; m < 16; m++)
+        {
+            if (bitmask & (1u << m))
+                msg.data.push_back((uint8_t)((m << 4) | 0x00));
+        }
+
+        {
+            Utils::MutexLock lock(m_serialMutex);
+            m_writer.write(msg);
+        }
+
+        m_activeCombo = (int8_t)idx;
+        LPF2_LOG_D("Set combo %i (bitmask 0x%04X)", idx, bitmask);
+        return 0;
+    }
+
+  22 changes: 18 additions & 4 deletions22  
+src/Lpf2/log/log.cpp
+Original file line number	Diff line number	Diff line change
+@@ -54,7 +54,7 @@ void lpf2_set_runtime_log_level(uint16_t level)
+
+QueueHandle_t logMutex = xSemaphoreCreateMutex();
+
+#ifndef LPF2_USE_ARDUINO_SERIAL
+#if LPF2_USE_ARDUINO_SERIAL == 0
+
+static usb_serial_jtag_driver_config_t usb_jtag_cfg;
+
+@@ -103,13 +103,26 @@ extern "C" int lpf2_log_printf(const char *fmt, ...)
+
+esp_err_t lpf2_log_init(void)
+{
+    esp_log_set_vprintf([](const char *fmt, va_list args) -> int {
+        char buf[256];
+        int len = vsnprintf(buf, sizeof(buf), fmt, args);
+        if (len > 0) {
+            xSemaphoreTake(logMutex, portMAX_DELAY);
+            Serial.write((uint8_t *)buf, len < (int)sizeof(buf) ? len : (int)sizeof(buf) - 1);
+            Serial.flush();
+            xSemaphoreGive(logMutex);
+        }
+        return len;
+    });
+    return ESP_OK;
+}
+
+extern "C" int lpf2_log_printf(const char *fmt, ...)
+{
+    static char *buffer = nullptr;
+    static size_t bufSize = 0;
+    volatile static size_t bufSize = 0;
+
+    xSemaphoreTake(logMutex, portMAX_DELAY);
+
+    va_list args, args_copy;
+    va_start(args, fmt);
+@@ -119,13 +132,15 @@ extern "C" int lpf2_log_printf(const char *fmt, ...)
+
+    if (len < 0) {
+        va_end(args_copy);
+        xSemaphoreGive(logMutex);
+        return -1;
+    }
+
+    if ((size_t)(len + 1) > bufSize) {
+        char *newBuf = (char *)realloc(buffer, len + 1);
+        char *newBuf = (char *)realloc((void *)buffer, len + 1);
+        if (!newBuf) {
+            va_end(args_copy);
+            xSemaphoreGive(logMutex);
+            return -1;
+        }
+        buffer = newBuf;
+@@ -135,7 +150,6 @@ extern "C" int lpf2_log_printf(const char *fmt, ...)
+    vsnprintf(buffer, bufSize, fmt, args_copy);
+    va_end(args_copy);
+
+    xSemaphoreTake(logMutex, portMAX_DELAY);
+    Serial.write(buffer, len);
+    Serial.flush();
+    xSemaphoreGive(logMutex);

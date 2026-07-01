@@ -1,0 +1,155 @@
+12:09:41.623 > ected
+12:09:41.744 > I NimBLEServer: mtu update event; conn_handle=1 mtu=255
+12:09:42.042 > I NimBLEServer: subscribe event; attr_handle=8, subscribed: true
+12:09:42.492 > I NimBLEServer: subscribe event; attr_handle=16, subscribed: true
+12:09:42.493 > bscription status: Notifications (1)
+
+12:09:42.497 > [ 86897][I][HubEmulation.cpp:815] checkPort(): Device connected to port 0
+12:09:42.508 >  message (15): 0x0f, 0x00, 0x04, 0x00, 0x01, 0x3d, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10
+
+12:09:42.511 > nected to port 60
+12:09:42.523 > [ 86922][D][HubEmulation.cpp:1108] writeResponse(): write message (15): 0x0f, 0x00, 0x04, 0x3c, 0x01, 0x14, 0x00, 0x00, 0x00, 0x00, 0x10,0x00, 0x00, 0x00, 0x10
+12:09:42.525 > nected to port 99
+12:09:42.537 > [ 86936][D][HubEmulation.cpp:1108] writeResponse(): write message (15): 0x0f, 0x00, 0x04, 0x63, 0x01, 0x3b, 0x00, 0x01, 0x00, 0x00, 0x00,0x01, 0x00, 0x00, 0x00
+12:09:42.539 > nected to port 61
+12:09:42.550 > [ 86950][D][HubEmulation.cpp:1108] writeResponse(): write message (15): 0x0f, 0x00, 0x04, 0x3d, 0x01, 0x3c, 0x00, 0x01, 0x00, 0x00, 0x00,0x01, 0x00, 0x00, 0x00
+12:09:42.553 > nected to port 59
+12:09:42.564 >  message (15): 0x0f, 0x00, 0x04, 0x3b, 0x01, 0x15, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10
+12:09:42.567 > nected to port 97
+12:09:42.578 > [ 86978][D][HubEmulation.cpp:1108] writeResponse(): write message (15): 0x0f, 0x00, 0x04, 0x61, 0x01, 0x39, 0x00, 0x01, 0x00, 0x00, 0x00,0x01, 0x00, 0x00, 0x00
+12:09:42.581 > nected to port 100
+12:09:42.592 > [ 86992][D][HubEmulation.cpp:1108] writeRe message (15): 0x0f, 0x00, 0x04, 0x64, 0x01, 0x36, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+12:09:42.595 > nected to port 98
+12:09:42.606 > [ 87006][D][HubEmulation.cpp:1108] writeResponse(): write message (15): 0x0f, 0x00, 0x04, 0x62, 0x01, 0x3a, 0x00, 0x01, 0x00, 0x00, 0x00,0x01, 0x00, 0x00, 0x00
+12:09:42.609 > nected to port 50
+12:09:42.620 > [ 87020][D][HubEmulation.cpp:1108] writeResponse(): write message (15): 0x0f, 0x00, 0x04, 0x32, 0x01, 0x17, 0x00, 0x00, 0x00, 0x00, 0x10,0x00, 0x00, 0x00, 0x10
+12:09:42.623 > nected to port 96
+12:09:42.634 > [ 87034][D][HubEmulation.cpp:1108] writeResponse(): write message (15): 0x0f, 0x00, 0x04, 0x60, 0x01, 0x3c, 0x00, 0x01, 0x00, 0x00, 0x00,0x01, 0x00, 0x00, 0x00
+12:09:42.637 > m
+12:09:42.638 > [ 87038][D][HubEmulation.cpp:83] processMessages(): message received (5): 0x05, 0x00, 0x03, 0x02, 0x01
+12:09:42.639 > [ 87039][D][HubEmulation.cpp:347] handleHubAlertsMessage(): Enable Hub alert: 2
+12:09:42.640 > ge received (5): 0x05, 0x00, 0x03, 0x02, 0x03
+12:09:42.640 > [ 87041][D][HubEmulation.cpp:359] handleHubAlertsMessage(): Request Hub alert update: 2
+12:09:42.652 > [ 87052 message (6): 0x06, 0x00, 0x03, 0x02, 0x04, 0x00
+12:09:42.658 > ge received (5): 0x05, 0x00, 0x03, 0x04, 0x01
+12:09:42.658 > [ 87057][D][HubEmulation.cpp:347] handleHubAlertsMessage(): Enable Hub alert: 4
+12:09:42.658 > [ 87058][D][HubEmulation.cpp:83] processMessages(): message received (5): 0x05, 0x00, 0x03, 0x04, 0x03
+12:09:42.659 > [ 87059][D][HubEmulation.cpp:359] handleHubAlertsMessage(): Request Hub alert update: 4
+12:09:42.670 > [ 87070][D][HubEmulation.cpp:1108] writeResponse(): write message (6): 0x06, 0x00, 0x03, 0x04, 0x04, 0x00
+12:09:42.673 > [ 87072message received (5): 0x05, 0x00, 0x03, 0x01, 0x01
+12:09:42.674 > [ 87074][D][HubEmulation.cpp:347] handleHubAlertsMessage(): Enable Hub alert: 1
+12:09:42.676 > [ 87075][D][HubEmulation.cpp:83] processMessages(): message received (5): 0x05, 0x00, 0x03, 0x01, 0x03
+12:09:42.677 > [ 87077][D][HubEmulation.cpp:359] handleHubAlertsMessage(): Request Hub alert update: 1
+12:09:42.688 > [ 87088][D][HubEmulation.cpp:1108] writeResponse(): write message (6): 0x06, 0x00, 0x03, 0x01, 0x04, 0x00
+12:09:42.690 > .cpp:83] processMessages(): message received (5): 0x05, 0x00, 0x03, 0x03, 0x01
+12:09:42.692 > [ 87092][D][HubEmulation.cpp:347] handleHubAlertsMessage(): Enable Hub alert: 3
+12:09:42.693 > [ 87093][D][HubEmulation.cpp:83] processMessages(): message received (5): 0x05, 0x00, 0x03, 0x03, 0x03
+12:09:42.694 > [ 87094][D][HubEmulation.cpp:359] handleHubAlertsMessage(): Request Hub alert update: 3
+12:09:42.705 > [ 87105 message (6): 0x06, 0x00, 0x03, 0x03, 0x04, 0x00
+12:09:42.708 > ;36m[ 87108][D][HubEmulation.cpp:83] processMessages(): message received (5): 0x05, 0x00, 0x01, 0x04, 0x05
+12:09:42.710 > [ 87110][D][HubEmulation.cpp:1008] handleHubPropertyMessage(): Requested Hub prop update: 4
+12:09:42.711 > [ 87111][D][HubEmulation.cpp:157] sendHubPropertyUpdate(): Sent prop update: 0.8.0.0
+12:09:42.722 > [ 87122][D][HubEmulation.cpp:1108] writeResponse(): write message (9): 0x09, 0x00, 0x01, 0x04, 0x06, 0x00, 0x00, 0x00, 0x08
+12:09:42.724 > age received (5): 0x05, 0x00, 0x01, 0x03, 0x05
+12:09:42.726 > [ 87126][D][HubEmulation.cpp:1008] handleHubPropertyMessage(): Requested Hub prop update: 3
+12:09:42.727 > : Sent prop update: 1.2.0.0
+12:09:42.738 > ;36m[ 87138][D][HubEmulation.cpp:1108] writeResponse(): write message (9): 0x09, 0x00, 0x01, 0x03, 0x06, 0x00, 0x00, 0x00, 0x12
+12:09:42.741 > ge received (5): 0x05, 0x00, 0x01, 0x09, 0x05
+12:09:42.741 > [ 87142][D][HubEmulation.cpp:1008] handleHubPropertyMessage(): Requested Hub prop update: 9
+12:09:42.742 > [ 87143][D][HubEmulation.cpp:157] sendHubPropertyUpdate(): Sent prop update: 3_02_00_v1.1
+12:09:42.754 > [ 87154][D][HubEmulation.cpp:1108] writeResponse(): write message (17): 0x11, 0x00, 0x01, 0x09, 0x06, 0x33, 0x5f, 0x30, 0x32, 0x5f, 0x30,0x30, 0x5f, 0x76, 0x31, 0x2e, 0x31
+12:09:42.756 > ge received (5): 0x05, 0x00, 0x01, 0x08, 0x05
+12:09:42.757 > [ 87157][D][HubEmulation.cpp:1008] handleHubPropertyMessage(): Requested Hub prop update: 8
+12:09:42.757 > [ 87158][D][HubEmulation.cpp:157] sendHubPropertyUpdate(): Sent prop update: LEGO System A/S
+12:09:42.769 > [ 87169][D][HubEmulation.cpp:1108] writeRespoite message (20): 0x14, 0x00, 0x01, 0x08, 0x06, 0x4c, 0x45, 0x47, 0x4f, 0x20, 0x53, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x20, 0x41, 0x2f, 0x53
+12:09:42.772 > ge received (5): 0x05, 0x00, 0x01, 0x07, 0x05
+12:09:42.773 > [ 87174][D][HubEmulation.cpp:1008] handleHubPropertyMessage(): Requested Hub prop update: 7
+12:09:42.774 > [ 87175][D][HubEmulation.cpp:157] sendHubPropertyUpdate(): Sent prop update: Normal
+12:09:42.786 > [ 87186(): write message (6): 0x06, 0x00, 0x01, 0x07, 0x06, 0x00
+12:09:42.788 > ge received (5): 0x05, 0x00, 0x01, 0x0a, 0x05
+12:09:42.789 > [ 87189][D][HubEmulation.cpp:1008] handleHubPropertyMessage(): Requested Hub prop update: 10
+12:09:42.790 > [ 87190][D][HubEmulation.cpp:157] sendHubPropertyUpdate(): Sent prop update: 0x00, 0x03
+12:09:42.801 >  message (7): 0x07, 0x00, 0x01, 0x0a, 0x06, 0x00, 0x03
+12:09:42.803 > 6m[ 87203][D][HubEmulation.cpp:83] processMessages(): message received (5): 0x05, 0x00, 0x01, 0x0d, 0x05
+12:09:42.804 > [ 87205][D][HubEmulation.cpp:1008] handleHubPropertyMessage(): Requested Hub prop update: 13
+12:09:42.806 > [ 87206][D][HubEmulation.cpp:157] sendHubPropertyUpdate(): Sent prop update: 0xac:0x27:0x6e:0xce:0xa9:0xd5
+12:09:42.817 > [ 87217][D][HubEmulation.cpp:1108] writeResponse(): write message (11): 0x0b, 0x00, 0x01, 0x0d, 0x06, 0xac, 0x27, 0x6e, 0xce, 0xa9, 0xd5
+12:09:42.819 > on.cpp:83] processMessages(): message received (5): 0x05, 0x00, 0x01, 0x02, 0x02
+12:09:42.820 > [ 87221][D][HubEmulation.cpp:1033] handleHubPropertyMessage(): Enable Hub prop: 2
+12:09:42.825 > [ 87223ge received (5): 0x05, 0x00, 0x01, 0x02, 0x05
+12:09:42.826 > [ 87226][D][HubEmulation.cpp:1008] handleHubPropertyMessage(): Requested Hub prop update: 2
+12:09:42.826 > : Sent prop update: Released
+12:09:42.838 > [ 87238][D][HubEmulation.cpp:1108] writeResponse(): write message (6): 0x06, 0x00, 0x01, 0x02, 0x06, 0x00
+12:09:42.840 > ge received (5): 0x05, 0x00, 0x01, 0x05, 0x02
+12:09:42.840 > [ 87241][D][HubEmulation.cpp:1033] handleHubPropertyMessage(): Enable Hub prop: 5
+12:09:42.842 > [ 87242][D][HubEmulation.cpp:83] processMessages(): message received (5): 0x05, 0x00, 0x01, 0x05, 0x05
+12:09:42.843 > [ 87243][D][HubEmulation.cpp:1008] handleHubPropertyMessage(): Requested Hub prop update: 5
+12:09:42.844 > [ 87244][D][HubEmulation.cpp:157] sendHubPropertyUpdate(): Sent prop update: -44
+12:09:42.855 >  message (6): 0x06, 0x00, 0x01, 0x05, 0x06, 0xd4
+12:09:42.857 > ation.cpp:83] processMessages(): message received (5): 0x05, 0x00, 0x01, 0x06, 0x02
+12:09:42.858 > [ 87259][D][HubEmulation.cpp:1033] handleHubPropertyMessage(): Enable Hub prop: 6
+12:09:42.885 > ge received (5): 0x05, 0x00, 0x01, 0x06, 0x05
+12:09:42.885 > [ 87286][D][HubEmulation.cpp:1008] handleHubPropertyMessage(): Requested Hub prop update: 6
+12:09:42.887 > : Sent prop update: 80
+12:09:42.898 > [ 87298[HubEmulation.cpp:1108] writeResponse(): write message (6): 0x06, 0x00, 0x01, 0x06, 0x06, 0x50
+12:09:42.901 > ge received (5): 0x05, 0x00, 0x01, 0x01, 0x02
+12:09:42.902 > [ 87302][D][HubEmulation.cpp:1033] handleHubPropertyMessage(): Enable Hub prop: 1
+12:09:42.903 > [ 87303][D][HubEmulation.cpp:83] processMessages(): message received (5): 0x05, 0x00, 0x01, 0x01, 0x05
+12:09:42.903 > [ 87304][D][HubEmulation.cpp:1008] handleHubPropertyMessage(): Requested Hub prop update: 1
+12:09:42.905 > [ 87305][D][HubEmulation.cpp:157] sendHubPropertyUpdate(): Sent prop update: Technic Hub
+12:09:42.916 >  message (16): 0x10, 0x00, 0x01, 0x01, 0x06, 0x54, 0x65, 0x63, 0x68, 0x6e, 0x69, 0x63, 0x20, 0x48, 0x75, 0x62
+
+12:09:42.919 >         [D][HubEmulation.cpp:83] processMessages(): message received (10): 0x0a, 0x00, 0x41, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+12:09:42.921 > [ 87321][D][HubEmulation.cpp:560] handlePortInputFormatSetupSingleMessage(): Single set: port 0x00, mode 0, delta 1, notify 1
+12:09:42.922 >         [D][PortWrite.cpp:56] setMode(): Setting pin1 high, pin2 low
+12:09:42.922 > [ 87323][D][PortWrite.cpp:66] setMode(): Set mode to 0
+12:09:42.934 >         [D][HubEmulation.cpp:1108] writeResponse(): write message (10): 0x0a, 0x00, 0x47, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+
+12:09:42.947 > [ 87347][D][HubEmulation.cpp:1108] writeResponse(): write message (5): 0x05, 0x00, 0x45, 0x00, 0x09
+
+12:09:42.950 > rocessMessages(): message received (10): 0x0a, 0x00, 0x41, 0x63, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+12:09:42.952 > [ 87352][D][HubEmulation.cpp:560] handlePortInputFormatSetupSingleMessage(): Single set: port 0x63, mode 0, delta 1, notify 1
+12:09:42.953 > [ 87353][I][Device.hpp:227] setMode(): [3B] set mode 0
+12:09:42.964 >  message (10): 0x0a, 0x00, 0x47, 0x63, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+12:09:42.967 > message received (10): 0x0a, 0x00, 0x41, 0x61, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+12:09:42.968 > [ 87368][D][HubEmulation.cpp:560] handlePortInputFormatSetupSingleMessage(): Single set: port 0x61, mode 0, delta 1, notify 1
+12:09:42.969 > [ 87369][I][Device.hpp:227] setMode(): [39] set mode 0
+12:09:42.981 >  message (10): 0x0a, 0x00, 0x47, 0x61, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+12:09:45.403 > ge received (10): 0x0a, 0x00, 0x41, 0x32, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+12:09:45.405 > [ 89805][D][HubEmulation.cpp:560] handlePortInputFormatSetupSingleMessage(): Single set: port 0x32, mode 0, delta 1, notify 1
+12:09:45.406 > [ 89806][I][Device.hpp:227] setMode(): [17] set mode 0
+12:09:45.417 > [ 89817][D][HubEmulation.cpp:1108] writeResponse(): write message (10): 0x0a, 0x00, 0x47, 0x32, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+12:09:45.420 > ge received (8): 0x08, 0x00, 0x81, 0x32, 0x11, 0x51, 0x00, 0x03
+12:09:45.422 > [ 89822][I][Device.hpp:219] writeData(): [17] write mode 0: 0x03
+12:09:45.433 >  message (5): 0x05, 0x00, 0x82, 0x32, 0x0a
+12:09:45.463 > [ 89863on.cpp:83] processMessages(): message received (10): 0x0a, 0x00, 0x41, 0x32, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+12:09:45.464 > [ 89865][D][HubEmulation.cpp:560] handlePortInputFormatSetupSingleMessage(): Single set: port 0x32, mode 0, delta 1, notify 1
+12:09:45.465 > [ 89866][I][Device.hpp:227] setMode(): [17] set mode 0
+12:09:45.477 > [ 89877][D][HubEmulation.cpp:1108] writeResponse(): write message (10): 0x0a, 0x00, 0x47, 0x32, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+12:09:45.480 > Messages(): message received (8): 0x08, 0x00, 0x81, 0x32, 0x11, 0x51, 0x00, 0x03
+12:09:45.481 > [ 89881][I][Device.hpp:219] writeData(): [17] write mode 0: 0x03
+12:09:45.493 >  message (5): 0x05, 0x00, 0x82, 0x32, 0x0a
+12:09:47.499 > m
+12:09:47.500 > [ 91900][D][HubEmulation.cpp:157] sendHubPropertyUpdate(): Sent prop update: -42
+12:09:47.511 > [ 91911][D][HubEmulation.cpp:1108] writeResponse(): write message (6): 0x06, 0x00, 0x01, 0x05, 0x06, 0xd6
+12:09:52.502 > m
+12:09:52.502 > [ 96903][D][HubEmulation.cpp:157] sendHubPropertyUpdate(): Sent prop update: -43
+12:09:52.515 > [ 96914][D][HubEmulation.cpp:1108] writeResponse(): write message (6): 0x06, 0x00, 0x01, 0x05, 0x06, 0xd5
+12:09:52.724 > [ 97124ge received (10): 0x0a, 0x00, 0x41, 0x32, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+12:09:52.725 > [ 97125][D][HubEmulation.cpp:560] handlePortInputFormatSetupSingleMessage(): Single set: port 0x32, mode 0, delta 1, notify 1
+12:09:52.726 > [ 97126][I][Device.hpp:227] setMode(): [17] set mode 0
+12:09:52.737 > [ 97137][D][HubEmulation.cpp:1108] writeResponse(): write message (10): 0x0a, 0x00, 0x47, 0x32, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+12:09:52.740 > ge received (8): 0x08, 0x00, 0x81, 0x32, 0x11, 0x51, 0x00, 0x03
+12:09:52.741 > [ 97141][I][Device.hpp:219] writeData(): [17] write mode 0: 0x03
+12:09:52.753 > [0;36m[ 97152][D][HubEmulation.cpp:1108] writeResponse(): write message (5): 0x05, 0x00, 0x82, 0x32, 0x0a
+12:09:52.784 > [ 97183ge received (10): 0x0a, 0x00, 0x41, 0x32, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+12:09:52.785 > [ 97185][D][HubEmulation.cpp:560] handlePortInputFormatSetupSingleMessage(): Single set: port 0x32, mode 0, delta 1, notify 1
+12:09:52.786 > [ 97186][I][Device.hpp:227] setMode(): [17] set mode 0
+12:09:52.798 > ponse(): write message (10): 0x0a, 0x00, 0x47, 0x32, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01
+12:09:52.801 > ge received (8): 0x08, 0x00, 0x81, 0x32, 0x11, 0x51, 0x00, 0x03
+12:09:52.802 > 219] writeData(): [17] write mode 0: 0x03
+12:09:52.813 >  message (5): 0x05, 0x00, 0x82, 0x32, 0x0a
+12:09:54.762 > I NimBLEServer: subscribe event; attr_handle=8, subscribed: false
+12:09:54.763 > I NimBLEServer: subscribe event; attr_handle=16, subscribed: false
+12:09:54.763 > bscription status: Un-Subscribed (0)
+12:09:54.765 > [ 99165][D][HubEmulation.cpp:50] onDisconnect(): Device disconnected, reason: 531
