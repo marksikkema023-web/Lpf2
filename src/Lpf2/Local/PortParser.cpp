@@ -101,7 +101,6 @@ namespace Lpf2::Local
 
                 if (expectedSize > 0 && msg.data.size() >= expectedSize)
                 {
-                    nextModeExt = false;
                     size_t offset = 0;
                     for (int m = 0; m < 16 && offset < expectedSize; m++)
                     {
@@ -131,11 +130,25 @@ namespace Lpf2::Local
             }
 
             uint8_t mode = GET_MODE(msg.header);
+            uint8_t rxModeNibble = mode;
 
             if (nextModeExt)
             {
                 mode += 8;
-                nextModeExt = false;
+            }
+
+            // Native CDS quirk handling: some frames still arrive with mode nibble 0
+            // even while selected mode is 8 (SPEC 1). Preserve full 4-byte payload by
+            // decoding them as mode 8 when that mode is currently selected.
+            if (m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR && m_mode == 8 && rxModeNibble == 0 && msg.length >= 4)
+            {
+                mode = 8;
+                if (kTraceColorDistanceSensor)
+                {
+                    LPF2_LOG_I(
+                        "CDS UART mode remap: hdr_mode=0 selected=8 len=%d",
+                        (int)msg.length);
+                }
             }
 
             if (mode >= m_modeCount)
@@ -164,34 +177,6 @@ namespace Lpf2::Local
             }
 
             bool rawChanged = prevRaw != m_modeData[mode].rawData;
-
-            // Temporary bridge: physical CDS streams color index on mode 0 while the app
-            // subscribes to mode 8 (SPEC 1). Mirror the index into mode 8 payload layout:
-            // [color, 0x00, 0xFF, 0x00].
-            if (m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR && mode == 0 && readLen >= 1 && m_modeData.size() > 8)
-            {
-                auto &spec1 = m_modeData[8].rawData;
-                std::vector<uint8_t> prevSpec1 = spec1;
-                if (spec1.size() < 4)
-                {
-                    spec1.resize(4, 0x00);
-                }
-                spec1[0] = m_modeData[0].rawData[0];
-                spec1[1] = 0x00;
-                spec1[2] = 0xFF;
-                spec1[3] = 0x00;
-
-                if (prevSpec1 != spec1)
-                {
-                    if (kTraceColorDistanceSensor)
-                    {
-                        LPF2_LOG_I(
-                            "CDS UART bridge store: mode=8 raw=%s",
-                            Utils::bytes_to_hexString(spec1).c_str());
-                    }
-                    fireValueChangeCallback(8);
-                }
-            }
 
             if (kTraceColorDistanceSensor && m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR && rawChanged)
             {
@@ -269,9 +254,18 @@ namespace Lpf2::Local
         }
         case CMD_EXT_MODE:
         {
-            if (msg.data[0])
+            if (!msg.data.empty())
             {
-                nextModeExt = true;
+                // Keep EXT mode bank state (0/8) until changed by the device.
+                bool prevExt = nextModeExt;
+                nextModeExt = (msg.data[0] != 0);
+                if (kTraceColorDistanceSensor && m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR && prevExt != nextModeExt)
+                {
+                    LPF2_LOG_I(
+                        "CDS UART ext mode status: 0x%02X => bank=%d",
+                        (unsigned int)msg.data[0],
+                        nextModeExt ? 8 : 0);
+                }
             }
             break;
         }

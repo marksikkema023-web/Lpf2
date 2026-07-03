@@ -47,19 +47,39 @@ namespace Lpf2::Local
 
         uint8_t modeInBank = mode & 0x07;
         uint8_t selectHeader = MESSAGE_CMD | LENGTH_1 | CMD_SELECT;
+        uint8_t extHeader = MESSAGE_CMD | LENGTH_1 | CMD_EXT_MODE;
 
         {
             Utils::MutexLock lock(m_serialMutex);
-            if (mode >= 8)
+            if (m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR)
             {
-                uint8_t extHeader = MESSAGE_CMD | LENGTH_1 | CMD_EXT_MODE;
-                m_serial->write(extHeader);
-                m_serial->write((uint8_t)0x08);
-                m_serial->write((uint8_t)(extHeader ^ 0xFF ^ 0x08));
+                // Real CDS accepts full mode value directly in CMD_SELECT payload.
+                // Example mode 8 frame: 0x43 0x08 0xB4.
+                m_serial->write(selectHeader);
+                m_serial->write(mode);
+                m_serial->write((uint8_t)(selectHeader ^ 0xFF ^ mode));
             }
-            m_serial->write(selectHeader);
-            m_serial->write(modeInBank);
-            m_serial->write((uint8_t)(selectHeader ^ 0xFF ^ modeInBank));
+            else
+            {
+                if (mode >= 8)
+                {
+                    // Generic LPF2 path uses ext bank + low-nibble select.
+                    m_serial->write(extHeader);
+                    m_serial->write((uint8_t)0x08);
+                    m_serial->write((uint8_t)(extHeader ^ 0xFF ^ 0x08));
+                }
+                else
+                {
+                    // Explicitly clear ext bank for modes 0-7.
+                    m_serial->write(extHeader);
+                    m_serial->write((uint8_t)0x00);
+                    m_serial->write((uint8_t)(extHeader ^ 0xFF ^ 0x00));
+                }
+
+                m_serial->write(selectHeader);
+                m_serial->write(modeInBank);
+                m_serial->write((uint8_t)(selectHeader ^ 0xFF ^ modeInBank));
+            }
             m_serial->flush();
         }
 
