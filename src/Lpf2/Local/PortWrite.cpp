@@ -27,6 +27,20 @@ namespace Lpf2::Local
             return 1;
         }
 
+        if (m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR)
+        {
+            const char *modeName =
+                (mode < m_modeData.size() && !m_modeData[mode].name.empty())
+                    ? m_modeData[mode].name.c_str()
+                    : "<unknown>";
+            LPF2_LOG_I(
+                "CDS mode select request: mode=%d (%s), delta=%.3f, ext=%s",
+                (int)mode,
+                modeName,
+                (double)delta,
+                mode >= 8 ? "yes" : "no");
+        }
+
         storeModeDelta(mode, delta);
         m_activeCombo = -1;
         m_mode = mode;

@@ -22,6 +22,12 @@
 
 namespace Lpf2::Local
 {
+    namespace
+    {
+        // Temporary trace for verifying Color Distance Sensor UART data flow.
+        constexpr bool kTraceColorDistanceSensor = true;
+    }
+
     void Port::parseMessage(const Message &msg)
     {
         switch (msg.msg)
@@ -108,6 +114,15 @@ namespace Lpf2::Local
                             m_modeData[m].rawData.resize(size);
                         for (int i = 0; i < size; i++)
                             m_modeData[m].rawData[i] = msg.data[offset + i];
+                        if (kTraceColorDistanceSensor && m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR)
+                        {
+                            LPF2_LOG_I(
+                                "CDS UART combo store: combo=%d mode=%d bytes=%d raw=%s",
+                                (int)m_activeCombo,
+                                m,
+                                (int)size,
+                                Utils::bytes_to_hexString(m_modeData[m].rawData).c_str());
+                        }
                         fireValueChangeCallback(m);
                         offset += size;
                     }
@@ -136,6 +151,8 @@ namespace Lpf2::Local
                 readLen = msg.length;
             }
 
+            std::vector<uint8_t> prevRaw = m_modeData[mode].rawData;
+
             if (m_modeData[mode].rawData.size() < readLen)
             {
                 m_modeData[mode].rawData.resize(readLen);
@@ -144,6 +161,45 @@ namespace Lpf2::Local
             for (int i = 0; i < readLen; i++)
             {
                 m_modeData[mode].rawData[i] = msg.data[i];
+            }
+
+            bool rawChanged = prevRaw != m_modeData[mode].rawData;
+
+            // Temporary bridge: physical CDS streams color index on mode 0 while the app
+            // subscribes to mode 8 (SPEC 1). Mirror the index into mode 8 payload layout:
+            // [color, 0x00, 0xFF, 0x00].
+            if (m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR && mode == 0 && readLen >= 1 && m_modeData.size() > 8)
+            {
+                auto &spec1 = m_modeData[8].rawData;
+                std::vector<uint8_t> prevSpec1 = spec1;
+                if (spec1.size() < 4)
+                {
+                    spec1.resize(4, 0x00);
+                }
+                spec1[0] = m_modeData[0].rawData[0];
+                spec1[1] = 0x00;
+                spec1[2] = 0xFF;
+                spec1[3] = 0x00;
+
+                if (prevSpec1 != spec1)
+                {
+                    if (kTraceColorDistanceSensor)
+                    {
+                        LPF2_LOG_I(
+                            "CDS UART bridge store: mode=8 raw=%s",
+                            Utils::bytes_to_hexString(spec1).c_str());
+                    }
+                    fireValueChangeCallback(8);
+                }
+            }
+
+            if (kTraceColorDistanceSensor && m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR && rawChanged)
+            {
+                LPF2_LOG_I(
+                    "CDS UART single store: mode=%d readLen=%d raw=%s",
+                    (int)mode,
+                    (int)readLen,
+                    Utils::bytes_to_hexString(m_modeData[mode].rawData).c_str());
             }
 
             fireValueChangeCallback(mode);

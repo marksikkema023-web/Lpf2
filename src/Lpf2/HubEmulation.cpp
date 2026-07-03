@@ -567,6 +567,22 @@ namespace Lpf2
         if (!locked)
             port->setMode(modeNum);
 
+        if (port->getDeviceType() == DeviceType::COLOR_DISTANCE_SENSOR)
+        {
+            const char *modeName =
+                (modeNum < port->getModes().size() && !port->getModes()[modeNum].name.empty())
+                    ? port->getModes()[modeNum].name.c_str()
+                    : "<unknown>";
+            LPF2_LOG_I(
+                "CDS mode-select handling: port=0x%02X mode=%d (%s) delta=%u notify=%d locked=%d",
+                (uint8_t)portNum,
+                (int)modeNum,
+                modeName,
+                (unsigned int)setup.delta,
+                (int)setup.notify,
+                (int)locked);
+        }
+
         message.erase(message.begin(), message.begin() + 3);
 
         writeResponse(MessageType::PORT_INPUT_FORMAT_SINGLE, message);
@@ -871,6 +887,7 @@ namespace Lpf2
         auto combinedIt = m_portSetupCombined.find(portNum);
         bool combinedActive = combinedIt != m_portSetupCombined.end() &&
                               (combinedIt->second.locked || combinedIt->second.active);
+//LPF2_LOG_W("Device connected to port %d", portNum); Check if connected to 0 or 3
 
         if (!combinedActive)
         {
@@ -890,11 +907,37 @@ namespace Lpf2
         uint8_t mode = setup.mode;
         uint8_t dataSets = port->getModes()[mode].data_sets;
         auto &raw = port->getModes()[mode].rawData;
+        bool isColorDistance = port->getDeviceType() == DeviceType::COLOR_DISTANCE_SENSOR;
+
         for (uint8_t dataSet = 0; dataSet < dataSets; dataSet++)
         {
-            if (std::abs(port->getValue(mode, dataSet) - port->getValue(mode, setup.lastRaw, dataSet)) >= setup.delta)
+            float currentVal = port->getValue(mode, dataSet);
+            float previousVal = port->getValue(mode, setup.lastRaw, dataSet);
+            float absDelta = std::abs(currentVal - previousVal);
+
+            if (absDelta >= setup.delta)
             {
+                if (isColorDistance)
+                {
+                    LPF2_LOG_I(
+                        "CDS BLE delta met: port=0x%02X mode=%d dataset=%d current=%.3f previous=%.3f absDelta=%.3f threshold=%u",
+                        (uint8_t)setup.portNum,
+                        (int)mode,
+                        (int)dataSet,
+                        (double)currentVal,
+                        (double)previousVal,
+                        (double)absDelta,
+                        (unsigned int)setup.delta);
+                }
                 setup.lastRaw.assign(raw.begin(), raw.end());
+                if (isColorDistance)
+                {
+                    LPF2_LOG_I(
+                        "CDS BLE send: port=0x%02X mode=%d raw=%s",
+                        (uint8_t)setup.portNum,
+                        (int)mode,
+                        Utils::bytes_to_hexString(raw).c_str());
+                }
                 sendPortValueSingle(setup, port);
                 vTaskDelay(1);
                 break;
@@ -1205,7 +1248,7 @@ namespace Lpf2
         std::for_each(m_attachedPorts.begin(), m_attachedPorts.end(),
                       [this](auto &pair)
                       {
-                          this->checkPort(pair.first, pair.second);
+                          this->checkPort(pair.first, pair.second); // Check the port
                       });
 
         if (now - m_lastRssiUpdate >= 5000)

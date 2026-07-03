@@ -22,6 +22,16 @@
 
 namespace Lpf2::Devices
 {
+    enum class ColorDistanceLedColor : uint8_t
+    {
+        OFF = 0,
+        BLUE,
+        GREEN,
+        YELLOW,
+        RED,
+        WHITE,
+    };
+
     class ColorDistanceSensorControl
     {
     public:
@@ -33,6 +43,7 @@ namespace Lpf2::Devices
         virtual uint8_t getAmbientLight() = 0;
         virtual void getRgb(uint16_t &red, uint16_t &green, uint16_t &blue) = 0;
         virtual uint16_t getIrTx() = 0;
+        virtual void setLedColor(ColorDistanceLedColor color) = 0;
     };
 
     class ColorDistanceSensor : public PortDevice, public ColorDistanceSensorControl
@@ -54,6 +65,8 @@ namespace Lpf2::Devices
             return "Color Distance Sensor";
         }
 
+        inline static const uint8_t LED_MODE = 5;
+
         bool hasCapability(DeviceCapabilityId id) const override;
         void *getCapability(DeviceCapabilityId id) override;
 
@@ -68,6 +81,7 @@ namespace Lpf2::Devices
         uint8_t getAmbientLight() override;
         void getRgb(uint16_t &red, uint16_t &green, uint16_t &blue) override;
         uint16_t getIrTx() override;
+        void setLedColor(ColorDistanceLedColor color) override;
     };
 
     class ColorDistanceSensorFactory : public DeviceFactory
