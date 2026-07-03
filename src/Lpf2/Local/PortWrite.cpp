@@ -16,6 +16,7 @@
  *  */
 
 #include "Lpf2/Local/Port.hpp"
+#include "Lpf2/Local/ColorDistanceUartAdapter.hpp"
 
 namespace Lpf2::Local
 {
@@ -25,20 +26,6 @@ namespace Lpf2::Local
         {
             LPF2_LOG_W("Tried to set invalid mode %i (max %i)", mode, m_modeCount - 1);
             return 1;
-        }
-
-        if (m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR)
-        {
-            const char *modeName =
-                (mode < m_modeData.size() && !m_modeData[mode].name.empty())
-                    ? m_modeData[mode].name.c_str()
-                    : "<unknown>";
-            LPF2_LOG_I(
-                "CDS mode select request: mode=%d (%s), delta=%.3f, ext=%s",
-                (int)mode,
-                modeName,
-                (double)delta,
-                mode >= 8 ? "yes" : "no");
         }
 
         storeModeDelta(mode, delta);
@@ -53,11 +40,10 @@ namespace Lpf2::Local
             Utils::MutexLock lock(m_serialMutex);
             if (m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR)
             {
-                // Real CDS accepts full mode value directly in CMD_SELECT payload.
-                // Example mode 8 frame: 0x43 0x08 0xB4.
-                m_serial->write(selectHeader);
-                m_serial->write(mode);
-                m_serial->write((uint8_t)(selectHeader ^ 0xFF ^ mode));
+                auto frame = ColorDistanceUartAdapter::buildDirectSelectFrame(mode);
+                m_serial->write(frame[0]);
+                m_serial->write(frame[1]);
+                m_serial->write(frame[2]);
             }
             else
             {

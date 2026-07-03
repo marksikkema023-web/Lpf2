@@ -16,18 +16,13 @@
  *  */
 
 #include "Lpf2/Local/Port.hpp"
+#include "Lpf2/Local/ColorDistanceUartAdapter.hpp"
 #include <cstring>
 #include "Lpf2/Util/Values.hpp"
 #include "Lpf2/DeviceDescLib.hpp"
 
 namespace Lpf2::Local
 {
-    namespace
-    {
-        // Temporary trace for verifying Color Distance Sensor UART data flow.
-        constexpr bool kTraceColorDistanceSensor = true;
-    }
-
     void Port::parseMessage(const Message &msg)
     {
         switch (msg.msg)
@@ -113,15 +108,6 @@ namespace Lpf2::Local
                             m_modeData[m].rawData.resize(size);
                         for (int i = 0; i < size; i++)
                             m_modeData[m].rawData[i] = msg.data[offset + i];
-                        if (kTraceColorDistanceSensor && m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR)
-                        {
-                            LPF2_LOG_I(
-                                "CDS UART combo store: combo=%d mode=%d bytes=%d raw=%s",
-                                (int)m_activeCombo,
-                                m,
-                                (int)size,
-                                Utils::bytes_to_hexString(m_modeData[m].rawData).c_str());
-                        }
                         fireValueChangeCallback(m);
                         offset += size;
                     }
@@ -137,19 +123,12 @@ namespace Lpf2::Local
                 mode += 8;
             }
 
-            // Native CDS quirk handling: some frames still arrive with mode nibble 0
-            // even while selected mode is 8 (SPEC 1). Preserve full 4-byte payload by
-            // decoding them as mode 8 when that mode is currently selected.
-            if (m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR && m_mode == 8 && rxModeNibble == 0 && msg.length >= 4)
-            {
-                mode = 8;
-                if (kTraceColorDistanceSensor)
-                {
-                    LPF2_LOG_I(
-                        "CDS UART mode remap: hdr_mode=0 selected=8 len=%d",
-                        (int)msg.length);
-                }
-            }
+            mode = ColorDistanceUartAdapter::remapIncomingMode(
+                m_deviceType,
+                m_mode,
+                rxModeNibble,
+                mode,
+                msg.length);
 
             if (mode >= m_modeCount)
             {
@@ -164,8 +143,6 @@ namespace Lpf2::Local
                 readLen = msg.length;
             }
 
-            std::vector<uint8_t> prevRaw = m_modeData[mode].rawData;
-
             if (m_modeData[mode].rawData.size() < readLen)
             {
                 m_modeData[mode].rawData.resize(readLen);
@@ -174,17 +151,6 @@ namespace Lpf2::Local
             for (int i = 0; i < readLen; i++)
             {
                 m_modeData[mode].rawData[i] = msg.data[i];
-            }
-
-            bool rawChanged = prevRaw != m_modeData[mode].rawData;
-
-            if (kTraceColorDistanceSensor && m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR && rawChanged)
-            {
-                LPF2_LOG_I(
-                    "CDS UART single store: mode=%d readLen=%d raw=%s",
-                    (int)mode,
-                    (int)readLen,
-                    Utils::bytes_to_hexString(m_modeData[mode].rawData).c_str());
             }
 
             fireValueChangeCallback(mode);
@@ -254,19 +220,7 @@ namespace Lpf2::Local
         }
         case CMD_EXT_MODE:
         {
-            if (!msg.data.empty())
-            {
-                // Keep EXT mode bank state (0/8) until changed by the device.
-                bool prevExt = nextModeExt;
-                nextModeExt = (msg.data[0] != 0);
-                if (kTraceColorDistanceSensor && m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR && prevExt != nextModeExt)
-                {
-                    LPF2_LOG_I(
-                        "CDS UART ext mode status: 0x%02X => bank=%d",
-                        (unsigned int)msg.data[0],
-                        nextModeExt ? 8 : 0);
-                }
-            }
+            nextModeExt = ColorDistanceUartAdapter::updateExtBankFromCmd(msg.data, nextModeExt);
             break;
         }
         case CMD_WRITE:

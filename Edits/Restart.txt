@@ -1,8 +1,0 @@
-        void onDisconnect(NimBLEServer *pServer, NimBLEConnInfo &connInfo, int reason) override
-        {
-            LPF2_LOG_D("Device disconnected, reason: %i", reason);
-            _lpf2HubEmulation->m_connected = false;
-            _lpf2HubEmulation->m_subscribed = false;
-            _lpf2HubEmulation->m_bleConnHandle = 0xFFFF;
-            esp_restart();
-        }

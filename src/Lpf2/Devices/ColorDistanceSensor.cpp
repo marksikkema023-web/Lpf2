@@ -16,6 +16,7 @@
  *  */
 
 #include "Lpf2/Devices/ColorDistanceSensor.hpp"
+#include "Lpf2/Devices/ColorDistanceLedMap.hpp"
 
 namespace Lpf2::Devices
 {
@@ -87,31 +88,6 @@ namespace Lpf2::Devices
 
     void ColorDistanceSensor::setLedColor(ColorDistanceLedColor color)
     {
-        // Mode 5 ("COL O") uses device-specific indexed values.
-        uint8_t colorIdx = 0x00; // OFF / BLACK
-        switch (color)
-        {
-        case ColorDistanceLedColor::BLUE:
-            colorIdx = 0x03;
-            break;
-        case ColorDistanceLedColor::GREEN:
-            colorIdx = 0x05;
-            break;
-        case ColorDistanceLedColor::YELLOW:
-            colorIdx = 0x07;
-            break;
-        case ColorDistanceLedColor::RED:
-            colorIdx = 0x09;
-            break;
-        case ColorDistanceLedColor::WHITE:
-            colorIdx = 0x0A;
-            break;
-        case ColorDistanceLedColor::OFF:
-        default:
-            colorIdx = 0x00;
-            break;
-        }
-
-        m_port.writeData(LED_MODE, {colorIdx});
+        m_port.writeData(LED_MODE, {ColorDistanceLedMap::toRawMode5(color)});
     }
 }; // namespace Lpf2::Devices
