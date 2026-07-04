@@ -16,7 +16,6 @@
  *  */
 
 #include "Lpf2/Local/Port.hpp"
-#include "Lpf2/Local/ColorDistanceUartAdapter.hpp"
 #include <cstring>
 #include "Lpf2/Util/Values.hpp"
 #include "Lpf2/DeviceDescLib.hpp"
@@ -85,50 +84,35 @@ namespace Lpf2::Local
 
             if (m_activeCombo >= 0 && (size_t)m_activeCombo < m_modeCombos.size())
             {
+                nextModeExt = false;
                 uint16_t bitmask = m_modeCombos[m_activeCombo];
-                size_t expectedSize = 0;
-                for (int m = 0; m < 16; m++)
+                size_t offset = 0;
+                for (int m = 0; m < 16 && offset < msg.data.size(); m++)
                 {
-                    if (!(bitmask & (1u << m)) || (size_t)m >= m_modeData.size())
+                    if (!(bitmask & (1u << m)))
                         continue;
-                    expectedSize += m_modeData[m].data_sets * getDataSize(m_modeData[m].format);
+                    if ((size_t)m >= m_modeData.size())
+                        break;
+                    uint8_t size = m_modeData[m].data_sets * getDataSize(m_modeData[m].format);
+                    size_t available = msg.data.size() - offset;
+                    uint8_t readLen = (size <= available) ? size : (uint8_t)available;
+                    if (m_modeData[m].rawData.size() < readLen)
+                        m_modeData[m].rawData.resize(readLen);
+                    for (int i = 0; i < readLen; i++)
+                        m_modeData[m].rawData[i] = msg.data[offset + i];
+                    fireValueChangeCallback(m);
+                    offset += size;
                 }
-
-                if (expectedSize > 0 && msg.data.size() >= expectedSize)
-                {
-                    size_t offset = 0;
-                    for (int m = 0; m < 16 && offset < expectedSize; m++)
-                    {
-                        if (!(bitmask & (1u << m)))
-                            continue;
-                        if ((size_t)m >= m_modeData.size())
-                            break;
-                        uint8_t size = m_modeData[m].data_sets * getDataSize(m_modeData[m].format);
-                        if (m_modeData[m].rawData.size() < size)
-                            m_modeData[m].rawData.resize(size);
-                        for (int i = 0; i < size; i++)
-                            m_modeData[m].rawData[i] = msg.data[offset + i];
-                        fireValueChangeCallback(m);
-                        offset += size;
-                    }
-                    break;
-                }
+                break;
             }
 
             uint8_t mode = GET_MODE(msg.header);
-            uint8_t rxModeNibble = mode;
 
             if (nextModeExt)
             {
                 mode += 8;
+                nextModeExt = false;
             }
-
-            mode = ColorDistanceUartAdapter::remapIncomingMode(
-                m_deviceType,
-                m_mode,
-                rxModeNibble,
-                mode,
-                msg.length);
 
             if (mode >= m_modeCount)
             {
@@ -220,7 +204,10 @@ namespace Lpf2::Local
         }
         case CMD_EXT_MODE:
         {
-            nextModeExt = ColorDistanceUartAdapter::updateExtBankFromCmd(msg.data, nextModeExt);
+            if (msg.data[0])
+            {
+                nextModeExt = true;
+            }
             break;
         }
         case CMD_WRITE:

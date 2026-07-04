@@ -16,7 +16,6 @@
  *  */
 
 #include "Lpf2/Local/Port.hpp"
-#include "Lpf2/Local/ColorDistanceUartAdapter.hpp"
 
 namespace Lpf2::Local
 {
@@ -40,10 +39,9 @@ namespace Lpf2::Local
             Utils::MutexLock lock(m_serialMutex);
             if (m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR)
             {
-                auto frame = ColorDistanceUartAdapter::buildDirectSelectFrame(mode);
-                m_serial->write(frame[0]);
-                m_serial->write(frame[1]);
-                m_serial->write(frame[2]);
+                m_serial->write(selectHeader);
+                m_serial->write(mode);
+                m_serial->write((uint8_t)(selectHeader ^ 0xFF ^ mode));
             }
             else
             {
