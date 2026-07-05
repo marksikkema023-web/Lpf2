@@ -238,12 +238,11 @@ namespace Lpf2::Local
             modeNum = m_mode;
         }
 
-        if (modeNum >= 8)
         {
             Message msg;
             msg.msg = MESSAGE_CMD;
             msg.cmd = CMD_EXT_MODE;
-            msg.data.push_back(8);
+            msg.data.push_back(modeNum >= 8 ? 8 : 0);
             m_writer.write(msg);
         }
         Mode mode;

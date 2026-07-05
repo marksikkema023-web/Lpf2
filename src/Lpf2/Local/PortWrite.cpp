@@ -31,39 +31,13 @@ namespace Lpf2::Local
         m_activeCombo = -1;
         m_mode = mode;
 
-        uint8_t modeInBank = mode & 0x07;
         uint8_t selectHeader = MESSAGE_CMD | LENGTH_1 | CMD_SELECT;
-        uint8_t extHeader = MESSAGE_CMD | LENGTH_1 | CMD_EXT_MODE;
 
         {
             Utils::MutexLock lock(m_serialMutex);
-            if (m_deviceType == DeviceType::COLOR_DISTANCE_SENSOR)
-            {
-                m_serial->write(selectHeader);
-                m_serial->write(mode);
-                m_serial->write((uint8_t)(selectHeader ^ 0xFF ^ mode));
-            }
-            else
-            {
-                if (mode >= 8)
-                {
-                    // Generic LPF2 path uses ext bank + low-nibble select.
-                    m_serial->write(extHeader);
-                    m_serial->write((uint8_t)0x08);
-                    m_serial->write((uint8_t)(extHeader ^ 0xFF ^ 0x08));
-                }
-                else
-                {
-                    // Explicitly clear ext bank for modes 0-7.
-                    m_serial->write(extHeader);
-                    m_serial->write((uint8_t)0x00);
-                    m_serial->write((uint8_t)(extHeader ^ 0xFF ^ 0x00));
-                }
-
-                m_serial->write(selectHeader);
-                m_serial->write(modeInBank);
-                m_serial->write((uint8_t)(selectHeader ^ 0xFF ^ modeInBank));
-            }
+            m_serial->write(selectHeader);
+            m_serial->write(mode);
+            m_serial->write((uint8_t)(selectHeader ^ 0xFF ^ mode));
             m_serial->flush();
         }
 
@@ -205,14 +179,11 @@ namespace Lpf2::Local
 
         {
             Utils::MutexLock lock(m_serialMutex);
-            if (modeNum >= 8)
-            {
-                Message msg;
-                msg.msg = MESSAGE_CMD;
-                msg.cmd = CMD_EXT_MODE;
-                msg.data.push_back(8);
-                m_writer.write(msg);
-            }
+            Message extModeMsg;
+            extModeMsg.msg = MESSAGE_CMD;
+            extModeMsg.cmd = CMD_EXT_MODE;
+            extModeMsg.data.push_back(modeNum >= 8 ? 8 : 0);
+            m_writer.write(extModeMsg);
 
             Message msg;
             msg.msg = MESSAGE_DATA;

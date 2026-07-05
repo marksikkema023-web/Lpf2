@@ -16,7 +16,6 @@
  *  */
 
 #include "Lpf2/Devices/ColorDistanceSensor.hpp"
-#include "Lpf2/Devices/ColorDistanceLedMap.hpp"
 
 namespace Lpf2::Devices
 {
@@ -81,13 +80,13 @@ namespace Lpf2::Devices
         blue = static_cast<uint16_t>(m_port.getValue(6, 2));
     }
 
-    uint16_t ColorDistanceSensor::getIrTx()
+    void ColorDistanceSensor::setIrTx(uint16_t value)
     {
-        return static_cast<uint16_t>(m_port.getValue(7, 0));
+        m_port.writeData(7, {static_cast<uint8_t>(value & 0xFF), static_cast<uint8_t>((value >> 8) & 0xFF)});
     }
 
-    void ColorDistanceSensor::setLedColor(ColorDistanceLedColor color)
+    void ColorDistanceSensor::setLedColor(uint8_t color)
     {
-        m_port.writeData(LED_MODE, {ColorDistanceLedMap::toRawMode5(color)});
+        m_port.writeData(LED_MODE, {color});
     }
 }; // namespace Lpf2::Devices

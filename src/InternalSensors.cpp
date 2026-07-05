@@ -96,11 +96,9 @@ void updateInternalSensors() {
             unsigned long currentCycleTime = currentMillis % cycleDuration;
             if (virtualColorDistanceSensor != nullptr) {
                 if (currentCycleTime < 750) {
-//                    virtualColorDistanceSensor->setModeData(0, { static_cast<uint8_t>(Lpf2::ColorIDX::CYAN) });
-//                    virtualColorDistanceSensor->setModeData(8, { 0x09, 0x00, 0xff, 0x00 });
+                    virtualColorDistanceSensor->setModeData(8, { 0x09, 0x00, 0xff, 0x00 });
                 } else {
-//                    virtualColorDistanceSensor->setModeData(0, { static_cast<uint8_t>(Lpf2::ColorIDX::RED) });
-//                    virtualColorDistanceSensor->setModeData(8, { 0x03, 0x00, 0xff, 0x00 });
+                    virtualColorDistanceSensor->setModeData(8, { 0x03, 0x00, 0xff, 0x00 });
                 }
             }
         }
